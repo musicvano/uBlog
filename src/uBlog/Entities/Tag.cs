@@ -1,6 +1,6 @@
 ﻿namespace uBlog.Entities
 {
-    public class Category
+    public class Tag
     {
         public int Id { get; set; }
         public string Name { get; set; }

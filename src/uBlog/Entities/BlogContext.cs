@@ -1,12 +1,11 @@
 ﻿using Microsoft.Data.Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace uBlog.Entities
 {
     public class BlogContext: DbContext
     {
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Tag> Tags { get; set; }
     }
 }

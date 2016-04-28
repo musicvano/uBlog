@@ -6,10 +6,14 @@ using Microsoft.AspNet.Mvc;
 
 namespace uBlog.Controllers
 {
-    public class HomeController : Controller
-    {
-        // GET: /<controller>/
-        public IActionResult Index()
+    public class BlogController : Controller
+    {        
+        public IActionResult Posts()
+        {
+            return View();
+        }
+
+        public IActionResult Tags()
         {
             return View();
         }
