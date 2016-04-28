@@ -6,9 +6,9 @@ using Microsoft.AspNet.Mvc;
 
 namespace uBlog.Controllers
 {
-    public class BlogController : Controller
+    public class PostsController : Controller
     {        
-        public IActionResult Posts()
+        public IActionResult Index()
         {
             return View();
         }

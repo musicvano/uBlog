@@ -14,7 +14,12 @@ namespace uBlog
 
         private void ConfigureRoutes(IRouteBuilder routeBuilder)
         {
-            routeBuilder.MapRoute("Default", "{controller=Blog}/{action=Posts}/{id?}");
+            routeBuilder.MapRoute("Default", "{controller=Posts}/{action=Index}/{id?}");
+            //routeBuilder.MapRoute(
+            //name: "Posts",
+            //template: "posts/{id?}",
+            //defaults: new { controller = "Posts", action = "Index" }
+            //);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
