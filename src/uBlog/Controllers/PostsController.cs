@@ -1,21 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Mvc;
+﻿using Microsoft.AspNet.Mvc;
+using uBlog.Services;
 
 namespace uBlog.Controllers
 {
     public class PostsController : Controller
-    {        
-        public IActionResult Index()
+    {
+        IPostService postService;
+        public PostsController(IPostService postService)
         {
-            return View();
+            this.postService = postService;
         }
 
-        public IActionResult Tags()
+        public IActionResult Index(int page = 1)
         {
-            return View();
+            return View(postService.GetByPage(page));
+        }
+
+        public IActionResult Details(string slug)
+        {
+            var post = postService.GetBySlug(slug);
+            if (post == null)
+            {                                
+                return HttpNotFound();
+            }            
+            return View(post);
         }
     }
 }

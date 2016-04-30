@@ -3,11 +3,19 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="~/favicon.ico" />
     <title>@ViewBag.Title</title>
 </head>
 <body>
+    <header>
+        <a asp-controller="posts">Home</a>
+        <a asp-controller="about">About</a>
+    </header>
     <div>
         @RenderBody()
     </div>
+    <footer>
+        <p>© @DateTime.Now.Year @ViewBag.Author</p>        
+    </footer>
 </body>
 </html>

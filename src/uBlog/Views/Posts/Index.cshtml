@@ -1,9 +1,12 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<uBlog.Data.Entities.Post>
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Posts";
 }
 
-
 <h1>Posts</h1>
+@foreach(var post in Model)
+{
+    <h3>@post.Title</h3>
+    <p>@post.Content</p>
+}
+
