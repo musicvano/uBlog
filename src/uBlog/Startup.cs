@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Routing;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using uBlog.Data;
 using uBlog.Services;
 
@@ -46,14 +47,16 @@ namespace uBlog
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             app.UseStatusCodePagesWithReExecute("/errors/{0}");
             app.UseIISPlatformHandler();
             if (env.IsDevelopment())
             {
                 app.UseBrowserLink();
-                app.UseDeveloperExceptionPage();
+                app.UseDeveloperExceptionPage();                
+                //loggerFactory.AddProvider(new LoggerProvider());
+                //loggerFactory.AddDebug(LogLevel.Verbose);
             }
             app.UseRuntimeInfoPage("/info");
             app.UseStaticFiles();

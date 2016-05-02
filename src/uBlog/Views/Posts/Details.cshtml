@@ -5,11 +5,12 @@
 
 <h1>@Model.Title</h1>
 <p>@Model.Content</p>
-@*@foreach(var tag in Model.Tags)
+Tags: 
+@foreach(var postTag in Model.PostTags)
 {
-    <em>@tag.Name</em>
-}*@
-<p>@Model.PublishedDate.ToLongDateString()</p>
+    <strong>@postTag.Tag.Name</strong>
+}
+<p>@Model.PublishedDate.Value.ToShortDateString()</p>
 @foreach(var comment in Model.Comments)
 {
     <p>@comment.Text</p>

@@ -10,9 +10,9 @@ namespace uBlog.Data.Entities
         public string Slug { get; set; }
         public string Content { get; set; }
         public DateTime CreatedDate { get; set; }
-        public DateTime PublishedDate { get; set; }
-        public bool Published { get; set; }
-        public virtual ICollection<Comment> Comments { get; set; }
-        public virtual ICollection<Tag> Tags { get; set; }
+        public DateTime? PublishedDate { get; set; }
+        //public bool Published { get; set; }
+        public ICollection<Comment> Comments { get; set; }
+        public ICollection<PostTag> PostTags { get; set; }
     }
 }

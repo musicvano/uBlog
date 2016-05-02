@@ -4,9 +4,9 @@
 }
 
 <h1>Posts</h1>
-@foreach(var post in Model)
+@foreach (var post in Model)
 {
-    <h3>@post.Title</h3>
+    <a asp-controller="Posts" asp-action="Details" asp-route-slug="@post.Slug">@post.Title</a>
     <p>@post.Content</p>
 }
 

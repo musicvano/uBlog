@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using uBlog.Data;
@@ -26,7 +27,7 @@ namespace uBlog.Services
 
         public Post GetBySlug(string slug)
         {
-            return context.Posts.FirstOrDefault(p => String.Compare(p.Slug, slug, true) == 0);
+            return context.Posts.Include(p => p.Comments).Include(p => p.PostTags).FirstOrDefault(p => String.Compare(p.Slug, slug, true) == 0);
         }
     }
 }

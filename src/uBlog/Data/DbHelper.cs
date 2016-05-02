@@ -1,5 +1,8 @@
 ﻿using Microsoft.Data.Entity;
 using Microsoft.Data.Entity.Infrastructure;
+using Microsoft.Data.Entity.Internal;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
@@ -44,5 +47,12 @@ namespace uBlog.Data
             // Look in the database
             return query.FirstOrDefault();
         }
-    }
+
+        public static void LogToConsole(this DbContext context)
+        {
+            var contextServices = ((IInfrastructure<IServiceProvider>)context).Instance;
+            var loggerFactory = contextServices.GetRequiredService<ILoggerFactory>();
+            loggerFactory.AddConsole(LogLevel.Verbose);
+        }
+    }   
 }
