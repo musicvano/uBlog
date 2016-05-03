@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0-*",
+  "description": "uBlog.Core Class Library",
+  "authors": [ "Ivan Muzyka" ],
+  "tags": [ "Blog" ],
+  "projectUrl": "https://github.com/musicvano/ublog",
+  "licenseUrl": "MIT",
+  "frameworks": {
+    "dnx451": { },
+    "dnxcore50": { }
+  },
+  "dependencies": {
+    "uBlog.Data": "1.0.0-*"
+  }
+}

@@ -1,0 +1,18 @@
+﻿@model uBlog.Data.Entities.Post
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<h1>@Model.Title</h1>
+<p>@Model.Content</p>
+Tags: 
+@foreach(var postTag in Model.PostTags)
+{
+    <strong>@postTag.Tag.Name</strong>
+}
+<p>Date: @Model.DateCreated.ToShortDateString()</p>
+Comments:
+@foreach(var comment in Model.Comments)
+{
+    <p>@comment.Text</p>
+}

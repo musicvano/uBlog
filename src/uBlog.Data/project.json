@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0-*",
+  "description": "uBlog.Data Class Library",
+  "authors": [ "Ivan Muzyka" ],
+  "tags": [ "Blog" ],
+  "projectUrl": "https://github.com/musicvano/ublog",
+  "licenseUrl": "MIT",
+  "frameworks": {
+    "dnx451": { },
+    "dnxcore50": { }
+  },
+  "dependencies": {
+    "Microsoft.Data.Sqlite": "1.0.0-rc1-final",
+    "NPoco": "3.2.0"
+  }
+}
