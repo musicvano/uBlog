@@ -11,6 +11,6 @@
   },
   "dependencies": {
     "Microsoft.Data.Sqlite": "1.0.0-rc1-final",
-    "NPoco": "3.2.0"
+    "NPoco": "3.3.0-beta2"
   }
 }

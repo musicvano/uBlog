@@ -11,7 +11,7 @@ namespace uBlog.Data.Entities
         public string Content { get; set; }
         public DateTime DateCreated { get; set; }
         public bool Draft { get; set; }
-        public ICollection<Comment> Comments { get; set; }
-        public ICollection<PostTag> PostTags { get; set; }
+        public List<Comment> Comments { get; set; }
+        public List<Tag> Tags { get; set; }
     }
 }

@@ -20,17 +20,23 @@ namespace uBlog.Data.Sqlite
 
         public Post GetBySlug(string slug)
         {
-            return db.SingleOrDefault<Post>("SELECT * FROM Post WHERE Slug = @0", slug);
+            var post = db.Query<Post>().SingleOrDefault(p => p.Slug == slug);
+            if (post != null)
+            {
+                post.Comments = db.Query<Comment>().Where(c => c.PostId == post.Id).OrderBy(c => c.DateCreated).ToList();                
+                post.Tags = db.Fetch<Tag>("SELECT * FROM Tag INNER JOIN PostTag ON Tag.Id = PostTag.TagId WHERE PostTag.PostId = @0", post.Id);
+            }
+            return post;
         }
 
         public List<Post> GetAll()
         {
-            return db.Fetch<Post>("SELECT * FROM Post");
+            return db.Query<Post>().OrderBy(p => p.Id).ToList();
         }
 
         public List<Post> GetByPage(int pageIndex, int pageSize)
         {
-            return db.Page<Post>(pageIndex, pageSize, "SELECT * FROM Post").Items;
+            return db.Query<Post>().Limit((pageIndex - 1) * pageSize, pageSize).OrderBy(p => p.DateCreated).ToList();            
         }
     }
 }

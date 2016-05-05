@@ -9,17 +9,17 @@ namespace uBlog.Controllers
 {
     public class BaseController : Controller
     {
-        IUnitOfWork blog;
-        public BaseController(IUnitOfWork blog)
-        {
+        //IUnitOfWork blog;
+        //public BaseController(IUnitOfWork blog)
+        //{
             
-            this.blog = blog;
-            //ViewBag.Author = blog.
-        }
+        //    this.blog = blog;
+        //    //ViewBag.Author = blog.
+        //}
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
     }
 }

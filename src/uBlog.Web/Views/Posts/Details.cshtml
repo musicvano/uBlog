@@ -6,9 +6,9 @@
 <h1>@Model.Title</h1>
 <p>@Model.Content</p>
 Tags: 
-@foreach(var postTag in Model.PostTags)
+@foreach(var tag in Model.Tags)
 {
-    <strong>@postTag.Tag.Name</strong>
+    <strong>@tag.Name</strong>
 }
 <p>Date: @Model.DateCreated.ToShortDateString()</p>
 Comments:

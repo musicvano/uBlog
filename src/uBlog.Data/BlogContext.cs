@@ -13,7 +13,7 @@ namespace uBlog.Data
         {
             var conn = new SqliteConnection(@"Data Source=D:\blog.db");
             conn.Open();
-            db = new Database(conn);
+            db = new Database(conn, DatabaseType.SQLite);
             Posts = new PostRepository(db);
             //Tags = new TagRepository(context);
             //Comments = new CommentRepository(context);
