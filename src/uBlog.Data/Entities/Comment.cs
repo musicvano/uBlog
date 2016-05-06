@@ -8,5 +8,6 @@ namespace uBlog.Data.Entities
         public string Text { get; set; }
         public DateTime DateCreated { get; set; }
         public int PostId { get; set; }
+        public Post Post { get; set; }
     }
 }

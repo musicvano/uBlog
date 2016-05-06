@@ -6,6 +6,6 @@ namespace uBlog.Core.Services
     public interface IPostService
     {
         Post GetBySlug(string slug);
-        IList<Post> GetByPage(int page);
+        List<Post> GetByPage(int page);
     }
 }

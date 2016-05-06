@@ -1,30 +1,28 @@
 ﻿using uBlog.Data;
 using uBlog.Data.Entities;
-using uBlog.Data.Repositories;
 
 namespace uBlog.Core.Services
 {
     public class SettingService : ISettingService
     {
-        ISettingRepository repo;
+        IUnitOfWork uow;
 
-        public SettingService(ISettingRepository repo)
+        public SettingService(IUnitOfWork uow)
         {
-            this.repo = repo;
+            this.uow = uow;
         }
 
         public Settings Settings
         {
             get
             {
-                return null;
-                //return context.Settings.Find(1);
+                return uow.Settings.SingleOrDefault(s => s.Id == 1);
             }
 
             set
             {
-                //context.Settings.Attach(value);
-                //context.SaveChanges();
+                uow.Settings.Update(value);
+                uow.Save();
             }
         }
     }

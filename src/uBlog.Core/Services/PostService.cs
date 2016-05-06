@@ -6,21 +6,22 @@ namespace uBlog.Data
 {
     public class PostService : IPostService
     {
-        private IBlogContext context;
+        IUnitOfWork uow;
 
-        public PostService(IBlogContext context)
+        public PostService(IUnitOfWork uow)
         {
-            this.context = context;
+            this.uow = uow;
         }
 
-        public IList<Post> GetByPage(int page)
+        public List<Post> GetByPage(int page)
         {
-            return context.Posts.GetByPage(page, 10);
+            var settings = uow.Settings.SingleOrDefault(s => s.Id == 1);
+            return uow.Posts.GetByPage(page, settings.PageSize);
         }
 
         public Post GetBySlug(string slug)
         {
-            return context.Posts.GetBySlug(slug);
+            return uow.Posts.GetBySlug(slug);
         }
     }
 }

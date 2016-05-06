@@ -6,13 +6,13 @@
 <h1>@Model.Title</h1>
 <p>@Model.Content</p>
 Tags: 
-@foreach(var tag in Model.Tags)
+@foreach(var tag in Model.PostTags)
 {
-    <strong>@tag.Name</strong>
+    <strong>@tag.Tag.Name</strong>
 }
 <p>Date: @Model.DateCreated.ToShortDateString()</p>
 Comments:
 @foreach(var comment in Model.Comments)
 {
-    <p>@comment.Text</p>
+    <p>@comment.Text (@comment.DateCreated.ToShortDateString())</p>
 }

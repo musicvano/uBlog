@@ -1,33 +1,29 @@
-﻿using Microsoft.Data.Sqlite;
-using NPoco;
-using uBlog.Data.Repositories;
-using uBlog.Data.Sqlite;
+﻿using Microsoft.Data.Entity;
+using Microsoft.Data.Sqlite;
+using uBlog.Data.Entities;
 
 namespace uBlog.Data
 {
-    public class BlogContext : IBlogContext
+    public class BlogContext : DbContext
     {
-        private readonly IDatabase db;
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<PostTag> PostTags { get; set; }
+        public DbSet<Settings> Settings { get; set; }
 
-        public BlogContext()
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var conn = new SqliteConnection(@"Data Source=D:\blog.db");
-            conn.Open();
-            db = new Database(conn, DatabaseType.SQLite);
-            Posts = new PostRepository(db);
-            //Tags = new TagRepository(context);
-            //Comments = new CommentRepository(context);
-            //Settings = new SettingRepository(context);
+            var connectionStringBuilder = new SqliteConnectionStringBuilder { DataSource = "uBlog.db" };
+            var connectionString = connectionStringBuilder.ToString();
+            var connection = new SqliteConnection(connectionString);
+            optionsBuilder.UseSqlite(connection);
         }
 
-        public IPostRepository Posts { get; private set; }
-        public ITagRepository Tags { get; private set; }
-        public ICommentRepository Comments { get; private set; }
-        public ISettingRepository Settings { get; private set; }
-
-        public void Dispose()
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            db.Dispose();
+            modelBuilder.Entity<PostTag>()
+                .HasKey(t => new { t.PostId, t.TagId });
         }
     }
 }

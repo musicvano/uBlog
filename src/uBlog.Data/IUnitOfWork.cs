@@ -3,11 +3,12 @@ using uBlog.Data.Repositories;
 
 namespace uBlog.Data
 {
-    public interface IBlogContext: IDisposable
+    public interface IUnitOfWork : IDisposable
     {
         IPostRepository Posts { get; }
-        ITagRepository Tags { get; }
         ICommentRepository Comments { get; }
+        ITagRepository Tags { get; }
         ISettingRepository Settings { get; }
+        int Save();
     }
 }

@@ -1,25 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Mvc;
-using uBlog.Data;
+﻿using Microsoft.AspNet.Mvc;
+using uBlog.Core.Services;
 
 namespace uBlog.Controllers
 {
     public class BaseController : Controller
     {
-        //IUnitOfWork blog;
-        //public BaseController(IUnitOfWork blog)
-        //{
-            
-        //    this.blog = blog;
-        //    //ViewBag.Author = blog.
-        //}
+        private readonly ISettingService settingService;
 
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
+        public BaseController(ISettingService settingService)
+        {
+            this.settingService = settingService;
+            ViewBag.Author = settingService.Settings.Author;
+        }
     }
 }

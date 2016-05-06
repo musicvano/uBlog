@@ -3,6 +3,7 @@ using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using System;
 using uBlog.Core.Services;
 using uBlog.Data;
 
@@ -14,8 +15,9 @@ namespace uBlog
         {
             services.AddRouting(routeOptions => routeOptions.LowercaseUrls = true);
             services.AddMvc();
-            services.AddScoped<IBlogContext, BlogContext>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IPostService, PostService>();
+            services.AddScoped<ISettingService, SettingService>();
         }
 
         private void ConfigureRoutes(IRouteBuilder routeBuilder)
@@ -54,8 +56,6 @@ namespace uBlog
             {
                 app.UseBrowserLink();
                 app.UseDeveloperExceptionPage();                
-                //loggerFactory.AddProvider(new LoggerProvider());
-                //loggerFactory.AddDebug(LogLevel.Verbose);
             }
             app.UseRuntimeInfoPage("/info");
             app.UseStaticFiles();

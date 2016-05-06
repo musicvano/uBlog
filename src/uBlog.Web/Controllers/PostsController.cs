@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNet.Mvc;
-using System.Linq;
 using uBlog.Core.Services;
 
 namespace uBlog.Controllers
-{    
+{
     public class PostsController : Controller
     {
-        IPostService postService;
+        private readonly IPostService postService;
+
         public PostsController(IPostService postService)
         {
             this.postService = postService;
@@ -14,6 +14,7 @@ namespace uBlog.Controllers
 
         public IActionResult Index(int page = 1)
         {
+            var p = ViewBag;
             var posts = postService.GetByPage(page);
             if (posts.Count == 0)
             {
@@ -26,9 +27,9 @@ namespace uBlog.Controllers
         {
             var post = postService.GetBySlug(slug);
             if (post == null)
-            {                                
+            {
                 return HttpNotFound();
-            }            
+            }
             return View(post);
         }
     }
