@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "Microsoft.Data.Sqlite": "1.0.0-rc1-final",
-    "EntityFramework.SQLite": "7.0.0-rc1-final"
+    "EntityFramework.SQLite": "7.0.0-rc1-final",
+    "EntityFramework.Commands": "7.0.0-rc1-final",
+    "Microsoft.AspNet.Identity.EntityFramework": "3.0.0-rc1-final"
   },
   "commands": {
     "ef": "EntityFramework.Commands"

@@ -3,7 +3,6 @@ using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using System;
 using uBlog.Core.Services;
 using uBlog.Data;
 
@@ -54,7 +53,7 @@ namespace uBlog
             app.UseIISPlatformHandler();
             if (env.IsDevelopment())
             {
-                app.UseBrowserLink();
+                //app.UseBrowserLink();
                 app.UseDeveloperExceptionPage();                
             }
             app.UseRuntimeInfoPage("/info");

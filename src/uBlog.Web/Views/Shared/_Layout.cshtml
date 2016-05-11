@@ -1,15 +1,37 @@
-﻿<!DOCTYPE html>
-
+﻿@using System.Security.Claims
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" href="~/favicon.ico" />
     <title>@ViewBag.Title</title>
+    <link rel="icon" type="image/png" href="~/images/favicon.ico">
+    <environment names="Development">
+        <link href="~/css/font-awesome.css" rel="stylesheet" />
+        <link href="~/css/skeleton.css" rel="stylesheet" />
+    </environment>
+    <environment names="Staging,Production">
+        <link href="~/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="~/css/skeleton.min.css" rel="stylesheet" />
+    </environment>   
 </head>
 <body>
+    <div>
+        @if (User.IsSignedIn())
+        {
+            <div>@User.GetUserName()</div>
+            <form method="post" asp-controller="Account" asp-action="Logout">
+                <input type="submit" value="Logout" />
+            </form>
+        }
+        else
+        {
+            <a asp-controller="Account" asp-action="Login">Login</a>
+            <a asp-controller="Account" asp-action="Register">Register</a>
+        }
+    </div>
     <header>
-        <a asp-action="Index" asp-controller="Posts">Home</a>
-        <a asp-action="Index" asp-controller="About">About</a>
+        <a asp-controller="Posts" asp-action="Index">Home</a>
+        <a asp-controller="About" asp-action="Index">About</a>
         <a asp-controller="Install" asp-action="Index" ><em>Install</em></a>
     </header>
     <div>

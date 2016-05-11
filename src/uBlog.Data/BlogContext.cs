@@ -1,10 +1,11 @@
-﻿using Microsoft.Data.Entity;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Data.Entity;
 using Microsoft.Data.Sqlite;
 using uBlog.Data.Entities;
 
 namespace uBlog.Data
 {
-    public class BlogContext : DbContext
+    public class BlogContext : IdentityDbContext<User>
     {
         public DbSet<Post> Posts { get; set; }
         public DbSet<Comment> Comments { get; set; }
@@ -24,6 +25,7 @@ namespace uBlog.Data
         {
             modelBuilder.Entity<PostTag>()
                 .HasKey(t => new { t.PostId, t.TagId });
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
