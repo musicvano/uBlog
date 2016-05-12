@@ -1,5 +1,7 @@
 {
-  "version": "1.0.0-*",
+  "version": "1.0.0-alpha",
+  "authors": [ "Ivan Muzyka" ],
+  "description": "uBlog is blog engine based on ASP.NET Core 1.0",
   "compilationOptions": {
     "emitEntryPoint": true
   },

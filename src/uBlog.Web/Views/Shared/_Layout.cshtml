@@ -1,8 +1,14 @@
 ﻿@using System.Security.Claims
+@inject Microsoft.Extensions.Configuration.IConfiguration config
 <!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="_x">
+    <meta name="keywords" content="_">
+    <meta name="author" content="_">
+    <meta name="generator" content="uBlog">
+
     <title>@ViewBag.Title</title>
     <link rel="icon" type="image/png" href="~/images/favicon.ico">
     <environment names="Development">
@@ -38,7 +44,8 @@
         @RenderBody()
     </div>
     <footer>
-        <p>© @DateTime.Now.Year @ViewBag.Author</p>        
+        <p>© @DateTime.Now.Year @ViewBag.Author</p>
+        <p>@config["version"]</p>        
     </footer>
 </body>
 </html>

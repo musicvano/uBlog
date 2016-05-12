@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Routing;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using uBlog.Core.Services;
@@ -10,10 +11,19 @@ namespace uBlog
 {
     public class Startup
     {
+        public Startup()
+        {
+            var builder = new ConfigurationBuilder().AddJsonFile("project.json");
+            Configuration = builder.Build();
+        }
+
+        public IConfiguration Configuration { get; set; }
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRouting(routeOptions => routeOptions.LowercaseUrls = true);
             services.AddMvc();
+            services.AddSingleton(provider => Configuration);
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IPostService, PostService>();
             services.AddScoped<ISettingService, SettingService>();
@@ -47,7 +57,7 @@ namespace uBlog
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseStatusCodePagesWithReExecute("/errors/{0}");
             app.UseIISPlatformHandler();
@@ -59,6 +69,11 @@ namespace uBlog
             app.UseRuntimeInfoPage("/info");
             app.UseStaticFiles();
             app.UseMvc(ConfigureRoutes);
+
+            var projConfig = new ConfigurationBuilder().AddJsonFile("project.json").Build();
+            var appVersion = projConfig["version"]; //Output version number
+            var mvcVersion = projConfig["dependencies:Microsoft.AspNet.Mvc"]; // Output MVC version
+
         }
 
         // Entry point for the application.
