@@ -3,7 +3,6 @@ using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using uBlog.Core.Services;
 using uBlog.Data;
 
