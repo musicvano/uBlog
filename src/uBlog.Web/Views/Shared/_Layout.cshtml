@@ -11,6 +11,7 @@
 
     <title>@ViewBag.Title</title>
     <link rel="icon" type="image/png" href="~/images/favicon.ico">
+    <link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,400italic,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
     <environment names="Development">
         <link href="~/css/font-awesome.css" rel="stylesheet" />
         <link href="~/css/skeleton.css" rel="stylesheet" />
@@ -21,31 +22,33 @@
     </environment>   
 </head>
 <body>
-    <div>
-        @if (User.IsSignedIn())
-        {
-            <div>@User.GetUserName()</div>
-            <form method="post" asp-controller="Account" asp-action="Logout">
-                <input type="submit" value="Logout" />
-            </form>
-        }
-        else
-        {
-            <a asp-controller="Account" asp-action="Login">Login</a>
-            <a asp-controller="Account" asp-action="Register">Register</a>
-        }
+    <div class="container">
+        <header>
+            <a asp-controller="Posts" asp-action="Index">Home</a>
+            <a asp-controller="About" asp-action="Index">About</a>
+            <a asp-controller="Install" asp-action="Index"><em>Install</em></a>
+        </header>
+        <div class="row">
+            @if (User.IsSignedIn())
+            {
+                <div>@User.GetUserName()</div>
+                <form method="post" asp-controller="Account" asp-action="Logout">
+                    <input type="submit" value="Logout" />
+                </form>
+            }
+            else
+            {
+                <a asp-controller="Account" asp-action="Login">Login</a>
+                <a asp-controller="Account" asp-action="Register">Register</a>
+            }
+        </div>
+        <div class="row">
+            @RenderBody()
+        </div>
+        <footer>
+            <p>© @DateTime.Now.Year @ViewBag.Author</p>
+            <p>@config["version"]</p>
+        </footer>
     </div>
-    <header>
-        <a asp-controller="Posts" asp-action="Index">Home</a>
-        <a asp-controller="About" asp-action="Index">About</a>
-        <a asp-controller="Install" asp-action="Index" ><em>Install</em></a>
-    </header>
-    <div>
-        @RenderBody()
-    </div>
-    <footer>
-        <p>© @DateTime.Now.Year @ViewBag.Author</p>
-        <p>@config["version"]</p>        
-    </footer>
 </body>
 </html>

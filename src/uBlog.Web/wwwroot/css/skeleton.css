@@ -8,9 +8,8 @@
 * Sass Version by Seth Coelen https://github.com/whatsnewsaes
 */
 /* Base files. */
-/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
-  font-family: sans-serif;
+  font-family: 'Noto Sans', sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%; }
 
@@ -204,7 +203,7 @@ body {
   font-size: 1.5em;
   line-height: 1.6;
   font-weight: 400;
-  font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Noto Sans", Arial, sans-serif;
   color: #222; }
 
 a {
