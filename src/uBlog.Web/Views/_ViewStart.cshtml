@@ -1,6 +1,7 @@
 ﻿@inject uBlog.Core.Services.ISettingService settingService
-
+@inject Microsoft.Extensions.Configuration.IConfiguration config
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Author = settingService.Settings.Author;
+    ViewBag.Version = config["version"];
 }

@@ -1,6 +1,4 @@
-﻿@using System.Security.Claims
-@inject Microsoft.Extensions.Configuration.IConfiguration config
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -8,7 +6,6 @@
     <meta name="keywords" content="_">
     <meta name="author" content="_">
     <meta name="generator" content="uBlog">
-
     <title>@ViewBag.Title</title>
     <link rel="icon" type="image/png" href="~/images/favicon.ico">
     <link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,400italic,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
@@ -45,9 +42,10 @@
         <div class="row">
             @RenderBody()
         </div>
-        <footer>
-            <p>© @DateTime.Now.Year @ViewBag.Author</p>
-            <p>@config["version"]</p>
+        <footer class="row">
+            <span>© @DateTime.Now.Year @ViewBag.Author</span>
+            <br />
+            <span>Powered by <a href="https://github.com/musicvano/ublog" title="Version @ViewBag.Version">uBlog</a></span>            
         </footer>
     </div>
 </body>

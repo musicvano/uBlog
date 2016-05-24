@@ -68,11 +68,6 @@ namespace uBlog
             app.UseRuntimeInfoPage("/info");
             app.UseStaticFiles();
             app.UseMvc(ConfigureRoutes);
-
-            var projConfig = new ConfigurationBuilder().AddJsonFile("project.json").Build();
-            var appVersion = projConfig["version"]; //Output version number
-            var mvcVersion = projConfig["dependencies:Microsoft.AspNet.Mvc"]; // Output MVC version
-
         }
 
         // Entry point for the application.
