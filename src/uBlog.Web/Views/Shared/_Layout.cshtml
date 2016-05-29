@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content="_x">
     <meta name="keywords" content="_">
-    <meta name="author" content="_">
+    <meta name="author" content="@ViewBag.Author">
     <meta name="generator" content="uBlog">
     <title>@ViewBag.Title</title>
     <link rel="icon" type="image/png" href="~/images/favicon.ico">
@@ -23,6 +23,7 @@
         <header>
             <a asp-controller="Posts" asp-action="Index">Home</a>
             <a asp-controller="About" asp-action="Index">About</a>
+            <a asp-controller="Help" asp-action="Index">Help</a>
             <a asp-controller="Install" asp-action="Index"><em>Install</em></a>
         </header>
         <div class="row">

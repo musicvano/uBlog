@@ -15,7 +15,7 @@ namespace uBlog.Controllers
         public IActionResult Index(int page = 1)
         {
             var p = ViewBag;
-            var posts = postService.GetByPage(page);
+            var posts = postService.GetByPage(page, true);
             if (posts.Count == 0)
             {
                 return HttpNotFound();
@@ -25,7 +25,7 @@ namespace uBlog.Controllers
 
         public IActionResult Details(string slug)
         {
-            var post = postService.GetBySlug(slug);
+            var post = postService.GetBySlug(slug, true);
             if (post == null)
             {
                 return HttpNotFound();

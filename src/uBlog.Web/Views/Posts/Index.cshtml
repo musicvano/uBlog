@@ -1,4 +1,4 @@
-﻿@model IEnumerable<uBlog.Data.Entities.Post>
+﻿@model IEnumerable<Post>
 @{
     ViewBag.Title = "Posts";
 }
@@ -7,5 +7,5 @@
 @foreach (var post in Model)
 {
     <a asp-controller="Posts" asp-action="Details" asp-route-slug="@post.Slug">@post.Title</a>
-    <p>@post.Content</p>
+    <p>@Html.Raw(post.Content)</p>
 }

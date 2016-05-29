@@ -33,6 +33,11 @@ namespace uBlog
         private void ConfigureRoutes(IRouteBuilder routeBuilder)
         {
             routeBuilder.MapRoute(
+                name: "Help",
+                template: "help",
+                defaults: new { controller = "Help", action = "Index" });
+
+            routeBuilder.MapRoute(
                 name: "Errors",
                 template: "errors/{code}",
                 defaults: new { controller = "Errors", action = "Details" });

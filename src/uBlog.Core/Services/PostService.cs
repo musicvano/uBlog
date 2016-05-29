@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using CommonMark;
+using System.Collections.Generic;
 using uBlog.Core.Services;
 using uBlog.Data.Entities;
 
@@ -13,15 +14,28 @@ namespace uBlog.Data
             this.uow = uow;
         }
 
-        public List<Post> GetByPage(int page)
+        public List<Post> GetByPage(int page, bool encode = false)
         {
             var settings = uow.Settings.SingleOrDefault(s => s.Id == 1);
-            return uow.Posts.GetByPage(page, settings.PageSize);
+            var posts = uow.Posts.GetByPage(page, settings.PageSize);
+            if (encode)
+            {
+                for (int i = 0; i < posts.Count; i++)
+                {
+                    posts[i].Content = CommonMarkConverter.Convert(posts[i].Content);
+                }
+            }
+            return posts;
         }
 
-        public Post GetBySlug(string slug)
+        public Post GetBySlug(string slug, bool encode = false)
         {
-            return uow.Posts.GetBySlug(slug);
+            var post = uow.Posts.GetBySlug(slug);
+            if (encode && post != null)
+            {
+                post.Content = CommonMarkConverter.Convert(post.Content);
+            }
+            return post;
         }
     }
 }

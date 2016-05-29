@@ -10,6 +10,7 @@
     "dnxcore50": { }
   },
   "dependencies": {
+    "CommonMark.NET": "0.12.0",
     "uBlog.Data": "1.0.0-*"
   }
 }
