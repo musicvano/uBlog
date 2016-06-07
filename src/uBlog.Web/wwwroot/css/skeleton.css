@@ -7,7 +7,6 @@
 * 12/9/2014
 * Sass Version by Seth Coelen https://github.com/whatsnewsaes
 */
-/* Base files. */
 html {
   font-family: 'Noto Sans', sans-serif;
   -ms-text-size-adjust: 100%;
@@ -22,7 +21,6 @@ details,
 figcaption,
 figure,
 footer,
-header,
 hgroup,
 main,
 menu,
@@ -283,7 +281,6 @@ h6 {
 p {
   margin-top: 0; }
 
-/* Modules */
 /*
 * Skeleton V2.0.4
 * Copyright 2014, Dave Gamache
@@ -402,6 +399,10 @@ p {
   content: "";
   display: table;
   clear: both; }
+
+header {
+  display: block;
+  border-bottom: 1px solid lightgray; }
 
 .button,
 button {

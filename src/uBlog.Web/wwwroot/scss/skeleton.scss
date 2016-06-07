@@ -8,7 +8,7 @@
 * Sass Version by Seth Coelen https://github.com/whatsnewsaes
 */
 
-/* Base files. */
+// Base files
 @import "base/normalize";
 @import "base/variables";
 @import "base/functions";
@@ -16,8 +16,9 @@
 @import "base/utils";
 @import "base/typography";
 
-/* Modules */
+// Modules
 @import "modules/grid";
+@import "modules/header";
 @import "modules/buttons";
 @import "modules/forms";
 @import "modules/lists";

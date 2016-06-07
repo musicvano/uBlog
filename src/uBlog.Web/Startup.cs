@@ -1,5 +1,4 @@
-﻿using Glimpse;
-using Microsoft.AspNet.Builder;
+﻿using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Routing;
 using Microsoft.Extensions.Configuration;
@@ -22,7 +21,6 @@ namespace uBlog
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRouting(routeOptions => routeOptions.LowercaseUrls = true);
-            services.AddGlimpse();
             services.AddMvc();
             services.AddSingleton(provider => Configuration);
             services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -74,7 +72,6 @@ namespace uBlog
             }
             app.UseRuntimeInfoPage("/info");
             app.UseStaticFiles();
-            app.UseGlimpse();
             app.UseMvc(ConfigureRoutes);
         }
 

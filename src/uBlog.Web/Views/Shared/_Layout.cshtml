@@ -19,13 +19,14 @@
     </environment>   
 </head>
 <body>
+    <header>
+        <a asp-controller="Posts" asp-action="Index">Home</a>
+        <a asp-controller="About" asp-action="Index">About</a>
+        <a asp-controller="Help" asp-action="Index">Help</a>
+        <a asp-controller="Install" asp-action="Index"><em>Install</em></a>
+    </header>
     <div class="container">
-        <header>
-            <a asp-controller="Posts" asp-action="Index">Home</a>
-            <a asp-controller="About" asp-action="Index">About</a>
-            <a asp-controller="Help" asp-action="Index">Help</a>
-            <a asp-controller="Install" asp-action="Index"><em>Install</em></a>
-        </header>
+
         <div class="row">
             @if (User.IsSignedIn())
             {

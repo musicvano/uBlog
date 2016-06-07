@@ -10,6 +10,11 @@ var paths = {
     root: 'wwwroot/'
 };
 
+var config = {
+    //Include all *.scss files
+    src: ['wwwroot/scss/**/*.scss']
+}
+
 // Deletes all *.min.css files
 gulp.task('clean', function () {
     return del([paths.root + 'css/*.min.css']);
@@ -32,3 +37,8 @@ gulp.task('minify-css', ['clean'], function () {
 
 // Builds the entire project
 gulp.task('build', ['styles', 'minify-css'], function () { });
+
+// Watch for the changes in *.scss files 
+gulp.task('watch', function () {
+    return gulp.watch(config.src, ['build']);
+});
