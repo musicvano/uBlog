@@ -8,46 +8,47 @@
     <meta name="generator" content="uBlog">
     <title>@ViewBag.Title</title>
     <link rel="icon" type="image/png" href="~/images/favicon.ico">
-    <link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,400italic,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
     <environment names="Development">
-        <link href="~/css/font-awesome.css" rel="stylesheet" />
         <link href="~/css/skeleton.css" rel="stylesheet" />
+        <link href="~/css/font-awesome.css" rel="stylesheet" />
     </environment>
     <environment names="Staging,Production">
-        <link href="~/css/font-awesome.min.css" rel="stylesheet" />
-        <link href="~/css/skeleton.min.css" rel="stylesheet" />
-    </environment>   
+        <link href="~/css/site.min.css" rel="stylesheet" />
+    </environment>
 </head>
 <body>
-    <header>
-        <a asp-controller="Posts" asp-action="Index">Home</a>
-        <a asp-controller="About" asp-action="Index">About</a>
-        <a asp-controller="Help" asp-action="Index">Help</a>
-        <a asp-controller="Install" asp-action="Index"><em>Install</em></a>
-    </header>
-    <div class="container">
-
-        <div class="row">
-            @if (User.IsSignedIn())
-            {
-                <div>@User.GetUserName()</div>
-                <form method="post" asp-controller="Account" asp-action="Logout">
-                    <input type="submit" value="Logout" />
-                </form>
-            }
-            else
-            {
-                <a asp-controller="Account" asp-action="Login">Login</a>
-                <a asp-controller="Account" asp-action="Register">Register</a>
-            }
+    <nav>
+        <div class="container">
+            <div class="row">
+                <a asp-controller="Posts" asp-action="Index">Home</a>
+                <a asp-controller="About" asp-action="Index">About</a>
+                <a asp-controller="Help" asp-action="Index">Help</a>
+                <a asp-controller="Install" asp-action="Index"><em>Install</em></a>
+                @if (User.IsSignedIn())
+                {
+                    <div>@User.GetUserName()</div>
+                    <form method="post" asp-controller="Account" asp-action="Logout">
+                        <input type="submit" value="Logout" />
+                    </form>
+                }
+                else
+                {
+                    <a asp-controller="Account" asp-action="Login">Login</a>
+                    <a asp-controller="Account" asp-action="Register">Register</a>
+                }
+            </div>
         </div>
+    </nav>
+
+    <div class="container">
         <div class="row">
             @RenderBody()
         </div>
         <footer class="row">
             <span>© @DateTime.Now.Year @ViewBag.Author</span>
             <br />
-            <span>Powered by <a href="https://github.com/musicvano/ublog" title="Version @ViewBag.Version">uBlog</a></span>            
+            <span>Powered by <a href="https://github.com/musicvano/ublog" title="Version @ViewBag.Version">uBlog</a></span>
         </footer>
     </div>
 </body>

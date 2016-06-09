@@ -1,0 +1,36 @@
+﻿// Header
+/// <reference path="../base/variables" />
+
+nav {
+    border-bottom: 1px solid $light-grey;
+    padding: 20px 0;
+
+    a {
+        color: $font-color;
+        padding: 0px 15px;
+        margin: auto auto;
+        text-decoration: none;
+
+        &:hover {
+            color: $link-color;
+        }
+    }
+}
+
+header {
+    padding: 40px 0 20px 0;
+
+    a {
+        color: $font-color;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+footer {
+    border-top: 1px solid $light-grey;
+    padding: 20px 0;
+    text-align: center;
+}

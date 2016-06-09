@@ -1,17 +1,3 @@
-html {
-    font-family: 'Noto Sans', sans-serif;
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-}
-
-//
-// Remove default margin.
-//
-
-body {
-    margin: 0;
-}
-
 // HTML5 display definitions
 // ==========================================================================
 
@@ -28,6 +14,7 @@ details,
 figcaption,
 figure,
 footer,
+header,
 hgroup,
 main,
 menu,
@@ -70,31 +57,7 @@ template {
     display: none;
 }
 
-// Links
-// ==========================================================================
 
-//
-// Remove the gray background color from active links in IE 10.
-//
-
-a {
-    background-color: transparent;
-}
-
-//
-// Improve readability of focused elements when they are also in an
-// active/hover state.
-//
-
-a {
-    &:active {
-        outline: 0;
-    }
-
-    &:hover {
-        outline: 0;
-    }
-}
 
 // Text-level semantics
 // ==========================================================================
@@ -124,15 +87,6 @@ dfn {
     font-style: italic;
 }
 
-//
-// Address variable `h1` font-size and margin within `section` and `article`
-// contexts in Firefox 4+, Safari, and Chrome.
-//
-
-h1 {
-    font-size: 2em;
-    margin: 0.67em 0;
-}
 
 //
 // Address styling not present in IE 8/9.
@@ -199,15 +153,6 @@ svg:not(:root) {
 
 figure {
     margin: 1em 40px;
-}
-
-//
-// Address differences between Firefox and other browsers.
-//
-
-hr {
-    box-sizing: content-box;
-    height: 0;
 }
 
 //

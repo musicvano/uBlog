@@ -1,11 +1,16 @@
 ﻿@model IEnumerable<Post>
-@{
-    ViewBag.Title = "Posts";
-}
 
-<h1>Posts</h1>
-@foreach (var post in Model)
-{
-    <a asp-controller="Posts" asp-action="Details" asp-route-slug="@post.Slug">@post.Title</a>
-    <p>@Html.Raw(post.Content)</p>
-}
+<article>
+    @foreach (var post in Model)
+    {
+        <header>
+            <h1><a asp-controller="Posts" asp-action="Details" asp-route-slug="@post.Slug">@post.Title</a></h1>
+            <i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;@post.DateCreated.ToString("yyyy-MMM-d HH:mm")
+            <i class="fa fa-tags" aria-hidden="true"></i>&nbsp; tag1, tag2
+        </header>
+        <section>
+            @Html.Raw(post.Content)
+        </section>
+    }
+</article>
+

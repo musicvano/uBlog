@@ -2,6 +2,8 @@
 @inject Microsoft.Extensions.Configuration.IConfiguration config
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Author = settingService.Settings.Author;
+    var settings = settingService.Settings;
+    ViewBag.Title = settings.Title;
+    ViewBag.Author = settings.Author;
     ViewBag.Version = config["version"];
 }

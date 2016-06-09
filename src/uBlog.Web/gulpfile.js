@@ -1,44 +1,39 @@
 ﻿// Including dependencies
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var cssmin = require('gulp-cssmin');
-var rename = require('gulp-rename');
-var del = require('del');
+var gulp = require('gulp'),
+    sass = require('gulp-sass'),
+    concat = require("gulp-concat"),
+    cssmin = require('gulp-cssmin'),
+    rename = require('gulp-rename'),
+    livereload = require('gulp-livereload');
 
-// Configurations for paths
-var paths = {
-    root: 'wwwroot/'
-};
-
-var config = {
-    //Include all *.scss files
-    src: ['wwwroot/scss/**/*.scss']
-}
-
-// Deletes all *.min.css files
-gulp.task('clean', function () {
-    return del([paths.root + 'css/*.min.css']);
-});
-
-// Compiles all *.scss files into *.css
+// Builds all style files
 gulp.task('styles', function () {
-    gulp.src(paths.root + 'scss/skeleton.scss')
+    // Compiles all *.scss files into *.css
+    gulp.src('wwwroot/scss/skeleton.scss')
         .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest(paths.root + 'css'));
+        .pipe(gulp.dest('wwwroot/css'));            
+
+    // Concatenates all *.css files and minfies it into *.min.css
+    gulp.src(['wwwroot/css/*.css', "!wwwroot/css/*.min.css"])
+        .pipe(concat("wwwroot/css/site.min.css"))
+		.pipe(cssmin({ keepSpecialComments: 0 }))
+		.pipe(gulp.dest('.', { overwrite: true }))
+        .pipe(livereload());
 });
 
-// Performs minfication of all *.css files into *.min.css
-gulp.task('minify-css', ['clean'], function () {
-    gulp.src(paths.root + 'css/*.css')
-		.pipe(cssmin({ keepSpecialComments: 0}))
-		.pipe(rename({ suffix: '.min' }))
-		.pipe(gulp.dest(paths.root + 'css'));
+// Builds all script files
+gulp.task('scripts', function () {
+
 });
 
 // Builds the entire project
-gulp.task('build', ['styles', 'minify-css'], function () { });
+gulp.task('build', ['styles', 'scripts'], function () { });
 
-// Watch for the changes in *.scss files 
+// Watches for the changes in styles and scripts
 gulp.task('watch', function () {
-    return gulp.watch(config.src, ['build']);
+    var server = livereload();
+    livereload.listen();
+
+    gulp.watch('wwwroot/scss/**/*.scss', ['styles']);
+    // gulp.watch('wwwroot/js/**/*.js', ['scripts']);
 });

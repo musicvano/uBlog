@@ -3,16 +3,25 @@
     ViewBag.Title = Model.Title;
 }
 
-<h1>@Model.Title</h1>
-<p>@Model.Content</p>
-Tags: 
-@foreach(var tag in Model.PostTags)
-{
-    <strong>@tag.Tag.Name</strong>
-}
-<p>Date: @Model.DateCreated.ToShortDateString()</p>
-Comments:
-@foreach(var comment in Model.Comments)
-{
-    <p>@comment.Text (@comment.DateCreated.ToShortDateString())</p>
-}
+<article>
+    <header>
+        <h1>@Model.Title</h1>
+        <i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;@Model.DateCreated.ToString("yyyy-MMM-d HH:mm")
+        <i class="fa fa-tags" aria-hidden="true"></i>&nbsp;
+        @foreach (var tag in Model.PostTags)
+        {
+            <a href="#">@tag.Tag.Name</a>
+        }
+    </header>
+    <section>
+        @Html.Raw(Model.Content)
+    </section>
+</article>
+
+<section>
+    <h1> Comments:</h1>
+    @foreach (var comment in Model.Comments)
+    {
+        <p>@comment.Text (@comment.DateCreated.ToShortDateString())</p>
+    }
+</section>
