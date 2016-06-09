@@ -1,16 +1,25 @@
-﻿@model IEnumerable<Post>
+﻿@model List<PostModel>
 
 <article>
     @foreach (var post in Model)
     {
         <header>
             <h1><a asp-controller="Posts" asp-action="Details" asp-route-slug="@post.Slug">@post.Title</a></h1>
-            <i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;@post.DateCreated.ToString("yyyy-MMM-d HH:mm")
-            <i class="fa fa-tags" aria-hidden="true"></i>&nbsp; tag1, tag2
+            <div><i class="fa fa-calendar" aria-hidden="true"></i> @post.DateCreated.ToString("yyyy-MMM-d HH:mm")</div>
+            <div>
+                <i class="fa fa-tags" aria-hidden="true"></i>
+                @foreach (var tag in post.Tags)
+                {
+                    <a asp-controller="Tags" asp-action="Details" asp-route-slug="@tag.Slug">@tag.Name</a>
+                }
+            </div>
         </header>
         <section>
             @Html.Raw(post.Content)
         </section>
+        <hr />
+        <div class="u-pull-right">
+            <i class="fa fa-comment-o" aria-hidden="true"></i> Comments
+        </div>        
     }
 </article>
-

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Mvc;
 using uBlog.Core.Services;
+using uBlog.Web.Models;
 
 namespace uBlog.Controllers
 {
@@ -14,13 +15,13 @@ namespace uBlog.Controllers
 
         public IActionResult Index(int page = 1)
         {
-            var p = ViewBag;
             var posts = postService.GetByPage(page, true);
             if (posts.Count == 0)
             {
                 return HttpNotFound();
             }
-            return View(posts);
+            var model = ModelFactory.Create(posts);
+            return View(model);
         }
 
         public IActionResult Details(string slug)
@@ -30,7 +31,8 @@ namespace uBlog.Controllers
             {
                 return HttpNotFound();
             }
-            return View(post);
+            var model = ModelFactory.Create(post);
+            return View(model);
         }
     }
 }

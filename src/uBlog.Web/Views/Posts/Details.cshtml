@@ -1,4 +1,4 @@
-﻿@model uBlog.Data.Entities.Post
+﻿@model PostModel
 @{
     ViewBag.Title = Model.Title;
 }
@@ -6,22 +6,21 @@
 <article>
     <header>
         <h1>@Model.Title</h1>
-        <i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;@Model.DateCreated.ToString("yyyy-MMM-d HH:mm")
-        <i class="fa fa-tags" aria-hidden="true"></i>&nbsp;
-        @foreach (var tag in Model.PostTags)
-        {
-            <a href="#">@tag.Tag.Name</a>
-        }
+        <div><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;@Model.DateCreated.ToString("yyyy-MMM-d HH:mm")</div>
     </header>
     <section>
         @Html.Raw(Model.Content)
     </section>
+    <div>
+        <i class="fa fa-tags" aria-hidden="true"></i>
+        @foreach (var tag in Model.Tags)
+            {
+            <a asp-controller="Tags" asp-action="Details" asp-route-slug="@tag.Slug">@tag.Name</a>
+        }
+    </div>
 </article>
 
 <section>
     <h1> Comments:</h1>
-    @foreach (var comment in Model.Comments)
-    {
-        <p>@comment.Text (@comment.DateCreated.ToShortDateString())</p>
-    }
+    <p>Disqus</p>
 </section>
