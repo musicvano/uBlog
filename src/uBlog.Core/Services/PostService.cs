@@ -16,8 +16,8 @@ namespace uBlog.Data
 
         public List<Post> GetByPage(int page, bool encode = false)
         {
-            var settings = uow.Settings.SingleOrDefault(s => s.Id == 1);
-            var posts = uow.Posts.GetByPage(page, settings.PageSize);
+            var config = uow.Configs.SingleOrDefault(s => s.Id == 1);
+            var posts = uow.Posts.GetByPage(page, config.PageSize);
             if (encode)
             {
                 for (int i = 0; i < posts.Count; i++)

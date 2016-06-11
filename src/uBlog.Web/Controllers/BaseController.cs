@@ -5,12 +5,12 @@ namespace uBlog.Controllers
 {
     public class BaseController : Controller
     {
-        private readonly ISettingService settingService;
+        //private readonly IConfigService configService;
 
-        public BaseController(ISettingService settingService)
+        public BaseController(IConfigService settingService)
         {
-            this.settingService = settingService;
-            ViewBag.Author = settingService.Settings.Author;
+            //this.configService = configService;
+            //ViewBag.Settings = configService.Configs;
         }
     }
 }

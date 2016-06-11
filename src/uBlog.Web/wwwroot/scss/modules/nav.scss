@@ -4,21 +4,36 @@
 nav {
     border-bottom: 1px solid $light-grey;
     padding: 20px 0;
+    margin-bottom: 20px;
+    line-height: 40px;
+
+    .logo {
+        height: 40px;
+        width: 40px;
+        vertical-align: middle;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
 
     a {
         color: $font-color;
-        padding: 0px 15px;
-        margin: auto auto;
+        margin: 0 15px;
         text-decoration: none;
 
         &:hover {
             color: $link-color;
+            text-decoration: none;
         }
+    }
+
+    #login {
+        float: right;
+        color: $light-grey;
     }
 }
 
 header {
-    padding: 40px 0 20px 0;
+    padding: 20px 0;
 
     a {
         color: $font-color;
@@ -31,6 +46,7 @@ header {
 
 footer {
     border-top: 1px solid $light-grey;
+    margin-top: 50px;
     padding: 20px 0;
     text-align: center;
 }

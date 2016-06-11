@@ -3,22 +3,7 @@
     ViewBag.Title = Model.Title;
 }
 
-<article>
-    <header>
-        <h1>@Model.Title</h1>
-        <div><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;@Model.DateCreated.ToString("yyyy-MMM-d HH:mm")</div>
-    </header>
-    <section>
-        @Html.Raw(Model.Content)
-    </section>
-    <div>
-        <i class="fa fa-tags" aria-hidden="true"></i>
-        @foreach (var tag in Model.Tags)
-            {
-            <a asp-controller="Tags" asp-action="Details" asp-route-slug="@tag.Slug">@tag.Name</a>
-        }
-    </div>
-</article>
+@Html.Partial("Article", Model)
 
 <section>
     <h1> Comments:</h1>

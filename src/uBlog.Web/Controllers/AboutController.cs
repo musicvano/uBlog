@@ -5,11 +5,11 @@ namespace uBlog.Controllers
 {
     public class AboutController : Controller
     {
-        ISettingService settingService;
+        IConfigService configService;
 
-        public AboutController(ISettingService settingService)
+        public AboutController(IConfigService configService)
         {
-            this.settingService = settingService;
+            this.configService = configService;
         }
 
         public IActionResult Index()

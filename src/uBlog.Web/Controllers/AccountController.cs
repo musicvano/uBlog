@@ -57,6 +57,7 @@ namespace uBlog.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginModel model)
         {
+            return RedirectToAction("Index", "Posts");
             if (ModelState.IsValid)
             {
                 var result = await signInManager.PasswordSignInAsync(

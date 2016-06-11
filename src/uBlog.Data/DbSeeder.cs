@@ -12,19 +12,22 @@ namespace uBlog.Data
             {
                 contex.Database.EnsureDeleted();
                 contex.Database.EnsureCreated();
-                var setting = new Settings
+                var config = new Config
                 {
                     Title = "This is my blog",
-                    PageSize = 10,
                     Author = "Ivan Muzyka",
+                    About = "I am C/C++/C# programmer.",
+                    Photo = "~/images/logo/me.png",
                     Email = "musicvano@gmail.com",
-                    Url = "mvano.com",
-                    Phone = "+380960000000",
-                    Company = "",
+                    Url = "http://mvano.com",
+                    Github = "https://github.com/musicvano",
+                    Facebook = "https://www.facebook.com/musvano",
+                    Twitter = "https://twitter.com/musvano",
+                    Skype = "musicvano",
                     Location = "Ukraine",
-                    Photo = "images/photo/my.jpg"
+                    PageSize = 10,
                 };
-                contex.Settings.Add(setting);
+                contex.Configs.Add(config);
 
                 var tags = new List<Tag>
                 {

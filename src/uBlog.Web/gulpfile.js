@@ -33,7 +33,6 @@ gulp.task('build', ['styles', 'scripts'], function () { });
 gulp.task('watch', function () {
     var server = livereload();
     livereload.listen();
-
-    gulp.watch('wwwroot/scss/**/*.scss', ['styles']);
+    gulp.watch(['wwwroot/scss/**/*.scss'], ['styles']);
     // gulp.watch('wwwroot/js/**/*.js', ['scripts']);
 });

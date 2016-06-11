@@ -1,9 +1,8 @@
-﻿@inject uBlog.Core.Services.ISettingService settingService
-@inject Microsoft.Extensions.Configuration.IConfiguration config
+﻿@inject IAppConfig appConfig
+@inject IConfigService config
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var settings = settingService.Settings;
-    ViewBag.Title = settings.Title;
-    ViewBag.Author = settings.Author;
-    ViewBag.Version = config["version"];
+    ViewBag.Config = config;
+    ViewBag.Title = config.Title;
+    ViewBag.Version = appConfig.Version;
 }

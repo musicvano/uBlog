@@ -1,7 +1,51 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    IConfigService config = ViewBag.Config;
+    ViewBag.Title = config.Author;
 }
 
-<p>About me</p>
+<header>
+    <h1>@config.Author</h1>
+</header>
+<div class="row">
+    <p>@config.About</p>
+</div>
+<div class="row">
+    <div class="one-half column">
+        <img src="@config.Photo" class="photo u-max-full-width" />
+    </div>
+    <div class="one-half column">
+        @if (!string.IsNullOrEmpty(config.Url))
+        {
+            <i class="fa fa-external-link" aria-hidden="true"></i>
+            <a href="@config.Url">@Html.CleanUrl(config.Url)</a> <br />
+        }
+        @if (!string.IsNullOrEmpty(config.Email))
+        {
+            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+            <a href="mailto:@ViewBag.Config.Email">@config.Email</a> <br />
+        }
+        @if (!string.IsNullOrEmpty(config.Github))
+        {
+            <i class="fa fa-github" aria-hidden="true"></i>
+            <a href="@config.Github">@Html.CleanUrl(config.Github)</a> <br />
+        }
+        @if (!string.IsNullOrEmpty(config.Facebook))
+        {
+            <i class="fa fa-facebook" aria-hidden="true"></i>
+            <a href="@config.Facebook">@Html.CleanUrl(config.Facebook)</a> <br />
+        }
+        @if (!string.IsNullOrEmpty(config.Twitter))
+        {
+            <i class="fa fa-twitter" aria-hidden="true"></i>
+            <a href="@config.Twitter">@Html.CleanUrl(config.Twitter)</a> <br />
+        }
+        @if (!string.IsNullOrEmpty(config.Skype))
+        {
+            <i class="fa fa-skype" aria-hidden="true"></i> @config.Skype <br />
+        }
+        @if (!string.IsNullOrEmpty(config.Location))
+        {
+            <i class="fa fa-map-marker" aria-hidden="true"></i> @config.Location <br />
+        }
+    </div>
+</div>

@@ -1,35 +1,35 @@
 ﻿using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Routing;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using uBlog.Core.Services;
 using uBlog.Data;
+using uBlog.Data.Entities;
+using uBlog.Web.Helpers;
 
 namespace uBlog
 {
     public class Startup
     {
-        public Startup()
-        {
-            var builder = new ConfigurationBuilder().AddJsonFile("project.json");
-            Configuration = builder.Build();
-        }
-
-        public IConfiguration Configuration { get; set; }
-
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRouting(routeOptions => routeOptions.LowercaseUrls = true);
             services.AddMvc();
-            services.AddSingleton(provider => Configuration);
+            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<BlogContext>();
+            services.AddSingleton<IAppConfig, AppConfig>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IPostService, PostService>();
-            services.AddScoped<ISettingService, SettingService>();
+            services.AddScoped<IConfigService, ConfigService>();
         }
 
         private void ConfigureRoutes(IRouteBuilder routeBuilder)
         {
+            routeBuilder.MapRoute(
+                name: "Admin",
+                template: "admin",
+                defaults: new { controller = "Account", action = "Login" });
+
             routeBuilder.MapRoute(
                 name: "Help",
                 template: "help",
@@ -41,7 +41,7 @@ namespace uBlog
                 defaults: new { controller = "Errors", action = "Details" });
 
             routeBuilder.MapRoute(
-                name: "Admin",
+                name: "Admin_",
                 template: "{area:exists}/{controller}/{action=Index}/{id?}");
 
             routeBuilder.MapRoute(
@@ -67,11 +67,11 @@ namespace uBlog
             app.UseIISPlatformHandler();
             if (env.IsDevelopment())
             {
-                //app.UseBrowserLink();
                 app.UseDeveloperExceptionPage();                
             }
             app.UseRuntimeInfoPage("/info");
             app.UseStaticFiles();
+            app.UseIdentity();
             app.UseMvc(ConfigureRoutes);
         }
 

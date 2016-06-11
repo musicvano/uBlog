@@ -49,3 +49,14 @@ hr {
     border-width: 0;
     border-top: 1px solid $light-grey;
 }
+
+.tag{
+    margin-right: 10px;
+}
+
+.photo{
+    display: block;
+    border-radius: 5px;
+    margin: 0 auto 20px auto;
+    max-height: 180px;
+}

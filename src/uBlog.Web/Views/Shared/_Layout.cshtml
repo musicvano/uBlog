@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content="_x">
     <meta name="keywords" content="_">
-    <meta name="author" content="@ViewBag.Author">
+    <meta name="author" content="@ViewBag.Config.Author">
     <meta name="generator" content="uBlog">
     <title>@ViewBag.Title</title>
     <link rel="icon" type="image/png" href="~/images/favicon.ico">
@@ -18,38 +18,34 @@
     </environment>
 </head>
 <body>
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <form asp-controller="Account" asp-action="Login" asp-route-returnUrl="@Context.Request.Path" method="post">                
+                <input type="password" placeholder="Password" name="Password" id="password" autofocus />
+                <i class="fa fa-lock" aria-hidden="true"></i>
+            </form>
+        </div>
+    </div>
     <nav>
         <div class="container">
             <div class="row">
+                <a asp-controller="Posts" asp-action="Index"><img src="~/images/logo/me.png" class="logo" /> <b>@ViewBag.Config.Author</b></a>
                 <a asp-controller="Posts" asp-action="Index">Home</a>
+                <a asp-controller="Tags" asp-action="Index">Tags</a>
                 <a asp-controller="About" asp-action="Index">About</a>
-                <a asp-controller="Help" asp-action="Index">Help</a>
-                <a asp-controller="Install" asp-action="Index"><em>Install</em></a>
-                @if (User.IsSignedIn())
-                {
-                    <div>@User.GetUserName()</div>
-                    <form method="post" asp-controller="Account" asp-action="Logout">
-                        <input type="submit" value="Logout" />
-                    </form>
-                }
-                else
-                {
-                    <a asp-controller="Account" asp-action="Login">Login</a>
-                    <a asp-controller="Account" asp-action="Register">Register</a>
-                }
+                <a id="login" href="javascript:;"><i class="fa fa-lock" aria-hidden="true"></i></a>
             </div>
         </div>
     </nav>
-
     <div class="container">
         <div class="row">
             @RenderBody()
         </div>
         <footer class="row">
-            <span>© @DateTime.Now.Year @ViewBag.Author</span>
-            <br />
-            <span>Powered by <a href="https://github.com/musicvano/ublog" title="Version @ViewBag.Version">uBlog</a></span>
+            © @DateTime.Now.Year @ViewBag.Config.Author <br />
+            <small>Powered by <a href="https://github.com/musicvano/ublog" title="Version @ViewBag.Version">uBlog</a></small>
         </footer>
     </div>
+    <script src="~/js/main.js"></script>
 </body>
 </html>

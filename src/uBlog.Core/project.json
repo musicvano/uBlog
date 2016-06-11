@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0-*",
+  "version": "1.0.0-alpha",
   "description": "uBlog.Core Class Library",
   "authors": [ "Ivan Muzyka" ],
   "tags": [ "Blog" ],
@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "CommonMark.NET": "0.12.0",
-    "uBlog.Data": "1.0.0-*"
+    "Microsoft.Framework.Configuration.Json": "1.0.0-beta8",
+    "uBlog.Data": "1.0.0-alpha"
   }
 }

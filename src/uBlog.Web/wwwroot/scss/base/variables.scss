@@ -14,7 +14,7 @@ $primary-color: #33c3f0 !default;
 $secondary-color: lighten($dark-grey, 13.5%) !default;
 $border-color: #bbb !default;
 $link-color: #46b2e1 !default;
-$font-color: #222 !default;
+$font-color: #444 !default;
 
 // Typography
 $font-family: "Open Sans", Arial, sans-serif !default;
@@ -29,3 +29,4 @@ $column-margin: 4% !default; // space between columns
 
 // Misc
 $global-radius: 4px !default;
+$border-radius: 5px;
