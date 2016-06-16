@@ -6,5 +6,6 @@ namespace uBlog.Data.Repositories
     public interface IPostRepository: IRepository<Post>
     {
         Post GetBySlug(string slug);
+        int CountByTagId(int tagId);
     }
 }

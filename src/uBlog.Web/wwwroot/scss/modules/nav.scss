@@ -29,17 +29,9 @@ nav {
     #login {
         float: right;
         color: $light-grey;
-    }
-}
-
-header {
-    padding: 20px 0;
-
-    a {
-        color: $font-color;
 
         &:hover {
-            text-decoration: none;
+            color: $link-color;
         }
     }
 }

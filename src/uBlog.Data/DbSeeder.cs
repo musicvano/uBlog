@@ -17,7 +17,7 @@ namespace uBlog.Data
                     Title = "This is my blog",
                     Author = "Ivan Muzyka",
                     About = "I am C/C++/C# programmer.",
-                    Photo = "~/images/logo/me.png",
+                    Photo = "me.png",
                     Email = "musicvano@gmail.com",
                     Url = "http://mvano.com",
                     Github = "https://github.com/musicvano",

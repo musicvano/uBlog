@@ -1,9 +1,9 @@
 ﻿using CommonMark;
 using System.Collections.Generic;
-using uBlog.Core.Services;
+using uBlog.Data;
 using uBlog.Data.Entities;
 
-namespace uBlog.Data
+namespace uBlog.Core.Services
 {
     public class PostService : IPostService
     {

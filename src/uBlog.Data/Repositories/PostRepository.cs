@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using uBlog.Data.Entities;
 using uBlog.Data.Repositories;
+using System;
 
 namespace uBlog.Data
 {
     public class PostRepository : Repository<Post>, IPostRepository
     {
         public PostRepository(BlogContext context) : base(context) { }
+
+        public int CountByTagId(int tagId)
+        {
+            return context.PostTags.Where(pt => pt.TagId == tagId).Count();            
+        }
 
         public new List<Post> GetByPage(int pageIndex, int pageSize)
         {

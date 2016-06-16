@@ -1,7 +1,8 @@
-﻿@inject IConfigService config
+﻿@inject Microsoft.Extensions.Configuration.IConfigurationRoot config
+@inject IConfigService config_
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Config = config;
-    ViewBag.Title = config.Title;
-    //ViewBag.Version = appConfig.Version;
+    ViewBag.Config = config_;
+    ViewBag.Title = config_.Title;
+    ViewBag.Version = config["version"];
 }

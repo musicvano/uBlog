@@ -1,13 +1,13 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="_">
     <meta name="keywords" content="_">
-    <meta name="author" content="@ViewBag.Config.Author">
+    <meta name="author" content="@Html.Raw(ViewBag.Config.Author)">
     <meta name="generator" content="uBlog">
     <title>@Html.Raw(ViewBag.Title)</title>
-    <link rel="icon" type="image/png" href="~/images/favicon.ico">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
     <environment names="Development">
         <link href="~/css/skeleton.css" rel="stylesheet" />
@@ -20,7 +20,7 @@
 <body>
     <div class="modal" id="modal">
         <div class="modal-content">
-            <form asp-controller="Account" asp-action="Login" asp-route-returnUrl="@Context.Request.Path" method="post">                
+            <form asp-controller="Account" asp-action="Login" asp-route-returnUrl="@Context.Request.Path" method="post">
                 <input type="password" placeholder="Password" name="Password" id="password" autofocus />
                 <i class="fa fa-lock" aria-hidden="true"></i>
             </form>
@@ -29,7 +29,7 @@
     <nav>
         <div class="container">
             <div class="row">
-                <a asp-controller="Posts" asp-action="Index"><img src="~/images/logo/me.png" class="logo" /> <b>@ViewBag.Config.Author</b></a>
+                <a asp-controller="Posts" asp-action="Index"><img src="~/images/@ViewBag.Config.Photo" class="logo" /> <b>@ViewBag.Config.Author</b></a>
                 <a asp-controller="Posts" asp-action="Index">Home</a>
                 <a asp-controller="Tags" asp-action="Index">Tags</a>
                 <a asp-controller="About" asp-action="Index">About</a>
@@ -38,14 +38,17 @@
         </div>
     </nav>
     <div class="container">
-        <div class="row">
-            @RenderBody()
-        </div>
+        @RenderBody()
         <footer class="row">
-            © @DateTime.Now.Year @ViewBag.Config.Author <br />
+            &copy; @DateTime.Now.Year @Html.Raw(ViewBag.Config.Author) <br />
             <small>Powered by <a href="https://github.com/musicvano/ublog" title="Version @ViewBag.Version">uBlog</a></small>
         </footer>
     </div>
-    <script src="~/js/main.js"></script>
+    <environment names="Development">
+        <script src="~/js/site.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/js/site.min.js"></script>
+    </environment>
 </body>
 </html>

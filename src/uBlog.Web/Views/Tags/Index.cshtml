@@ -1,7 +1,23 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model List<uBlog.Core.Models.TagModel>
 @{
+    const int countGroups = 3;
+    var groups = Model.Split(countGroups).ToList();
 }
 
-<p>All tags</p>
+<header>
+    <h1>Tags</h1>
+</header>
+<div class="row">
+    @foreach (var group in groups)
+    {
+        <div class="one-third column">
+            @foreach (var tag in group)
+            {
+                <div>
+                    <a asp-controller="Tags" asp-action="Details" asp-route-slug="@tag.Slug">@tag.Name</a>
+                    <code class="">@tag.PostCount</code>
+                </div>
+            }
+        </div>
+    }
+</div>

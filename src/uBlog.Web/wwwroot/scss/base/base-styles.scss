@@ -50,13 +50,29 @@ hr {
     border-top: 1px solid $light-grey;
 }
 
-.tag{
-    margin-right: 10px;
+header {
+    padding: 20px 0;
+
+    a {
+        color: $font-color;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    .tag {
+        margin-right: 10px;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }
 
-.photo{
+.photo {
     display: block;
-    border-radius: 5px;
+    border-radius: $border-radius;
     margin: 0 auto 20px auto;
     max-height: 180px;
 }

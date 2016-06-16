@@ -185,13 +185,13 @@ body {
 
 a {
   background-color: transparent;
-  color: #46b2e1;
+  color: #617fde;
   text-decoration: none; }
   a:active {
     outline: 0; }
   a:hover {
     outline: 0;
-    color: #30a9dd;
+    color: #4c6eda;
     text-decoration: underline; }
 
 hr {
@@ -202,8 +202,16 @@ hr {
   border-width: 0;
   border-top: 1px solid #e1e1e1; }
 
-.tag {
-  margin-right: 10px; }
+header {
+  padding: 20px 0; }
+  header a {
+    color: #444; }
+    header a:hover {
+      text-decoration: none; }
+  header .tag {
+    margin-right: 10px; }
+    header .tag:hover {
+      text-decoration: underline; }
 
 .photo {
   display: block;
@@ -405,18 +413,13 @@ nav {
     margin: 0 15px;
     text-decoration: none; }
     nav a:hover {
-      color: #46b2e1;
+      color: #617fde;
       text-decoration: none; }
   nav #login {
     float: right;
     color: #e1e1e1; }
-
-header {
-  padding: 20px 0; }
-  header a {
-    color: #444; }
-    header a:hover {
-      text-decoration: none; }
+    nav #login:hover {
+      color: #617fde; }
 
 footer {
   border-top: 1px solid #e1e1e1;
@@ -484,35 +487,35 @@ input[type="submit"]:focus, input[type="reset"]:focus, input[type="button"]:focu
 .button.button-primary,
 button.button-primary {
   color: #fff;
-  background-color: #33c3f0;
-  border-color: #33c3f0; }
+  background-color: #617fde;
+  border-color: #617fde; }
 
 input[type="submit"].button-primary, input[type="reset"].button-primary, input[type="button"].button-primary {
   color: #fff;
-  background-color: #33c3f0;
-  border-color: #33c3f0; }
+  background-color: #617fde;
+  border-color: #617fde; }
 
 .button.button-primary:hover,
 button.button-primary:hover {
   color: #fff;
-  background-color: #46b2e1;
-  border-color: #46b2e1; }
+  background-color: #617fde;
+  border-color: #617fde; }
 
 input[type="submit"].button-primary:hover, input[type="reset"].button-primary:hover, input[type="button"].button-primary:hover {
   color: #fff;
-  background-color: #46b2e1;
-  border-color: #46b2e1; }
+  background-color: #617fde;
+  border-color: #617fde; }
 
 .button.button-primary:focus,
 button.button-primary:focus {
   color: #fff;
-  background-color: #46b2e1;
-  border-color: #46b2e1; }
+  background-color: #617fde;
+  border-color: #617fde; }
 
 input[type="submit"].button-primary:focus, input[type="reset"].button-primary:focus, input[type="button"].button-primary:focus {
   color: #fff;
-  background-color: #46b2e1;
-  border-color: #46b2e1; }
+  background-color: #617fde;
+  border-color: #617fde; }
 
 input[type="email"], input[type="number"], input[type="search"], input[type="text"], input[type="tel"], input[type="url"], input[type="password"] {
   height: 38px;
@@ -547,12 +550,12 @@ textarea {
   padding-bottom: 6px; }
 
 input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="text"]:focus, input[type="tel"]:focus, input[type="url"]:focus, input[type="password"]:focus {
-  border: 1px solid #33c3f0;
+  border: 1px solid #617fde;
   outline: 0; }
 
 textarea:focus,
 select:focus {
-  border: 1px solid #33c3f0;
+  border: 1px solid #617fde;
   outline: 0; }
 
 label,

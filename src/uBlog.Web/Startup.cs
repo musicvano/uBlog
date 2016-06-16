@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.AspNetCore.Routing;
 using uBlog.Core.Services;
 using uBlog.Data;
-using uBlog.Data.Entities;
-using uBlog.Web.Helpers;
 
 namespace uBlog.Web
 {
@@ -35,9 +29,10 @@ namespace uBlog.Web
             // Add framework services.
             services.AddMvc();
             services.AddRouting(routeOptions => routeOptions.LowercaseUrls = true);
-            //services.AddSingleton<IAppConfig, AppConfig>();
+            services.AddSingleton(Configuration);
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IPostService, PostService>();
+            services.AddScoped<ITagService, TagService>();
             services.AddScoped<IConfigService, ConfigService>();
         }
 
@@ -87,7 +82,7 @@ namespace uBlog.Web
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();
+                //app.UseBrowserLink();
             }
             else
             {
@@ -95,7 +90,6 @@ namespace uBlog.Web
             }
 
             app.UseStaticFiles();
-
             app.UseMvc(ConfigureRoutes);
         }
     }

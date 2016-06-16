@@ -1,4 +1,4 @@
-﻿namespace uBlog.Web.Models
+﻿namespace uBlog.Core.Models
 {
     public class TagModel
     {
