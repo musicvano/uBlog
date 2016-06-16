@@ -1,23 +1,41 @@
-﻿using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Hosting;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Routing;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Routing;
 using uBlog.Core.Services;
 using uBlog.Data;
 using uBlog.Data.Entities;
 using uBlog.Web.Helpers;
 
-namespace uBlog
+namespace uBlog.Web
 {
     public class Startup
     {
+        public Startup(IHostingEnvironment env)
+        {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables();
+            Configuration = builder.Build();
+        }
+
+        public IConfigurationRoot Configuration { get; }
+
+        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRouting(routeOptions => routeOptions.LowercaseUrls = true);
+            // Add framework services.
             services.AddMvc();
-            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<BlogContext>();
-            services.AddSingleton<IAppConfig, AppConfig>();
+            services.AddRouting(routeOptions => routeOptions.LowercaseUrls = true);
+            //services.AddSingleton<IAppConfig, AppConfig>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IPostService, PostService>();
             services.AddScoped<IConfigService, ConfigService>();
@@ -61,21 +79,24 @@ namespace uBlog
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            app.UseStatusCodePagesWithReExecute("/errors/{0}");
-            app.UseIISPlatformHandler();
+            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            loggerFactory.AddDebug();
+
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();                
+                app.UseDeveloperExceptionPage();
+                app.UseBrowserLink();
             }
-            app.UseRuntimeInfoPage("/info");
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+            }
+
             app.UseStaticFiles();
-            app.UseIdentity();
+
             app.UseMvc(ConfigureRoutes);
         }
-
-        // Entry point for the application.
-        public static void Main(string[] args) => WebApplication.Run<Startup>(args);
     }
 }

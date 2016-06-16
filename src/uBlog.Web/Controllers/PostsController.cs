@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNet.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using uBlog.Core.Services;
 using uBlog.Web.Models;
 
@@ -18,7 +18,7 @@ namespace uBlog.Controllers
             var posts = postService.GetByPage(page, true);
             if (posts.Count == 0)
             {
-                return HttpNotFound();
+                return NotFound();
             }
             var model = ModelFactory.Create(posts);
             return View(model);
@@ -29,7 +29,7 @@ namespace uBlog.Controllers
             var post = postService.GetBySlug(slug, true);
             if (post == null)
             {
-                return HttpNotFound();
+                return NotFound();
             }
             var model = ModelFactory.Create(post);
             return View(model);

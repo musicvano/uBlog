@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNet.Mvc.Rendering;
-using Microsoft.AspNet.Mvc.ViewFeatures;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Text.RegularExpressions;
 
 namespace uBlog.Web.Helpers

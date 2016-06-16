@@ -1,8 +1,7 @@
-﻿@inject IAppConfig appConfig
-@inject IConfigService config
+﻿@inject IConfigService config
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Config = config;
     ViewBag.Title = config.Title;
-    ViewBag.Version = appConfig.Version;
+    //ViewBag.Version = appConfig.Version;
 }

@@ -1,11 +1,10 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.Data.Entity;
-using Microsoft.Data.Sqlite;
+﻿using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
 using uBlog.Data.Entities;
 
 namespace uBlog.Data
 {
-    public class BlogContext : IdentityDbContext<User>
+    public class BlogContext : DbContext
     {
         public DbSet<Post> Posts { get; set; }
         public DbSet<Comment> Comments { get; set; }
