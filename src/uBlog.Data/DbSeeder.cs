@@ -49,7 +49,7 @@ namespace uBlog.Data
                     new Tag
                     {
                         Name = "C++",
-                        Slug = "c++"
+                        Slug = "cpp"
 
                     },
                     new Tag

@@ -7,5 +7,7 @@ namespace uBlog.Core.Services
     {
         Post GetBySlug(string slug, bool encode = false);
         List<Post> GetByPage(int page, bool encode = false);
+        int CountByTag(int tagId);
+        List<Post> GetByTagSlug(string slug, int page);
     }
 }

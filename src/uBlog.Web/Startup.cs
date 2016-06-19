@@ -82,13 +82,12 @@ namespace uBlog.Web
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                //app.UseBrowserLink();
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/error/500");
             }
-
+            app.UseStatusCodePagesWithReExecute("/errors/{0}");
             app.UseStaticFiles();
             app.UseMvc(ConfigureRoutes);
         }
