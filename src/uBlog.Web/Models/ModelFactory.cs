@@ -10,6 +10,7 @@ namespace uBlog.Web.Models
         {
             return new PostModel
             {
+                Id = post.Id,
                 Title = post.Title,
                 Slug = post.Slug,
                 Content = post.Content,

@@ -1,11 +1,8 @@
 ﻿@model PostModel
-@{
-    ViewBag.Title = Model.Title;
-}
 
 @Html.Partial("Article", Model)
 
 <section>
-    <h1> Comments:</h1>
-    <p>Disqus</p>
+    <a class="muut" href="https://muut.com/i/musicvano/comments" type="dynamic">musicvano</a>
+    <script src="//cdn.muut.com/1/moot.min.js"></script>
 </section>
