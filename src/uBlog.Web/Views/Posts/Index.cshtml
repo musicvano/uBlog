@@ -5,10 +5,12 @@
     @foreach (var post in Model)
     {
         @Html.Partial("Article", post)
-        <hr />
-        <div class="pull-right">
-            <i class="fa fa-comment-o" aria-hidden="true"></i>
-            <a href="http://mvano.com/posts#1">Comments</a>
+
+        <div class="row comment">
+            <div class="two columns offset-by-ten">
+                <i class="fa fa-comment-o" aria-hidden="true"></i>
+                <a asp-controller="Posts" asp-action="Details" asp-fragment="disqus_thread" asp-route-slug="@post.Slug">Link</a>
+            </div>
         </div>
     }
 }

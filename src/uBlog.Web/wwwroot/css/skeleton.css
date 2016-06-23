@@ -219,6 +219,13 @@ header {
   margin: 0 auto 20px auto;
   max-height: 180px; }
 
+.comment {
+  margin-bottom: 30px; }
+  .comment a {
+    color: #444; }
+    .comment a:hover {
+      color: #617fde; }
+
 .u-full-width {
   width: 100%;
   box-sizing: border-box; }
@@ -423,7 +430,7 @@ nav {
 
 footer {
   border-top: 1px solid #e1e1e1;
-  margin-top: 50px;
+  margin-top: 40px;
   padding: 20px 0;
   text-align: center; }
 

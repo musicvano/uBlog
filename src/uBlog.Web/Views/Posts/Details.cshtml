@@ -1,8 +1,24 @@
 ﻿@model PostModel
+@{
+    IConfigService config = ViewBag.Config;
+    ViewBag.Url = Microsoft.AspNetCore.Http.Extensions.UriHelper.GetDisplayUrl(Context.Request);
+}
 
 @Html.Partial("Article", Model)
 
 <section>
-    <a class="muut" href="https://muut.com/i/musicvano/comments" type="dynamic">musicvano</a>
-    <script src="//cdn.muut.com/1/moot.min.js"></script>
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_config = function () {
+        this.page.url = '@Html.Raw(ViewBag.Url)';
+        this.page.identifier = '@Model.Id';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');
+        s.src = '//mvano.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 </section>

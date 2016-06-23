@@ -76,3 +76,15 @@ header {
     margin: 0 auto 20px auto;
     max-height: 180px;
 }
+
+.comment {
+    margin-bottom: 30px;
+
+    a {
+        color: $font-color;
+
+        &:hover {
+            color: $link-color;
+        }
+    }
+}
