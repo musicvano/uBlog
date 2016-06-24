@@ -9,12 +9,14 @@
         <div class="row comment">
             <div class="two columns offset-by-ten">
                 <i class="fa fa-comment-o" aria-hidden="true"></i>
-                <a asp-controller="Posts" asp-action="Details" asp-fragment="disqus_thread" asp-route-slug="@post.Slug">Link</a>
+                <a asp-controller="Posts" asp-action="Details" asp-fragment="disqus_thread" asp-route-slug="@post.Slug">Comments</a>
             </div>
         </div>
     }
 }
 else
 {
-    <h1>Sorry. There are no posts</h1>
+    <header>
+        <h1>Sorry. There are no posts</h1>
+    </header>
 }

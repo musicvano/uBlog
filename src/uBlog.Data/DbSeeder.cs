@@ -14,9 +14,8 @@ namespace uBlog.Data
                 contex.Database.EnsureCreated();
                 var config = new Config
                 {
-                    Title = "This is my blog",
                     Author = "Ivan Muzyka",
-                    About = "I am C/C++/C# programmer.",
+                    About = "I am teacher, blogger and  C/C++/C# developer. I like to create small, nice and fast desktop and web apps. I am excited to present my personal blog where I am going to write my thoughts about programming and IT news. Feel free to contact me if you have any questions. I am open for cooperation.",
                     Photo = "me.png",
                     Email = "musicvano@gmail.com",
                     Url = "http://mvano.com",
@@ -60,75 +59,24 @@ namespace uBlog.Data
                 };
                 contex.Tags.AddRange(tags);
 
-                var comments = new List<Comment>
-                {
-                    new Comment
-                    {
-                        Text = "This awesome post",
-                        DateCreated = DateTime.Now
-                    },
-                    new Comment
-                    {
-                        Text = "Hello from Admin",
-                        DateCreated = DateTime.Now
-                    },
-                    new Comment
-                    {
-                        Text = "This is simple comment for testing",
-                        DateCreated = DateTime.Now
-                    },
-                    new Comment
-                    {
-                        Text = "C++ is compiled programming language",
-                        DateCreated = DateTime.Now
-                    },
-                    new Comment
-                    {
-                        Text = "Hi",
-                        DateCreated = DateTime.Now
-                    }
-                };
-                contex.Comments.AddRange(comments);
-
                 var posts = new List<Post>
                 {
                     new Post
                     {
-                        Title = "Что такое блог",
-                        Slug = "что-такое-блог",
-                        Content = @"Блог (англ. blog, от web log — интернет-журнал событий, интернет-дневник, онлайн-дневник) — веб-сайт, основное содержимое которого
-                        — регулярно добавляемые записи, содержащие текст, изображения или мультимедиа. Для блогов характерны недлинные записи вре́менной значимости,
-                        упорядоченные в обратном хронологическом порядке (последняя запись сверху). Отличия блога от традиционного дневника обусловливаются средой:
-                        блоги обычно публичны и предполагают сторонних читателей, которые могут вступить в публичную полемику с автором (в комментарии к блогозаписи или своих блогах).
-                        Людей, ведущих блог, называют бло́герами. Совокупность всех блогов Сети принято называть блогосферой.
-                        Для блогов характерна возможность публикации отзывов (комментариев) посетителями. Она делает блоги средой сетевого общения, имеющей ряд преимуществ перед электронной почтой, группами новостей, веб-форумами и чатами.
-                        Под блогами также понимаются персональные сайты, которые состоят в основном из личных записей владельца блога и комментариев пользователей к этим записям.
-                        Первым блогом считается страница Тима Бернерса-Ли, где он, начиная с 1992 г., публиковал новости. Более широкое рас­пространение блоги получили с 1996 г.
-                        В августе 1999 г. компью­терная компания Pyra Labs из Сан-Франциско открыла сайт Blogger.com, который стал первой бесплатной блоговой службой.
-                        В настоящее время особенность блогов заключается не только в структуре записей, но и в простоте добавления новых записей.
-                        Пользователь просто обращается к веб-серверу, прохо­дит процесс идентификации пользователя, после чего он добавляет новую запись к своей коллекции. Сервер представляет инфор­мацию как последовательность сообщений, помещая в самом верху самые свежие сообщения. Структура коллекции напоми­нает привычную последовательную структуру дневника или журнала.",
-                        DateCreated = DateTime.Now,
-                        Draft = false,
-                        Comments = new List<Comment>
-                        {
-                            comments[0],
-                            comments[1]
-                        }
-                    },
+                        Title = "О моем блоге",
+                        Slug = "о-моем-блоге",
+                        Content = article1,
+                        DateCreated = new DateTime(2016, 06, 22),
+                        Draft = false
+                    }/*,
                     new Post
                     {
                         Title = "My first post",
                         Slug = "my-first-post",
-                        Content = article1,
+                        Content = article2,
                         DateCreated = DateTime.Now,
-                        Draft = false,
-                        Comments = new List<Comment>
-                        {
-                            comments[2],
-                            comments[3],
-                            comments[4]
-                        }
-                    }
+                        Draft = false
+                    }*/
                 };
                 contex.Posts.AddRange(posts);
 
@@ -138,7 +86,7 @@ namespace uBlog.Data
                     {
                         Post = posts[0],
                         Tag = tags[0]
-                    },
+                    }/*,
                     new PostTag
                     {
                         Post = posts[1],
@@ -148,7 +96,7 @@ namespace uBlog.Data
                     {
                         Post = posts[1],
                         Tag = tags[2]
-                    }
+                    }*/
                 };
                 contex.PostTags.AddRange(postTags);
                 contex.SaveChanges();
@@ -156,28 +104,36 @@ namespace uBlog.Data
         }
 
         const string article1 =
-@"Writing content for the Web is tiresome. WYSIWYG editors help alleviate this task, but they generally result in horrible code, or worse yet, ugly web pages.
-Markdown is a better way to write HTML, without all the complexities and ugliness that usually accompanies it.
-Some of the key benefits are:
+@"Всех приветствую!
 
-1. Markdown is simple to learn, with minimal extra characters so it's also quicker to write content.
-2. Less chance of errors when writing in markdown.
-3. Produces valid XHTML output.
-4. Keeps the content and the visual display separate, so you cannot mess up the look of your site.
-5. Write in any text editor or Markdown application you like.
-6. Markdown is a joy to use!
+Решил наконец-то создать свой личный блог. И не просто создать, используя готовый движок типа [WordPress](https://wordpress.com), [Ghost](https://ghost.org), [Е2 Эгея](http://blogengine.ru), а написать с нуля блоговый движок на C# на базе [ASP.NET Core 1.0](http://www.asp.net).
 
-John Gruber, the author of Markdown, puts it like this:
->The overriding design goal for Markdown’s formatting syntax is to make it as readable as possible. The idea is that a Markdown-formatted document should be publishable as-is, as plain text, without looking like it’s been marked up with tags or formatting instructions. While Markdown’s syntax has been influenced by several existing text-to-HTML filters, the single biggest source of inspiration for Markdown’s syntax is the format of plain text email. --
-John Gruber
+![Мой блоговый движок](http://performancemanagementcompanyblog.files.wordpress.com/2012/11/sws-bicycle.gif ""Самописный блоговый движок"")
 
-uBlog ships with built-in support for Markdown
+Знаю, знаю, что мой велосипед будет с квадратными колесами, но решив создать блоговый движок, я задался такими основными целями:
 
-Heading 1
-=========
+- изучить новый кросплатформенный фреймворк [ASP.NET Core 1.0](http://www.asp.net);
+- проверить, насколько готова эта технология для применения ее в продакшене, например, на VPS сервере Debian 8.5;
+- изучить [Angular 2.0](https://angular.io) для создания фронтенда сайтов (админки блога);
+- разработать архитектуру приложения на базе трехуровневой модели, использовав принцип Dependency Injection;
+- проделать много другой рутинной работы c HTML, CSS, SASS, Gulp, Entity Framework, Markdown и т.д.;
+- и конечно все это хорошенько покритиковать :-)
 
-# Heading 1
+Как можно заметить, большинство современных технологий для веба (ASP.NET Core, Java, Node.js, Ruby on Rails) работают на виртуальных машинах и виртуальных серверах (VPS), а не на разделяемом хостинге (shared hosting), как это было раньше, как это успешно до нашего времени делает PHP. Наверное, один из факторов живучести PHP как раз и является низкая стоимость хостинга, что немало важно для личных сайтов, для сайтов мелкого бизнеса. Сегодня на рынке IT есть недорогой и доступный VPS хостинг, например:
 
-Hello";
+- [BuyVM](http://buyvm.net/kvm-vps) - 2 Cores / RAM 256 MB / SSD 30 GB / $5.00 per month;
+- [DigitalOcean](https://www.digitalocean.com) - 1 Core / RAM 512 MB / SSD 20 GB / $5.00 per month;
+- [VPSDime](https://vpsdime.com) - 4 Cores / RAM 6 GB / SSD 30 GB / $7.00 per month.
+
+Однако объем оперативной памяти 512 МБ не так уж и большой для серверной операционной системы, системы управления базой данных, сайта с различными сервисами и конечно же виртуальной машины. В условиях ограниченного бюджета на хостинг компилируемые языки (С/С++, Objective-C, D, Go) могут быть достаточно выгодными. К сожалению, их редко используют для создания сайтов. Но это уже другая история, о которой мы тоже поговорим.
+
+Итак, в дальнейшем я хочу написать цикл статей о создании блогового движка на ASP.NET Core, детально остановить на тех вопросах, которые забрали у меня много времени, особенно в архитектурном плане. Эти статьи не перетендуют на исчерпывающее руководство по разработке сайта на C#, но могут быть полезными новичкам.
+
+В этом блоге я планирую писать о программировании на Assembler, C, C++, C#, JavaScript, веб-разработке, различных технологиях, новостях в мире IT и многом другом. Язык изложения будет как русским, так и английским.
+
+К сожалению, блог на данным момент очень примитивный и находится в стадии разработки, многих полезных фич ему не хватает по сравнению со зрелыми продуктами. Но будем развиваться! Все, кому интересно, пишите коментарии, давайте дельные советы :-)";
+
+        const string article2 =
+@"Lol";
     }
 }

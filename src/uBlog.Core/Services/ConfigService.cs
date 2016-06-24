@@ -59,11 +59,6 @@ namespace uBlog.Core.Services
             get { return config.Skype; }
         }
 
-        public string Title
-        {
-            get { return config.Title; }
-        }
-
         public string Location
         {
             get { return config.Location; }

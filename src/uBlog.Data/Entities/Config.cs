@@ -3,7 +3,6 @@
     public class Config
     {
         public int Id { get; set; }
-        public string Title { get; set; }
         public string Author { get; set; }
         public string About { get; set; }
         public string Photo { get; set; }

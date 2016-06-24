@@ -12,18 +12,21 @@ nav {
         width: 40px;
         vertical-align: middle;
         border-radius: 50%;
-        margin-right: 10px;
     }
 
     a {
         color: $font-color;
-        margin: 0 15px;
+        margin: 0 10px;
         text-decoration: none;
 
         &:hover {
             color: $link-color;
             text-decoration: none;
         }
+    }
+
+    .name {
+        display: none;
     }
 
     #login {
@@ -41,4 +44,17 @@ footer {
     margin-top: 40px;
     padding: 20px 0;
     text-align: center;
+}
+
+@media (#{$bp-larger-than-tablet}) {
+    nav {
+        a {
+            margin: 0 15px;
+        }
+
+        .name {
+            margin-left: 10px;
+            display: inline;
+        }
+    }
 }

@@ -6,7 +6,6 @@ namespace uBlog.Data
     public interface IUnitOfWork : IDisposable
     {
         IPostRepository Posts { get; }
-        ICommentRepository Comments { get; }
         ITagRepository Tags { get; }
         IConfigRepository Configs { get; }
         int Save();

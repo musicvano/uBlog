@@ -22,6 +22,7 @@ namespace uBlog.Controllers
                 return NotFound();
             }
             var model = ModelFactory.Create(posts);
+            ViewBag.Title = "Blog";
             return View(model);
         }
 
@@ -33,6 +34,7 @@ namespace uBlog.Controllers
                 return NotFound();
             }
             var model = ModelFactory.Create(post);
+            ViewBag.Title = model.Title;
             return View(model);
         }
     }

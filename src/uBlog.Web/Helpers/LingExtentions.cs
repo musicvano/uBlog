@@ -7,6 +7,10 @@ namespace uBlog.Web.Helpers
     {
         public static IEnumerable<IEnumerable<T>> Split<T>(this IEnumerable<T> source, int parts)
         {
+            var groups = new IEnumerable<T>[parts];
+
+            
+
             int chunksize = source.Count() % parts;
             while (source.Any())
             {

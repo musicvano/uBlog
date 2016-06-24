@@ -21,6 +21,7 @@ namespace uBlog.Controllers
             var tags = tagService.GetAll();
             var postCounts = tags.Select(t => postService.CountByTag(t.Id)).ToArray();
             var model = ModelFactory.Create(tags, postCounts);
+            ViewBag.Title = "Tags";
             return View(model);
         }
 
@@ -28,6 +29,7 @@ namespace uBlog.Controllers
         {
             var posts = postService.GetByTagSlug(slug, page);
             var model = ModelFactory.Create(posts);
+            ViewBag.Title = "Posts by Tag";
             return View("../Posts/Index", model);
         }
     }

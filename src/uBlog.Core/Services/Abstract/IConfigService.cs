@@ -2,7 +2,6 @@
 {
     public interface IConfigService
     {
-        string Title { get; }
         string Author { get; }
         string About { get; }
         string Photo { get; }

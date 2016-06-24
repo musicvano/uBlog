@@ -3,6 +3,6 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Config = config_;
-    ViewBag.Title = config_.Title;
+    ViewBag.Title += " – " + config_.Author;
     ViewBag.Version = config["version"];
 }
