@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,12 @@ namespace uBlog.Data
 
         public new List<Tag> GetAll()
         {
-            return context.Set<Tag>().OrderBy(t => t.Name).ToList();
+            var tags = context.Set<Tag>().OrderBy(t => t.Name).ToList();
+            for (int i = 0; i < tags.Count; i++)
+            {
+                tags[i].PostTags = context.PostTags.Include(p => p.Post).Where(p => p.TagId == tags[i].Id).ToList();
+            }
+            return tags;
         }
 
         public Tag GetBySlug(string slug)

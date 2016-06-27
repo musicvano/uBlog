@@ -12,7 +12,7 @@ namespace uBlog.Data
             {
                 contex.Database.EnsureDeleted();
                 contex.Database.EnsureCreated();
-                var config = new Config
+                var settings = new Settings
                 {
                     Author = "Ivan Muzyka",
                     About = "I am teacher, blogger and  C/C++/C# developer. I like to create small, nice and fast desktop and web apps. I am excited to present my personal blog where I am going to write my thoughts about programming and IT news. Feel free to contact me if you have any questions. I am open for cooperation.",
@@ -26,7 +26,7 @@ namespace uBlog.Data
                     Location = "Ukraine",
                     PageSize = 10,
                 };
-                contex.Configs.Add(config);
+                contex.Settings.Add(settings);
 
                 var tags = new List<Tag>
                 {
@@ -37,24 +37,13 @@ namespace uBlog.Data
                     },
                     new Tag
                     {
-                        Name = "C#",
-                        Slug = "csharp"
+                        Name = "uBlog",
+                        Slug = "ublog"
                     },
                     new Tag
                     {
-                        Name = "ASP.NET",
-                        Slug = "asp-net"
-                    },
-                    new Tag
-                    {
-                        Name = "C++",
-                        Slug = "cpp"
-
-                    },
-                    new Tag
-                    {
-                        Name = "Visual Studio",
-                        Slug = "visual-studio"
+                        Name = "ASP.NET Core",
+                        Slug = "asp-net-core"
                     }
                 };
                 contex.Tags.AddRange(tags);
@@ -86,6 +75,16 @@ namespace uBlog.Data
                     {
                         Post = posts[0],
                         Tag = tags[0]
+                    },
+                    new PostTag
+                    {
+                        Post = posts[0],
+                        Tag = tags[1]
+                    },
+                    new PostTag
+                    {
+                        Post = posts[0],
+                        Tag = tags[2]
                     }/*,
                     new PostTag
                     {
@@ -108,7 +107,7 @@ namespace uBlog.Data
 
 Решил наконец-то создать свой личный блог. И не просто создать, используя готовый движок типа [WordPress](https://wordpress.com), [Ghost](https://ghost.org), [Е2 Эгея](http://blogengine.ru), а написать с нуля блоговый движок на C# на базе [ASP.NET Core 1.0](http://www.asp.net).
 
-![Мой блоговый движок](http://performancemanagementcompanyblog.files.wordpress.com/2012/11/sws-bicycle.gif ""Самописный блоговый движок"")
+![Мой блоговый движок](http://performancemanagementcompanyblog.files.wordpress.com/2012/11/sws-bicycle.gif ""Мой блоговый движок"")
 
 Знаю, знаю, что мой велосипед будет с квадратными колесами, но решив создать блоговый движок, я задался такими основными целями:
 
@@ -125,7 +124,7 @@ namespace uBlog.Data
 - [DigitalOcean](https://www.digitalocean.com) - 1 Core / RAM 512 MB / SSD 20 GB / $5.00 per month;
 - [VPSDime](https://vpsdime.com) - 4 Cores / RAM 6 GB / SSD 30 GB / $7.00 per month.
 
-Однако объем оперативной памяти 512 МБ не так уж и большой для серверной операционной системы, системы управления базой данных, сайта с различными сервисами и конечно же виртуальной машины. В условиях ограниченного бюджета на хостинг компилируемые языки (С/С++, Objective-C, D, Go) могут быть достаточно выгодными. К сожалению, их редко используют для создания сайтов. Но это уже другая история, о которой мы тоже поговорим.
+Однако объем оперативной памяти 512 МБ не так уж и велик для VPS, на котором работают: серверная операционная система, система управления базой данных, сайт с различными сервисами и, конечно же, виртуальная машина (CLR, JVM). В условиях ограниченного бюджета на хостинг компилируемые языки (С/С++, Objective-C, D, Go) могут быть достаточно выгодными. К сожалению, их редко используют для создания сайтов. Но это уже другая история, о которой мы тоже поговорим.
 
 Итак, в дальнейшем я хочу написать цикл статей о создании блогового движка на ASP.NET Core, детально остановить на тех вопросах, которые забрали у меня много времени, особенно в архитектурном плане. Эти статьи не перетендуют на исчерпывающее руководство по разработке сайта на C#, но могут быть полезными новичкам.
 

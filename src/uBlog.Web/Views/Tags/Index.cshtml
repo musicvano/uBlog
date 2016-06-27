@@ -1,16 +1,25 @@
-﻿@model List<TagDetailModel>
+﻿@model List<TagModel>
+@{
+    ViewBag.Title = $"Tags – {ViewBag.Author}";
+    ViewBag.Description = "Blog tags, categories and posts by tag";
+    ViewBag.Keywords = String.Join(", ", Model.Select(t => t.Name).ToList());
+}
 
 <header>
     <h1>Tags</h1>
 </header>
-<div class="row">
-    <ul>
-        @foreach (var tag in Model)
-        {
-            <li>
-                <a asp-controller="Tags" asp-action="Details" asp-route-slug="@tag.Slug">@tag.Name</a>
-                <code>@tag.PostCount</code>
-            </li>
-        }
-    </ul>
-</div>
+<section>
+    @foreach (var tag in Model)
+    {
+        <h2>
+            <a asp-controller="Tags" asp-action="Details" asp-route-slug="@tag.Slug">@Html.Raw(tag.Name)</a>&nbsp;
+            <sup><code>@tag.Posts.Count</code></sup>
+        </h2>
+        <ul>
+            @foreach (var post in tag.Posts)
+            {
+                <li><a asp-controller="Posts" asp-action="Details" asp-route-slug="@post.Slug">@Html.Raw(post.Title)</a></li>
+            }
+        </ul>
+    }
+</section>

@@ -1,11 +1,14 @@
 ﻿@model List<PostModel>
+@{
+    var tags = Model.Select(p => p.Tags).SelectMany(t => t).Select(t => t.Name).ToList();
+    ViewBag.Keywords = String.Join(", ", tags);
+}
 
 @if (Model.Count > 0)
 {
     @foreach (var post in Model)
     {
         @Html.Partial("Article", post)
-
         <div class="row comment">
             <div class="two columns offset-by-ten">
                 <i class="fa fa-comment-o" aria-hidden="true"></i>

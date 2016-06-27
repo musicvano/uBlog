@@ -7,7 +7,7 @@ namespace uBlog.Data
     {
         IPostRepository Posts { get; }
         ITagRepository Tags { get; }
-        IConfigRepository Configs { get; }
+        ISettingRepository Settings { get; }
         int Save();
     }
 }

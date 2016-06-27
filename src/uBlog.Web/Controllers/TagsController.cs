@@ -19,9 +19,7 @@ namespace uBlog.Controllers
         public IActionResult Index()
         {
             var tags = tagService.GetAll();
-            var postCounts = tags.Select(t => postService.CountByTag(t.Id)).ToArray();
-            var model = ModelFactory.Create(tags, postCounts);
-            ViewBag.Title = "Tags";
+            var model = ModelFactory.Create(tags);
             return View(model);
         }
 

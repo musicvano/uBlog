@@ -11,12 +11,12 @@ namespace uBlog.Data
             context = new BlogContext();
             Posts = new PostRepository(context);
             Tags = new TagRepository(context);
-            Configs = new ConfigRepository(context);
+            Settings = new SettingRepository(context);
         }
 
         public IPostRepository Posts { get; private set; }
         public ITagRepository Tags { get; private set; }
-        public IConfigRepository Configs { get; private set; }
+        public ISettingRepository Settings { get; private set; }
         
         public int Save()
         {

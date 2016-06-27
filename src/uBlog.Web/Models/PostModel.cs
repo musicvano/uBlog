@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using uBlog.Data.Entities;
 
 namespace uBlog.Web.Models
 {
@@ -11,6 +12,6 @@ namespace uBlog.Web.Models
         public string Content { get; set; }
         public DateTime DateCreated { get; set; }
         public bool Draft { get; set; }
-        public List<TagModel> Tags { get; set; }
+        public List<Tag> Tags { get; set; }
     }
 }

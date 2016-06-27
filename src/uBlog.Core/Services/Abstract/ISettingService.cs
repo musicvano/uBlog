@@ -1,6 +1,6 @@
 ﻿namespace uBlog.Core.Services
 {
-    public interface IConfigService
+    public interface ISettingService
     {
         string Author { get; }
         string About { get; }

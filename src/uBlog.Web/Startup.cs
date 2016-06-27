@@ -33,7 +33,7 @@ namespace uBlog.Web
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IPostService, PostService>();
             services.AddScoped<ITagService, TagService>();
-            services.AddScoped<IConfigService, ConfigService>();
+            services.AddScoped<ISettingService, SettingService>();
         }
 
         private void ConfigureRoutes(IRouteBuilder routeBuilder)
@@ -85,7 +85,7 @@ namespace uBlog.Web
             }
             else
             {
-                app.UseExceptionHandler("/error/500");
+                app.UseExceptionHandler("/errors/500");
             }
             app.UseStatusCodePagesWithReExecute("/errors/{0}");
             app.UseStaticFiles();

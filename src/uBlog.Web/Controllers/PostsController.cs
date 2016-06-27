@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using uBlog.Core.Services;
-using uBlog.Web.Helpers;
 using uBlog.Web.Models;
 
 namespace uBlog.Controllers
@@ -22,7 +21,6 @@ namespace uBlog.Controllers
                 return NotFound();
             }
             var model = ModelFactory.Create(posts);
-            ViewBag.Title = "Blog";
             return View(model);
         }
 

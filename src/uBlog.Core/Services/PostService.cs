@@ -8,7 +8,7 @@ namespace uBlog.Core.Services
     public class PostService : IPostService
     {
         IUnitOfWork uow;
-        Config config;
+        Settings settings;
 
         private void MarkConvert(Post post)
         {
@@ -26,12 +26,12 @@ namespace uBlog.Core.Services
         public PostService(IUnitOfWork uow)
         {
             this.uow = uow;
-            config = uow.Configs.SingleOrDefault(s => s.Id == 1);
+            settings = uow.Settings.SingleOrDefault(s => s.Id == 1);
         }
 
         public List<Post> GetByPage(int page, bool encode = false)
         {
-            var posts = uow.Posts.GetByPage(page, config.PageSize);
+            var posts = uow.Posts.GetByPage(page, settings.PageSize);
             if (encode)
             {
                 for (int i = 0; i < posts.Count; i++)
@@ -59,7 +59,7 @@ namespace uBlog.Core.Services
 
         public List<Post> GetByTagSlug(string slug, int page)
         {
-            var posts =  uow.Posts.GetByTagSlug(slug, page, config.PageSize);
+            var posts =  uow.Posts.GetByTagSlug(slug, page, settings.PageSize);
             MarkConvert(posts);
             return posts;
         }

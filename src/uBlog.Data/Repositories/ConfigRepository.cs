@@ -3,9 +3,9 @@ using uBlog.Data.Repositories;
 
 namespace uBlog.Data
 {
-    public class ConfigRepository : Repository<Config>, IConfigRepository
+    public class SettingRepository : Repository<Settings>, ISettingRepository
     {
-        public ConfigRepository(BlogContext context) : base(context)
+        public SettingRepository(BlogContext context) : base(context)
         {
         }
     }

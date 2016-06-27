@@ -1,8 +1,11 @@
-﻿@inject Microsoft.Extensions.Configuration.IConfigurationRoot config
-@inject IConfigService config_
+﻿@inject IConfigurationRoot config
+@inject ISettingService settings
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Config = config_;
-    ViewBag.Title += " – " + config_.Author;
+    ViewBag.Author = settings.Author;
+    ViewBag.Photo = settings.Photo;
+    ViewBag.Description = $"Personal blog of {settings.Author}";
+    ViewBag.Keywords = "";
+    ViewBag.Title = $"Blog – {settings.Author}";
     ViewBag.Version = config["version"];
 }

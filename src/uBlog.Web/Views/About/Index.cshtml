@@ -1,51 +1,53 @@
-﻿@{
-    IConfigService config = ViewBag.Config;
-    ViewBag.Title = $"About – {config.Author}";
+﻿@model ISettingService
+@{
+    ViewBag.Title = $"About – {Model.Author}";
+    ViewBag.Description = "Information about author";
+    ViewBag.Keywords = Model.Author;
 }
 
 <header>
-    <h1>@config.Author</h1>
+    <h1>@Model.Author</h1>
 </header>
 <div class="row">
-    <p>@config.About</p>
+    <p>@Model.About</p>
 </div>
 <div class="row">
     <div class="one-half column">
-        <img src="~/images/@config.Photo" class="photo u-max-full-width" alt="Photo" />
+        <img src="~/images/@Model.Photo" class="photo u-max-full-width" alt="Photo" />
     </div>
     <div class="one-half column">
-        @if (!string.IsNullOrEmpty(config.Url))
-        {
+        @if (!string.IsNullOrEmpty(Model.Url))
+            {
             <i class="fa fa-external-link" aria-hidden="true"></i>
-            <a href="@config.Url">@Html.CleanUrl(config.Url)</a> <br />
+            <a href="@Model.Url">@Html.CleanUrl(Model.Url)</a> <br />
         }
-        @if (!string.IsNullOrEmpty(config.Email))
-        {
+        @if (!string.IsNullOrEmpty(Model.Email))
+            {
             <i class="fa fa-envelope-o" aria-hidden="true"></i>
-            <a href="mailto:@ViewBag.Config.Email">@config.Email</a> <br />
+            <a href="mailto:@Model.Email">@Model.Email</a> <br />
         }
-        @if (!string.IsNullOrEmpty(config.Github))
-        {
+        @if (!string.IsNullOrEmpty(Model.Github))
+            {
             <i class="fa fa-github" aria-hidden="true"></i>
-            <a href="@config.Github">@Html.CleanUrl(config.Github)</a> <br />
+            <a href="@Model.Github">@Html.CleanUrl(Model.Github)</a> <br />
         }
-        @if (!string.IsNullOrEmpty(config.Facebook))
+        @if (!string.IsNullOrEmpty(Model.Facebook))
         {
             <i class="fa fa-facebook" aria-hidden="true"></i>
-            <a href="@config.Facebook">@Html.CleanUrl(config.Facebook)</a> <br />
+            <a href="@Model.Facebook">@Html.CleanUrl(Model.Facebook)</a> <br />
         }
-        @if (!string.IsNullOrEmpty(config.Twitter))
+        @if (!string.IsNullOrEmpty(Model.Twitter))
         {
             <i class="fa fa-twitter" aria-hidden="true"></i>
-            <a href="@config.Twitter">@Html.CleanUrl(config.Twitter)</a> <br />
+            <a href="@Model.Twitter">@Html.CleanUrl(Model.Twitter)</a> <br />
         }
-        @if (!string.IsNullOrEmpty(config.Skype))
+        @if (!string.IsNullOrEmpty(Model.Skype))
         {
-            <i class="fa fa-skype" aria-hidden="true"></i> @config.Skype <br />
+            <i class="fa fa-skype" aria-hidden="true"></i> @Model.Skype <br />
         }
-        @if (!string.IsNullOrEmpty(config.Location))
-        {
-            <i class="fa fa-map-marker" aria-hidden="true"></i> @config.Location <br />
+        @if (!string.IsNullOrEmpty(Model.Location))
+            {
+            <i class="fa fa-map-marker" aria-hidden="true"></i> @Model.Location <br />
         }
     </div>
 </div>

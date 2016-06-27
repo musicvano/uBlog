@@ -16,7 +16,7 @@ namespace uBlog.Web.Models
                 Content = post.Content,
                 DateCreated = post.DateCreated,
                 Draft = post.Draft,
-                Tags = Create(post.PostTags)
+                Tags = post.PostTags.Select(pt => pt.Tag).ToList()
             };
         }
 
@@ -25,17 +25,8 @@ namespace uBlog.Web.Models
             return new TagModel
             {
                 Name = tag.Name,
-                Slug = tag.Slug
-            };
-        }
-
-        public static TagDetailModel Create(Tag tag, int postCount)
-        {
-            return new TagDetailModel
-            {
-                Name = tag.Name,
                 Slug = tag.Slug,
-                PostCount = postCount
+                Posts = tag.PostTags.Select(pt => pt.Post).ToList()
             };
         }
 
@@ -47,22 +38,6 @@ namespace uBlog.Web.Models
         public static List<TagModel> Create(List<Tag> tags)
         {
             return tags.Select(t => Create(t)).ToList();
-        }
-
-        public static List<TagDetailModel> Create(List<Tag> tags, int[] postCounts)
-        {
-            int count = tags.Count;
-            var res = new TagDetailModel[count];
-            for (int i = 0; i < tags.Count; i++)
-            {
-                res[i] = Create(tags[i], postCounts[i]);
-            }
-            return res.ToList();
-        }
-
-        public static List<TagModel> Create(List<PostTag> postTags)
-        {
-            return postTags.Select(p => Create(p.Tag)).ToList();
         }
     }
 }
