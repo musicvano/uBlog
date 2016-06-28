@@ -4,8 +4,10 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using System.Security.Claims;
 using uBlog.Core.Services;
 using uBlog.Data;
+using uBlog.Web.Security;
 
 namespace uBlog.Web
 {
@@ -26,22 +28,35 @@ namespace uBlog.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add framework services.
-            services.AddMvc();
-            services.AddRouting(routeOptions => routeOptions.LowercaseUrls = true);
+            // Add framework services
             services.AddSingleton(Configuration);
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IPostService, PostService>();
             services.AddScoped<ITagService, TagService>();
             services.AddScoped<ISettingService, SettingService>();
+            services.AddScoped<IErrorService, ErrorService>();
+            services.AddScoped<IMembershipService, MembershipService>();
+            services.AddScoped<IEncryptionService, EncryptionService>();
+
+            services.AddAuthentication();
+            // Polices
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("AdminOnly", policy =>
+                {
+                    policy.RequireClaim(ClaimTypes.Role, "Admin");
+                });
+
+            });
+            services.AddRouting(routeOptions => routeOptions.LowercaseUrls = true);
+            services.AddMvc();
         }
 
         private void ConfigureRoutes(IRouteBuilder routeBuilder)
         {
             routeBuilder.MapRoute(
                 name: "Admin",
-                template: "admin",
-                defaults: new { controller = "Account", action = "Login" });
+                template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
             routeBuilder.MapRoute(
                 name: "Help",
@@ -52,10 +67,6 @@ namespace uBlog.Web
                 name: "Errors",
                 template: "errors/{code}",
                 defaults: new { controller = "Errors", action = "Details" });
-
-            routeBuilder.MapRoute(
-                name: "Admin_",
-                template: "{area:exists}/{controller}/{action=Index}/{id?}");
 
             routeBuilder.MapRoute(
                 name: "Default",
@@ -89,6 +100,13 @@ namespace uBlog.Web
             }
             app.UseStatusCodePagesWithReExecute("/errors/{0}");
             app.UseStaticFiles();
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+                AutomaticAuthenticate = true,
+                AutomaticChallenge = true
+            });            
+            app.UseMiddleware<AuthMiddleware>();
+
             app.UseMvc(ConfigureRoutes);
         }
     }

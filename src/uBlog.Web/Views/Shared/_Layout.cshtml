@@ -8,7 +8,7 @@
     <meta name="generator" content="uBlog">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@Html.Raw(ViewBag.Title)</title>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic&subset=latin,cyrillic" rel="stylesheet" type="text/css" />
     <environment names="Development">
         <link href="~/css/skeleton.css" rel="stylesheet" />
         <link href="~/css/font-awesome.css" rel="stylesheet" />
@@ -18,22 +18,14 @@
     </environment>
 </head>
 <body>
-    <div class="modal" id="modal">
-        <div class="modal-content">
-            <form method="post" id="loginForm" onsubmit="Submit()">
-                <input type="password" placeholder="Password" name="Password" id="password" autofocus />
-                <i class="fa fa-lock" aria-hidden="true"></i>
-            </form>
-        </div>
-    </div>
     <nav>
         <div class="container">
             <div class="row">
-                <a asp-controller="Posts" asp-action="Index"><img src="~/images/@ViewBag.Photo" class="logo" /> <b class="name">@ViewBag.Author</b></a>
+                <a asp-controller="Posts" asp-action="Index"><img src="~/images/@ViewBag.Photo" class="logo" /> <b class="name">@Html.Raw(ViewBag.Author)</b></a>
                 <a asp-controller="Posts" asp-action="Index">Home</a>
                 <a asp-controller="Tags" asp-action="Index">Tags</a>
                 <a asp-controller="About" asp-action="Index">About</a>
-                <a id="login" href="javascript:;"><i class="fa fa-lock" aria-hidden="true"></i></a>
+                <a asp-area="Admin" asp-controller="Home" asp-action="Index" id="login"><i class="fa fa-lock" aria-hidden="true"></i></a>
             </div>
         </div>
     </nav>
@@ -44,12 +36,12 @@
             <small>Powered by <a href="https://github.com/musicvano/ublog" title="Version @ViewBag.Version">uBlog</a></small>
         </footer>
     </div>
-    <environment names="Development">
+    @*<environment names="Development">
         <script src="~/js/site.js"></script>
     </environment>
     <environment names="Staging,Production">
         <script src="~/js/site.min.js"></script>
-    </environment>
+    </environment>*@
     <script id="dsq-count-scr" src="//mvano.disqus.com/count.js" async></script>
 </body>
 </html>

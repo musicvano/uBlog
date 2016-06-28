@@ -7,9 +7,7 @@ namespace uBlog.Controllers
     {
         public IActionResult Index()
         {
-            DbSeeder.Seed();
-            
-            //RedirectToAction("Index", "Posts");
+            DbInitializer.Seed();
             return Redirect("/");
         }
     }

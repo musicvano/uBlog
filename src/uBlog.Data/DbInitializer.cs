@@ -4,7 +4,7 @@ using uBlog.Data.Entities;
 
 namespace uBlog.Data
 {
-    public class DbSeeder
+    public class DbInitializer
     {
         public static void Seed()
         {
