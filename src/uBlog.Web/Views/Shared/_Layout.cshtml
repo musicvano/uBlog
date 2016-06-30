@@ -11,10 +11,11 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic&subset=latin,cyrillic" rel="stylesheet" type="text/css" />
     <environment names="Development">
         <link href="~/css/skeleton.css" rel="stylesheet" />
-        <link href="~/css/font-awesome.css" rel="stylesheet" />
+        <link href="~/libs/font-awesome/css/font-awesome.css" rel="stylesheet" />
     </environment>
     <environment names="Staging,Production">
-        <link href="~/css/site.min.css" rel="stylesheet" />
+        <link href="~/css/skeleton.min.css" rel="stylesheet" />
+        <link href="~/libs/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
     </environment>
 </head>
 <body>
@@ -36,12 +37,6 @@
             <small>Powered by <a href="https://github.com/musicvano/ublog" title="Version @ViewBag.Version">uBlog</a></small>
         </footer>
     </div>
-    @*<environment names="Development">
-        <script src="~/js/site.js"></script>
-    </environment>
-    <environment names="Staging,Production">
-        <script src="~/js/site.min.js"></script>
-    </environment>*@
     <script id="dsq-count-scr" src="//mvano.disqus.com/count.js" async></script>
 </body>
 </html>

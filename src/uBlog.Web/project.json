@@ -61,6 +61,9 @@
       "Views",
       "appsettings.json",
       "web.config"
+    ],
+    "exclude": [
+      "wwwroot/src"
     ]
   },
 

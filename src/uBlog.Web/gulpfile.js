@@ -2,72 +2,135 @@
 "use strict";
 
 // Including dependencies
-var gulp = require("gulp"),
-    rimraf = require("rimraf"),
+const gulp = require("gulp"),
+    del = require("del"),
     concat = require("gulp-concat"),
     sass = require("gulp-sass"),
     cssmin = require("gulp-clean-css"),
+    rename = require("gulp-rename"),
     uglify = require("gulp-uglify"),
-    livereload = require("gulp-livereload");
+    livereload = require("gulp-livereload"),
+    tsc = require("gulp-typescript"),
+    sourcemaps = require('gulp-sourcemaps'),
+    tsProject = tsc.createProject("./tsconfig.json"),
+    tslint = require('gulp-tslint');
 
 // Configurations
 var webroot = "./wwwroot/";
+var noderoot = "./node_modules/";
 var paths = {
-    js: webroot + "js/**/*.js",
-    minJs: webroot + "js/**/*.min.js",
-    scss: webroot + "scss/**/*.scss",
-    css: webroot + "css/**/*.css",
-    minCss: webroot + "css/**/*.min.css",
-    concatJsDest: webroot + "js/site.min.js",
-    concatCssDest: webroot + "css/site.min.css"
+    app: webroot + "app/",
+    libs: webroot + "libs/",
+    css: webroot + "css/",
+    js: webroot + "js/"
 };
 
-// Removes site.min.js
+// Removes app folder
+gulp.task("clean:app", function (cb) {
+    return del(paths.app, cb);
+});
+
+// Removes js folder
 gulp.task("clean:js", function (cb) {
-    rimraf(paths.concatJsDest, cb);
+    return del(paths.js, cb);
 });
 
-// Removes site.min.css
+// Removes css folder
 gulp.task("clean:css", function (cb) {
-    rimraf(paths.concatCssDest, cb);
+    return del(paths.css, cb);
 });
 
-gulp.task("clean", ["clean:js", "clean:css"]);
+// Removes libs folder
+gulp.task("clean:libs", function (cb) {
+    return del(paths.libs, cb);
+});
+
+gulp.task("clean", ["clean:app", "clean:js", "clean:css", "clean:libs"]);
+
+// Installs libraries from node_modules
+gulp.task("setup", function () {
+    gulp.src(noderoot + "font-awesome/fonts/**/*").pipe(gulp.dest(paths.libs + "font-awesome/fonts"));
+    gulp.src(noderoot + "font-awesome/css/**/*").pipe(gulp.dest(paths.libs + "font-awesome/css"));
+    gulp.src(noderoot + "@angular/**/*.js").pipe(gulp.dest(paths.libs + "@angular"));
+    gulp.src(noderoot + "rxjs/**/*.js").pipe(gulp.dest(paths.libs + "rxjs"));
+    gulp.src(noderoot + "core-js/client/shim.min.js").pipe(gulp.dest(paths.libs + "core-js/client"));
+    gulp.src(noderoot + "zone.js/dist/zone.js").pipe(gulp.dest(paths.libs + "zone.js"));
+    gulp.src(noderoot + "reflect-metadata/Reflect.js").pipe(gulp.dest(paths.libs + "reflect-metadata"));
+    gulp.src(noderoot + "systemjs/dist/system.src.js").pipe(gulp.dest(paths.libs + "systemjs"));
+});
 
 // Compiles all *.scss files into *.css
 gulp.task("compile:css", function () {
-    return gulp.src(webroot + "scss/skeleton.scss")
+    return gulp.src(webroot + "src/scss/skeleton.scss")
         .pipe(sass().on("error", sass.logError))
-        .pipe(gulp.dest(webroot + "css"))
+        .pipe(gulp.dest(paths.css))
         .pipe(livereload());
 });
 
 gulp.task("compile", ["compile:css"]);
 
-// Concatenates all *.js files and minifies it into site.min.js
-gulp.task("min:js", function () {
-    return gulp.src([paths.js, "!" + paths.minJs], { base: "." })
-        .pipe(concat(paths.concatJsDest))
-        .pipe(uglify())
-        .pipe(gulp.dest("."));
-});
-
-// Concatenates all *.css files and minifies it into site.min.css
+// Minifies all *.css files in CSS folder
 gulp.task("min:css", function () {
-    return gulp.src([paths.css, "!" + paths.minCss])
-        .pipe(concat(paths.concatCssDest))
-        .pipe(cssmin({ keepSpecialComments : 0}))
-        .pipe(gulp.dest("."));
+    return gulp.src([paths.css + "*.css", "!" + paths.css + "*.min.css"])
+         .pipe(cssmin({ keepSpecialComments: 0 }))
+         .pipe(rename({ suffix: '.min' }))
+         .pipe(gulp.dest(paths.css));
 });
 
-gulp.task("min", ["min:js", "min:css"]);
+// Minifies all *.js files in JS folder
+gulp.task("min:js", function () {
+    return gulp.src([paths.js + "*.js", "!" + paths.js + "*.min.js"])
+        .pipe(uglify())
+        .pipe(rename({ suffix: '.min' }))
+        .pipe(gulp.dest(paths.js));
+});
+
+gulp.task("min", ["min:css", "min:js"]);
 
 // Builds the entire project
-gulp.task("build", ["clean", "compile", "min"]);
+gulp.task("build", ["clean", "setup", "compile", "min"]);
+
+// Lint all custom TypeScript files
+gulp.task("tslint", function () {
+    return gulp.src(webroot + "src/**/*.ts")
+        .pipe(tslint())
+        .pipe(tslint.report("prose"));
+});
+
+// Compile TypeScript sources and create sourcemaps in build directory
+gulp.task("compileTS", ["tslint"], function () {
+    let tsResult = gulp.src(webroot + "src/**/*.ts")
+        .pipe(sourcemaps.init())
+        .pipe(tsc(tsProject));
+    return tsResult.js
+        .pipe(sourcemaps.write("."))
+        .pipe(gulp.dest(webroot));
+});
+
+// Copy all resources that are not TypeScript files into build directory
+gulp.task("resources", function () {
+    return gulp.src([webroot + "src/app/**/*", "!" + webroot + "src/app/**/*.ts"])
+        .pipe(gulp.dest(paths.app));
+});
+
+// Build the project
+gulp.task("buildTS", ["compileTS", "resources"], function () {
+    console.log("Building the project ...");
+});
 
 // Watches for the changes in styles and scripts
 gulp.task("watch", function () {
     var server = livereload();
     livereload.listen();
-    gulp.watch(paths.scss, ["clean:css", "compile:css"]);
+    gulp.watch(webroot + "src/scss/**/*.scss", ["clean:css", "compile:css"]);
+});
+
+// Watch for changes in TypeScript, HTML and CSS files
+gulp.task("watchTS", function () {
+    gulp.watch([webroot + "src/**/*.ts"], ["compile"]).on("change", function (e) {
+        console.log("TypeScript file " + e.path + " has been changed. Compiling.");
+    });
+    gulp.watch([webroot + "src/**/*.html", webroot + "src/**/*.css"], ["resources"]).on("change", function (e) {
+        console.log("Resource file " + e.path + " has been changed. Updating.");
+    });
 });
