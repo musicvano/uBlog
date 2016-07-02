@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html ng-app="uBlog">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,22 +8,23 @@
     <environment names="Development">
         <link href="~/css/skeleton.css" rel="stylesheet" />
         <link href="~/libs/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        <script src="~/libs/angular/angular.js"></script>
+        <script src="~/libs/angular/angular-route.js"></script>
+        <script src="~/libs/angular/angular-resource.js"></script>
+        <script src="~/app/app.module.js"></script>
+        <script src="~/app/app.routes.js"></script>
+        <script src="~/app/core/core.module.js"></script>
+        <script src="~/app/core/postService.js"></script>
+        <script src="~/app/post-list/post-list.module.js"></script>
+        <script src="~/app/post-list/post-list.component.js"></script>
+        <script src="~/app/post-detail/post-detail.module.js"></script>
+        <script src="~/app/post-detail/post-detail.component.js"></script>
     </environment>
     <environment names="Staging,Production">
         <link href="~/css/skeleton.min.css" rel="stylesheet" />
         <link href="~/libs/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+        <script src="~/libs/angular/angular.min.js"></script>
     </environment>
-    <!-- 1. Load libraries -->
-    <!-- Polyfill(s) for older browsers -->
-    <script src="~/libs/core-js/client/shim.min.js"></script>
-    <script src="~/libs/zone.js/zone.js"></script>
-    <script src="~/libs/reflect-metadata/Reflect.js"></script>
-    <script src="~/libs/systemjs/system.src.js"></script>
-    <!-- 2. Configure SystemJS -->
-    <script src="~/systemjs.config.js"></script>
-    <script>
-        System.import('app').catch(function (err) { console.error(err); });
-    </script>
 </head>
 <body>
     <div>

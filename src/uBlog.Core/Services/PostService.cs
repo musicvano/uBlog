@@ -29,6 +29,16 @@ namespace uBlog.Core.Services
             settings = uow.Settings.SingleOrDefault(s => s.Id == 1);
         }
 
+        public Post Get(int Id)
+        {
+            return uow.Posts.Get(Id);
+        }
+
+        public List<Post> GetAll()
+        {
+            return uow.Posts.GetAll();
+        }
+
         public List<Post> GetByPage(int page, bool encode = false)
         {
             var posts = uow.Posts.GetByPage(page, settings.PageSize);

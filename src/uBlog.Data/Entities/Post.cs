@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace uBlog.Data.Entities
 {
-    public class Post
+    public class Post: IEntity
     {
         public int Id { get; set; }
         public string Title { get; set; }

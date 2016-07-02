@@ -1,6 +1,6 @@
 ﻿namespace uBlog.Data.Entities
 {
-    public interface IEntityBase
+    public interface IEntity
     {
         int Id { get; set; }
     }

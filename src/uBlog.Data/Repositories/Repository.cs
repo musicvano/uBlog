@@ -3,11 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using uBlog.Data.Entities;
 using uBlog.Data.Repositories;
 
 namespace uBlog.Data
 {
-    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class, IEntity
     {
         protected readonly BlogContext context;
 
@@ -18,7 +19,7 @@ namespace uBlog.Data
 
         public TEntity Get(int id)
         {
-            return context.Set<TEntity>().Find(id);
+            return context.Set<TEntity>().SingleOrDefault(e => e.Id == id);
         }
 
         public List<TEntity> GetAll()

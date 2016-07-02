@@ -56,7 +56,7 @@ namespace uBlog.Web
         {
             routeBuilder.MapRoute(
                 name: "Admin",
-                template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                template: "{area:exists}/{controller=Home}/{action=Index}");
 
             routeBuilder.MapRoute(
                 name: "Help",

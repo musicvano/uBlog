@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace uBlog.Data.Entities
 {
-    public class User : IEntityBase
+    public class User : IEntity
     {
         public User()
         {

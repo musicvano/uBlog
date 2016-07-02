@@ -10,7 +10,7 @@ using uBlog.Data.Entities;
 namespace uBlog.Data.Repositories
 {
     public class EntityBaseRepository<T> : IEntityBaseRepository<T>
-            where T : class, IEntityBase, new()
+            where T : class, IEntity, new()
     {
 
         private BlogContext _context;

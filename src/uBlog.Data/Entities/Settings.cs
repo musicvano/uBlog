@@ -1,6 +1,6 @@
 ﻿namespace uBlog.Data.Entities
 {
-    public class Settings
+    public class Settings: IEntity
     {
         public int Id { get; set; }
         public string Author { get; set; }

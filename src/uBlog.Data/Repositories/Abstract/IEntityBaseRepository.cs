@@ -5,7 +5,7 @@ using uBlog.Data.Entities;
 
 namespace uBlog.Data.Repositories
 {
-    public interface IEntityBaseRepository<T> where T : class, IEntityBase, new()
+    public interface IEntityBaseRepository<T> where T : class, IEntity, new()
     {
         IEnumerable<T> AllIncluding(params Expression<Func<T, object>>[] includeProperties);
         //Task<IEnumerable<T>> AllIncludingAsync(params Expression<Func<T, object>>[] includeProperties);
