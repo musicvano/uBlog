@@ -9,5 +9,6 @@
 /// <reference path="app/post-list/post-list.component.js" />
 /// <reference path="app/post-list/post-list.module.js" />
 /// <reference path="libs/angular/angular.js" />
+/// <reference path="libs/angular/angular-cookies.js" />
 /// <reference path="libs/angular/angular-resource.js" />
 /// <reference path="libs/angular/angular-route.js" />

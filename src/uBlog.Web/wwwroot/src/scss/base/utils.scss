@@ -1,5 +1,5 @@
 // Utilities
-//––––––––––––––––––––––––––––––––––––––––––––––––––
+/// <reference path="../base/variables" />
 
 .u-full-width {
   width: 100%;
@@ -17,4 +17,12 @@
 
 .u-pull-left {
   float: left;
+}
+
+.center{
+    text-align: center;
+}
+
+.warning{
+    color: $warning-color;
 }

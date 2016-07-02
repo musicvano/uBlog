@@ -119,7 +119,7 @@ gulp.task("build", ["clean", "compile", "min"]);
 gulp.task("watch", function () {
     //var server = livereload();
     //livereload.listen();
-    gulp.watch(webroot + "src/scss/**/*.scss", ["clean:css", "compile:css"]);
+    gulp.watch(webroot + "src/scss/**/*.scss", ["compile:css"]);
 });
 
 // Watch for changes in TypeScript, HTML and CSS files
