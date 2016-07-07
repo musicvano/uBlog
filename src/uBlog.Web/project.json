@@ -59,6 +59,7 @@
     "include": [
       "wwwroot",
       "Views",
+      "Areas/Admin/Views",
       "appsettings.json",
       "web.config"
     ],
@@ -68,7 +69,7 @@
   },
 
   "scripts": {
-    "prepublish": [ "npm install", "bower install", "gulp clean", "gulp min" ],
+    "prepublish": [ "npm install", "bower install", "gulp build" ],
     "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
   }
 }

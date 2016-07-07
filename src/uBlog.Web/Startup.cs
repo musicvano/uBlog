@@ -90,14 +90,15 @@ namespace uBlog.Web
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-            if (env.IsDevelopment())
-            {
+            // Only for testing
+            //if (env.IsDevelopment())
+            //{
                 app.UseDeveloperExceptionPage();
-            }
+            /*}
             else
             {
                 app.UseExceptionHandler("/errors/500");
-            }
+            }*/
             app.UseStatusCodePagesWithReExecute("/errors/{0}");
             app.UseStaticFiles();
             app.UseCookieAuthentication(new CookieAuthenticationOptions
