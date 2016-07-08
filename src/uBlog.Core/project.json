@@ -4,12 +4,12 @@
   "authors": [ "Ivan Muzyka" ],
 
   "dependencies": {
-    "NETStandard.Library": "1.5.0-rc2-24027",
+    "NETStandard.Library": "1.6.0",
     "CommonMark.NET": "0.12.0",
     "uBlog.Data": "1.0.0",
-    "System.Security.Cryptography.Algorithms": "4.1.0-rc2-24027",
-    "System.Security.Principal": "4.0.1-rc2-24027",
-    "System.Security.Claims": "4.0.1-rc2-24027"
+    "System.Security.Cryptography.Algorithms": "4.2.0",
+    "System.Security.Principal": "4.0.1",
+    "System.Security.Claims": "4.0.1"
   },
 
   "frameworks": {
