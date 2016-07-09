@@ -98,13 +98,17 @@ header {
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 
+    .input-wrapper {
+        position: relative;
+    }
+
     .iconed {
         padding-left: 30px;
-        width: 100%;
     }
 
     .icon {
         position: absolute;
-        transform: translate(10px, -42px);
+        left: 12px;
+        top: 12px;
     }
 }

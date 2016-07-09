@@ -236,12 +236,14 @@ header {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%); }
+  .login .input-wrapper {
+    position: relative; }
   .login .iconed {
-    padding-left: 30px;
-    width: 100%; }
+    padding-left: 30px; }
   .login .icon {
     position: absolute;
-    transform: translate(10px, -42px); }
+    left: 12px;
+    top: 12px; }
 
 .u-full-width {
   width: 100%;

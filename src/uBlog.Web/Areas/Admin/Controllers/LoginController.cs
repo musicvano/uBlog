@@ -13,7 +13,7 @@ namespace uBlog.Web.Areas.Admin.Controllers
             {
                 return Ok(new { success = true });
             }
-            return Ok(new { success = false, message = "User code or password is incorrect" });
+            return Ok(new { success = false, message = "Username or password is incorrect" });
         }
     }
 }
