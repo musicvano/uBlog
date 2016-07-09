@@ -27,11 +27,11 @@
 
   "tools": {
     "Microsoft.AspNetCore.Razor.Tools": {
-      "version": "1.0.0-preview1-final",
+      "version": "1.0.0-preview2-final",
       "imports": "portable-net45+win8+dnxcore50"
     },
     "Microsoft.AspNetCore.Server.IISIntegration.Tools": {
-      "version": "1.0.0-preview1-final",
+      "version": "1.0.0-preview2-final",
       "imports": "portable-net45+win8+dnxcore50"
     }
   },
@@ -59,7 +59,7 @@
     "include": [
       "wwwroot",
       "Views",
-      "Areas/**/Views",
+      "Areas/Admin/Views",
       "appsettings.json",
       "web.config"
     ],
