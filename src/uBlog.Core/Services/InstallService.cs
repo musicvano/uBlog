@@ -1,34 +1,45 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage;
+using System;
 using System.Collections.Generic;
+using uBlog.Data;
 using uBlog.Data.Entities;
 
-namespace uBlog.Data
+namespace uBlog.Core.Services
 {
-    public class DbInitializer
+    public class InstallService : IInstallService
     {
-        public static void Seed()
-        {
-            using (var contex = new BlogContext())
-            {
-                contex.Database.EnsureDeleted();
-                contex.Database.EnsureCreated();
-                var settings = new Settings
-                {
-                    Author = "Ivan Muzyka",
-                    About = "I am teacher, blogger and  C/C++/C# developer. I like to create small, nice and fast desktop and web apps. I am excited to present my personal blog where I am going to write my thoughts about programming and IT news. Feel free to contact me if you have any questions. I am open for cooperation.",
-                    Photo = "me.png",
-                    Email = "musicvano@gmail.com",
-                    Url = "http://mvano.com",
-                    Github = "https://github.com/musicvano",
-                    Facebook = "https://www.facebook.com/musvano",
-                    Twitter = "https://twitter.com/musvano",
-                    Skype = "musicvano",
-                    Location = "Ukraine",
-                    PageSize = 10,
-                };
-                contex.Settings.Add(settings);
+        private readonly BlogContext context;
 
-                var tags = new List<Tag>
+        public InstallService(IBlogContext context)
+        {
+            this.context = (BlogContext)context;
+        }
+
+        public void SeedDb()
+        {
+            context.Database.EnsureDeleted();
+            context.Database.EnsureCreated();
+
+            var user = new User
+            {
+                Username = "Ivan Muzyka",
+                Email = "musicvano@gmail.com",
+                About = "I am teacher, blogger and  C/C++/C# developer. I like to create small, nice and fast desktop and web apps. I am excited to present my personal blog where I am going to write my thoughts about programming and IT news. Feel free to contact me if you have any questions. I am open for cooperation.",
+                Photo = "me.png",
+                Url = "http://mvano.com",
+                Github = "https://github.com/musicvano",
+                Facebook = "https://www.facebook.com/musvano",
+                Twitter = "https://twitter.com/musvano",
+                Skype = "musicvano",
+                Location = "Ukraine",
+                HashedPassword = "",
+                Salt = "",
+                DateCreated = new DateTime(2016, 06, 22)
+            };
+            context.Users.Add(user);
+
+            var tags = new List<Tag>
                 {
                     new Tag
                     {
@@ -46,9 +57,9 @@ namespace uBlog.Data
                         Slug = "asp-net-core"
                     }
                 };
-                contex.Tags.AddRange(tags);
+            context.Tags.AddRange(tags);
 
-                var posts = new List<Post>
+            var posts = new List<Post>
                 {
                     new Post
                     {
@@ -67,9 +78,9 @@ namespace uBlog.Data
                         Draft = false
                     }*/
                 };
-                contex.Posts.AddRange(posts);
+            context.Posts.AddRange(posts);
 
-                var postTags = new List<PostTag>
+            var postTags = new List<PostTag>
                 {
                     new PostTag
                     {
@@ -97,9 +108,8 @@ namespace uBlog.Data
                         Tag = tags[2]
                     }*/
                 };
-                contex.PostTags.AddRange(postTags);
-                contex.SaveChanges();
-            }
+            context.PostTags.AddRange(postTags);
+            context.SaveChanges();
         }
 
         const string article1 =
@@ -126,7 +136,7 @@ namespace uBlog.Data
 
 Однако объем оперативной памяти 512 МБ не так уж и велик для VPS, на котором работают: серверная операционная система, система управления базой данных, сайт с различными сервисами и, конечно же, виртуальная машина (CLR, JVM). В условиях ограниченного бюджета на хостинг компилируемые языки (С/С++, Objective-C, D, Go) могут быть достаточно выгодными. К сожалению, их редко используют для создания сайтов. Но это уже другая история, о которой мы тоже поговорим.
 
-Итак, в дальнейшем я хочу написать цикл статей о создании блогового движка на ASP.NET Core, детально остановить на тех вопросах, которые забрали у меня много времени, особенно в архитектурном плане. Эти статьи не перетендуют на исчерпывающее руководство по разработке сайта на C#, но могут быть полезными новичкам.
+Итак, в дальнейшем я хочу написать цикл статей о создании блогового движка на ASP.NET Core, детально остановить на тех вопросах, которые забрали у меня много времени, особенно в архитектурном плане. Эти статьи не претендуют на исчерпывающее руководство по разработке сайта на C#, но могут быть полезными новичкам.
 
 В этом блоге я планирую писать о программировании на Assembler, C, C++, C#, JavaScript, веб-разработке, различных технологиях, новостях в мире IT и многом другом. Язык изложения будет как русским, так и английским.
 

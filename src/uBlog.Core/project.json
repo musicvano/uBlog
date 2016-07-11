@@ -5,20 +5,18 @@
 
   "dependencies": {
     "NETStandard.Library": "1.6.0",
-    "CommonMark.NET": "0.12.0",
     "uBlog.Data": "1.0.0",
+    "Serilog": "2.0.0",
+    "CommonMark.NET": "0.13.2",
+    "System.Security.Claims": "4.0.1",
     "System.Security.Cryptography.Algorithms": "4.2.0",
     "System.Security.Principal": "4.0.1",
-    "System.Security.Claims": "4.0.1"
+    "Microsoft.Extensions.Configuration.Abstractions": "1.0.0"
   },
 
   "frameworks": {
-    "netstandard1.5": {
-      "imports": [
-        "dotnet5.6",
-        "dnxcore50",
-        "portable-net45+win8"
-      ]
+    "netstandard1.6": {
+      "imports": "dnxcore50"
     }
   }
 }

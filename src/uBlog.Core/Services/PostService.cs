@@ -1,5 +1,7 @@
 ﻿using CommonMark;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using uBlog.Data;
 using uBlog.Data.Entities;
 
@@ -7,71 +9,68 @@ namespace uBlog.Core.Services
 {
     public class PostService : IPostService
     {
-        IUnitOfWork uow;
-        Settings settings;
+        IBlogContext context;
 
-        private void MarkConvert(Post post)
+        public PostService(IBlogContext context)
         {
-            post.Content = CommonMarkConverter.Convert(post.Content);
-        }
-
-        private void MarkConvert(List<Post> posts)
-        {
-            foreach (var post in posts)
-            {
-                MarkConvert(post);
-            }
-        }
-
-        public PostService(IUnitOfWork uow)
-        {
-            this.uow = uow;
-            settings = uow.Settings.SingleOrDefault(s => s.Id == 1);
+            this.context = context;
         }
 
         public Post Get(int Id)
         {
-            return uow.Posts.Get(Id);
+            return context.Posts.SingleOrDefault(p => p.Id == Id);
         }
 
         public List<Post> GetAll()
         {
-            return uow.Posts.GetAll();
+            return context.Posts.ToList();
         }
 
-        public List<Post> GetByPage(int page, bool encode = false)
+        public List<Post> GetByPage(int page, int pageSize)
         {
-            var posts = uow.Posts.GetByPage(page, settings.PageSize);
-            if (encode)
+            var posts = context.Posts.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            for (int i = 0; i < posts.Count; i++)
             {
-                for (int i = 0; i < posts.Count; i++)
-                {
-                    posts[i].Content = CommonMarkConverter.Convert(posts[i].Content);
-                }
+                posts[i].PostTags = context.PostTags.Include(p => p.Tag).Where(p => p.PostId == posts[i].Id).ToList();
             }
             return posts;
         }
 
-        public Post GetBySlug(string slug, bool encode = false)
+        public Post GetBySlug(string slug)
         {
-            var post = uow.Posts.GetBySlug(slug);
-            if (encode && post != null)
+            slug = slug.ToLower();
+            var post = context.Posts.SingleOrDefault(p => p.Slug == slug);
+            if (post != null)
             {
-                MarkConvert(post);
+                post.PostTags = context.PostTags.Include(p => p.Tag).Where(p => p.PostId == post.Id).ToList();
             }
             return post;
         }
 
-        public int CountByTag(int tagId)
+        public List<Post> GetByTag(int tagId, int page, int pageSize)
         {
-            return uow.Posts.CountByTag(tagId);
-        }
-
-        public List<Post> GetByTagSlug(string slug, int page)
-        {
-            var posts =  uow.Posts.GetByTagSlug(slug, page, settings.PageSize);
-            MarkConvert(posts);
+            var posts = context.PostTags.Where(pt => pt.TagId == tagId)
+                .Select(pt => pt.Post).OrderBy(p => p.DateCreated)
+                .Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            for (int i = 0; i < posts.Count; i++)
+            {
+                posts[i].PostTags = context.PostTags.Include(p => p.Tag).Where(p => p.PostId == posts[i].Id).ToList();
+            }
             return posts;
         }
+
+        public void EncodeContent(Post post)
+        {
+            post.Content = CommonMarkConverter.Convert(post.Content);
+        }
+
+        public void EncodeContent(ICollection<Post> posts)
+        {
+            foreach (var post in posts)
+            {
+                post.Content = CommonMarkConverter.Convert(post.Content);
+            }
+        }
+
     }
 }

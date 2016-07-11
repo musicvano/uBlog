@@ -24,9 +24,28 @@ namespace uBlog.Web.Models
         {
             return new TagModel
             {
+                Id = tag.Id,
                 Name = tag.Name,
                 Slug = tag.Slug,
                 Posts = tag.PostTags.Select(pt => pt.Post).ToList()
+            };
+        }
+
+        public static UserModel Create(User user)
+        {
+            return new UserModel
+            {
+                Id = user.Id,
+                Username = user.Username,
+                Email = user.Email,
+                About = user.About,
+                Photo = user.Photo,
+                Url = user.Url,
+                Github = user.Github,
+                Facebook = user.Facebook,
+                Twitter = user.Twitter,
+                Skype = user.Skype,
+                Location = user.Location
             };
         }
 

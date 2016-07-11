@@ -1,12 +1,12 @@
-﻿@model ISettingService
+﻿@model UserModel
 @{
-    ViewBag.Title = $"About – {Model.Author}";
+    ViewBag.Title = $"About – {Model.Username}";
     ViewBag.Description = "Information about author";
-    ViewBag.Keywords = Model.Author;
+    ViewBag.Keywords = Model.Username;
 }
 
 <header>
-    <h1>@Model.Author</h1>
+    <h1>@Model.Username</h1>
 </header>
 <div class="row">
     <p>@Model.About</p>

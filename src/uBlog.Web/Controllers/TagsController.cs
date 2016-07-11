@@ -9,11 +9,13 @@ namespace uBlog.Controllers
     {
         private readonly ITagService tagService;
         private readonly IPostService postService;
+        private readonly IConfigService configService;
 
-        public TagsController(ITagService tagService, IPostService postService)
+        public TagsController(ITagService tagService, IPostService postService, IConfigService configService)
         {
             this.tagService = tagService;
             this.postService = postService;
+            this.configService = configService;
         }
 
         public IActionResult Index()
@@ -25,7 +27,13 @@ namespace uBlog.Controllers
 
         public IActionResult Details(string slug, int page = 1)
         {
-            var posts = postService.GetByTagSlug(slug, page);
+            var tag = tagService.GetBySlug(slug);
+            if (tag == null)
+            {
+                return NotFound();
+            }
+            var posts = postService.GetByTag(tag.Id, page, configService.PageSize);
+            postService.EncodeContent(posts);
             var model = ModelFactory.Create(posts);
             ViewBag.Title = "Posts by Tag";
             return View("../Posts/Index", model);

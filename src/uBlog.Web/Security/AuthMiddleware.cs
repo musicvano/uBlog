@@ -12,14 +12,12 @@ namespace uBlog.Web.Security
     public class AuthMiddleware
     {
         private readonly RequestDelegate next;
-        private readonly IErrorService errorService;
         private readonly IMembershipService membershipService;
 
-        public AuthMiddleware(RequestDelegate next, IMembershipService membershipService, IErrorService errorService)
+        public AuthMiddleware(RequestDelegate next, IMembershipService membershipService)
         {
             this.next = next;
             this.membershipService = membershipService;
-            this.errorService = errorService;
         }
 
         public async Task Invoke(HttpContext context)
@@ -36,8 +34,8 @@ namespace uBlog.Web.Security
             }
             catch (Exception ex)
             {
-                errorService.Add(new Error() { Message = ex.Message, StackTrace = ex.StackTrace, DateCreated = DateTime.Now });
-                errorService.Save();
+/*                errorService.Add(new Error() { Message = ex.Message, StackTrace = ex.StackTrace, DateCreated = DateTime.Now });
+                errorService.Save();*/
             }
             await next.Invoke(context);
         }

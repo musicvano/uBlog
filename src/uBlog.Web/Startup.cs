@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Serilog;
+using System.IO;
 using System.Security.Claims;
 using uBlog.Core.Services;
 using uBlog.Data;
@@ -13,33 +15,42 @@ namespace uBlog.Web
 {
     public class Startup
     {
+        private readonly string rootPath;
+
+        // Contains settings from appsettings.json file
+        public IConfigService Config { get; }
+
         public Startup(IHostingEnvironment env)
         {
-            var builder = new ConfigurationBuilder()
+            // Read appsettings.json file
+            var configRoot = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                .AddEnvironmentVariables();
-            Configuration = builder.Build();
-        }
+                .AddEnvironmentVariables().Build();
+            Config = new ConfigService(configRoot, env.ContentRootPath);
 
-        public IConfigurationRoot Configuration { get; }
+            // Configure logger
+            Log.Logger = new LoggerConfiguration()
+            .MinimumLevel.Warning()
+            .WriteTo.RollingFile(Config.LoggerPath)
+            .CreateLogger();
+        }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services
-            services.AddSingleton(Configuration);
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddSingleton(Config);
+            services.AddScoped<IBlogContext>(p => new BlogContext(Config.DatabasePath));
+            services.AddScoped<IEncryptionService, EncryptionService>();
+            services.AddScoped<IInstallService, InstallService>();
+            services.AddScoped<IUserService, UserService>();
             services.AddScoped<IPostService, PostService>();
             services.AddScoped<ITagService, TagService>();
-            services.AddScoped<ISettingService, SettingService>();
-            services.AddScoped<IErrorService, ErrorService>();
-            services.AddScoped<IMembershipService, MembershipService>();
-            services.AddScoped<IEncryptionService, EncryptionService>();
 
+            // Configure authentication
             services.AddAuthentication();
-            // Polices
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("AdminOnly", policy =>
@@ -52,16 +63,21 @@ namespace uBlog.Web
             services.AddMvc();
         }
 
+        // Configure routes
         private void ConfigureRoutes(IRouteBuilder routeBuilder)
         {
+            // If database doesn't exist, run install
+            if (!File.Exists(Config.DatabasePath))
+            {
+                routeBuilder.MapRoute(
+                    name: "Install",
+                    template: "{controller=Install}/{action=Index}");
+                return;
+            }
+
             routeBuilder.MapRoute(
                 name: "Admin",
                 template: "{area:exists}/{controller=Home}/{action=Index}");
-
-            routeBuilder.MapRoute(
-                name: "Help",
-                template: "help",
-                defaults: new { controller = "Help", action = "Index" });
 
             routeBuilder.MapRoute(
                 name: "Errors",
@@ -87,27 +103,23 @@ namespace uBlog.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
-
-            // Only for testing
-            //if (env.IsDevelopment())
-            //{
+            loggerFactory.AddSerilog();
+            if (env.IsDevelopment())
+            {
                 app.UseDeveloperExceptionPage();
-            /*}
+            }
             else
             {
                 app.UseExceptionHandler("/errors/500");
-            }*/
+            }
             app.UseStatusCodePagesWithReExecute("/errors/{0}");
             app.UseStaticFiles();
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AutomaticAuthenticate = true,
                 AutomaticChallenge = true
-            });            
-            app.UseMiddleware<AuthMiddleware>();
-
+            });
+            //app.UseMiddleware<AuthMiddleware>();
             app.UseMvc(ConfigureRoutes);
         }
     }

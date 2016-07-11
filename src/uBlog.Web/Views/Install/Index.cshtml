@@ -1,0 +1,57 @@
+﻿@inject IConfigService configService
+@model RegisterModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="uBlog">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>uBlog Web Installer</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic&subset=latin,cyrillic" rel="stylesheet" type="text/css" />
+    <environment names="Development">
+        <link href="~/css/skeleton.css" rel="stylesheet" />
+        <link href="~/libs/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    </environment>
+    <environment names="Staging,Production">
+        <link href="~/css/skeleton.min.css" rel="stylesheet" />
+        <link href="~/libs/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    </environment>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="center"><img src="~/images/logo.png" alt="Logo" /></div>
+            <h1 class="center">uBlog Web Installer</h1>
+            <p>Before you proceed with the installation, you should:</p>
+            <ol>
+                <li>Configure file <code>appsettings.json</code>.</li>
+                <li>Set write permissions for folder <code>AppData</code>.</li>
+                <li>Read more information on <a href="https://github.com/musicvano/uBlog/wiki">Wiki</a>.</li>
+            </ol>
+            <form asp-controller="Install" asp-action="Index" method="post">
+                @*<div asp-validation-summary="ValidationSummary.ModelOnly"></div>*@
+                <div>
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email" placeholder="Email"/>
+                    <span asp-validation-for="Email"></span>
+                </div>
+                <div>
+                    <label asp-for="Password"></label>
+                    <input asp-for="Password" placeholder="Password"/>
+                    <span asp-validation-for="Password"></span>
+                </div>
+                <div>
+                    <label asp-for="ConfirmPassword">Confirm password</label>
+                    <input asp-for="ConfirmPassword" placeholder="Password" />
+                    <span asp-validation-for="ConfirmPassword"></span>
+                </div>
+                <button class="button-primary" type="submit">Install</button>
+            </form>
+            <footer>
+                Powered by <a href="https://github.com/musicvano/ublog" title="Version @configService.Version">uBlog</a>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

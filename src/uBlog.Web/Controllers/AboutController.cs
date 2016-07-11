@@ -1,20 +1,27 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using uBlog.Core.Services;
+using uBlog.Web.Models;
 
 namespace uBlog.Controllers
 {
     public class AboutController : Controller
     {
-        ISettingService settingService;
+        IUserService userService;
 
-        public AboutController(ISettingService settingService)
+        public AboutController(IUserService userService)
         {
-            this.settingService = settingService;
+            this.userService = userService;
         }
 
         public IActionResult Index()
         {
-            return View(settingService);
+            var user = userService.GetAdmin();
+            if (user == null)
+            {
+                return NotFound();
+            }
+            var model = ModelFactory.Create(user);
+            return View(model);
         }
     }
 }

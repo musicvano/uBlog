@@ -1,11 +1,12 @@
-﻿@inject IConfigurationRoot config
-@inject ISettingService settings
+﻿@inject IConfigService configService
+@inject IUserService userService
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Author = settings.Author;
-    ViewBag.Photo = settings.Photo;
-    ViewBag.Description = $"Personal blog of {settings.Author}";
+    var admin = userService.GetAdmin();
+    ViewBag.Author = admin.Username;
+    ViewBag.Photo = admin.Photo;
+    ViewBag.Description = $"Personal blog of {admin.Username}";
     ViewBag.Keywords = "";
-    ViewBag.Title = $"Blog – {settings.Author}";
-    ViewBag.Version = config["version"];
+    ViewBag.Title = $"Blog – {admin.Username}";
+    ViewBag.Version = configService.Version;
 }
