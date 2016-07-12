@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using uBlog.Core.Services;
+using uBlog.Web;
 using uBlog.Web.Models;
 
 namespace uBlog.Controllers
@@ -17,6 +18,10 @@ namespace uBlog.Controllers
 
         public IActionResult Index(int page = 1)
         {
+            if (!AppSettings.IsInstalled())
+            {
+                return RedirectToAction("Index", "Install");
+            }
             var posts = postService.GetByPage(page, configService.PageSize);
             if (posts.Count == 0)
             {

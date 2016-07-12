@@ -9,5 +9,7 @@ namespace uBlog.Data
         DbSet<Tag> Tags { get; set; }
         DbSet<PostTag> PostTags { get; set; }
         DbSet<User> Users { get; set; }
+        DbSet<Config> Configs { get; set; }
+        int SaveChanges();
     }
 }

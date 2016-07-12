@@ -34,9 +34,9 @@
         @RenderBody()
         <footer class="row">
             &copy; @DateTime.Now.Year @Html.Raw(ViewBag.Author) <br />
-            <small>Powered by <a href="https://github.com/musicvano/ublog" title="Version @ViewBag.Version">uBlog</a></small>
+            <small>Powered by <a href="https://github.com/musicvano/ublog" title="Version @AppSettings.Version">uBlog</a></small>
         </footer>
     </div>
-    <script id="dsq-count-scr" src="//mvano.disqus.com/count.js" async></script>
+    <script id="dsq-count-scr" src="//@(ViewBag.DisqusName).disqus.com/count.js" async></script>    
 </body>
 </html>

@@ -1,11 +1,13 @@
-﻿namespace uBlog.Core.Services
+﻿using uBlog.Data.Entities;
+
+namespace uBlog.Core.Services
 {
     public interface IConfigService
     {
-        string Version { get; }
-        string RootPath { get; }
-        string LoggerPath { get; }
-        string DatabasePath { get; }
+        Config Get();
+        void Update(Config config);
+
         int PageSize { get; }
+        string DisqusName { get;}
     }
 }

@@ -19,7 +19,7 @@
         @if (!string.IsNullOrEmpty(Model.Url))
             {
             <i class="fa fa-external-link" aria-hidden="true"></i>
-            <a href="@Model.Url">@Html.CleanUrl(Model.Url)</a> <br />
+            <a href="@Model.Url">@UrlHelper.CleanUrl(Model.Url)</a> <br />
         }
         @if (!string.IsNullOrEmpty(Model.Email))
             {
@@ -29,24 +29,24 @@
         @if (!string.IsNullOrEmpty(Model.Github))
             {
             <i class="fa fa-github" aria-hidden="true"></i>
-            <a href="@Model.Github">@Html.CleanUrl(Model.Github)</a> <br />
+            <a href="@Model.Github">@UrlHelper.CleanUrl(Model.Github)</a> <br />
         }
         @if (!string.IsNullOrEmpty(Model.Facebook))
         {
             <i class="fa fa-facebook" aria-hidden="true"></i>
-            <a href="@Model.Facebook">@Html.CleanUrl(Model.Facebook)</a> <br />
+            <a href="@Model.Facebook">@UrlHelper.CleanUrl(Model.Facebook)</a> <br />
         }
         @if (!string.IsNullOrEmpty(Model.Twitter))
         {
             <i class="fa fa-twitter" aria-hidden="true"></i>
-            <a href="@Model.Twitter">@Html.CleanUrl(Model.Twitter)</a> <br />
+            <a href="@Model.Twitter">@UrlHelper.CleanUrl(Model.Twitter)</a> <br />
         }
         @if (!string.IsNullOrEmpty(Model.Skype))
         {
             <i class="fa fa-skype" aria-hidden="true"></i> @Model.Skype <br />
         }
         @if (!string.IsNullOrEmpty(Model.Location))
-            {
+        {
             <i class="fa fa-map-marker" aria-hidden="true"></i> @Model.Location <br />
         }
     </div>

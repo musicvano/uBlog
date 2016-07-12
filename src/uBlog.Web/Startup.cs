@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Routing;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Serilog;
@@ -9,7 +8,6 @@ using System.IO;
 using System.Security.Claims;
 using uBlog.Core.Services;
 using uBlog.Data;
-using uBlog.Web.Security;
 
 namespace uBlog.Web
 {
@@ -17,38 +15,29 @@ namespace uBlog.Web
     {
         private readonly string rootPath;
 
-        // Contains settings from appsettings.json file
-        public IConfigService Config { get; }
-
         public Startup(IHostingEnvironment env)
         {
-            // Read appsettings.json file
-            var configRoot = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                .AddEnvironmentVariables().Build();
-            Config = new ConfigService(configRoot, env.ContentRootPath);
+            rootPath = env.ContentRootPath;
 
             // Configure logger
             Log.Logger = new LoggerConfiguration()
             .MinimumLevel.Warning()
-            .WriteTo.RollingFile(Config.LoggerPath)
+            .WriteTo.RollingFile(Path.Combine(rootPath, AppSettings.LoggerPath))
             .CreateLogger();
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add framework services
-            services.AddSingleton(Config);
-            services.AddScoped<IBlogContext>(p => new BlogContext(Config.DatabasePath));
+            var dbPath = Path.Combine(rootPath, AppSettings.DatabasePath);
+            services.AddScoped<IBlogContext>(p => new BlogContext(dbPath));
             services.AddScoped<IEncryptionService, EncryptionService>();
             services.AddScoped<IInstallService, InstallService>();
+            services.AddScoped<IConfigService, ConfigService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IPostService, PostService>();
             services.AddScoped<ITagService, TagService>();
-
+            
             // Configure authentication
             services.AddAuthentication();
             services.AddAuthorization(options =>
@@ -66,23 +55,14 @@ namespace uBlog.Web
         // Configure routes
         private void ConfigureRoutes(IRouteBuilder routeBuilder)
         {
-            // If database doesn't exist, run install
-            if (!File.Exists(Config.DatabasePath))
-            {
-                routeBuilder.MapRoute(
-                    name: "Install",
-                    template: "{controller=Install}/{action=Index}");
-                return;
-            }
+            routeBuilder.MapRoute(
+                name: "Errors",
+                template: "errors/{code}",
+                defaults: new { controller = "Errors", action = "Index" });
 
             routeBuilder.MapRoute(
                 name: "Admin",
                 template: "{area:exists}/{controller=Home}/{action=Index}");
-
-            routeBuilder.MapRoute(
-                name: "Errors",
-                template: "errors/{code}",
-                defaults: new { controller = "Errors", action = "Details" });
 
             routeBuilder.MapRoute(
                 name: "Default",
@@ -121,6 +101,7 @@ namespace uBlog.Web
             });
             //app.UseMiddleware<AuthMiddleware>();
             app.UseMvc(ConfigureRoutes);
+            
         }
     }
 }

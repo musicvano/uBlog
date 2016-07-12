@@ -2,6 +2,7 @@
 {
     public interface IInstallService
     {
-        void SeedDb();
+        bool RecreateDatabase();
+        void SeedDatabase();
     }
 }

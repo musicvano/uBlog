@@ -1,14 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace uBlog.Web.Helpers
+namespace uBlog.Core.Infrastructure
 {
-    public static class UrlExtentions
+    public class UrlHelper
     {
-        public static string GetSlug(this IUrlHelper  helper, string text)
+        /// <summary>
+        /// Returns url-safe slug by given text
+        /// </summary>
+        /// <param name="text">Title for url</param>
+        /// <returns></returns>
+        public static string GetSlug(string text)
         {
             //First to lower case 
             text = text.ToLowerInvariant();
@@ -41,6 +45,17 @@ namespace uBlog.Web.Helpers
             text = Regex.Replace(text, @"([-_]){2,}", "$1", RegexOptions.Compiled);
 
             return text;
+        }
+
+        /// <summary>
+        /// Removes http://, https:// and www prefixes from url
+        /// </summary>
+        /// <param name="helper"></param>
+        /// <param name="url">Url string</param>
+        /// <returns></returns>
+        public static string CleanUrl(string url)
+        {
+            return Regex.Replace(url, @"^(?:http(?:s)?://)?(?:www(?:[0-9]+)?\.)?", string.Empty, RegexOptions.IgnoreCase);
         }
     }
 }

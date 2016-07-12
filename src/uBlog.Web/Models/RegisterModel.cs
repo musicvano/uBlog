@@ -4,10 +4,10 @@ namespace uBlog.Web.Models
 {
     public class RegisterModel
     {
-        [Required, MaxLength(256)]
+        [Required, EmailAddress, MaxLength(256)]
         public string Email { get; set; }
 
-        [Required, DataType(DataType.Password)]
+        [Required, MinLength(5, ErrorMessage = "Password should contain at least 5 characters"), DataType(DataType.Password)]
         public string Password { get; set; }
 
         [DataType(DataType.Password), Compare(nameof(Password))]
