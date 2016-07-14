@@ -14,3 +14,4 @@
 /// <reference path="libs/angular/angular-cookies.js" />
 /// <reference path="libs/angular/angular-resource.js" />
 /// <reference path="libs/angular/angular-route.js" />
+/// <reference path="libs/prism/prism.js" />

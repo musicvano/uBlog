@@ -12,7 +12,21 @@ namespace uTool
         private const string DefaultEmail = "admin@admin.com";
         private const string DefaultPassword = "admin";
 
-        public static void SeedDatabase(string databasePath)
+        /// <summary>
+        /// Creates new database
+        /// </summary>
+        public static void Create(string databasePath)
+        {
+            using (var context = new BlogContext(databasePath))
+            {
+                context.Database.EnsureCreated();
+            }
+        }
+
+        /// <summary>
+        /// Saves demo data to the database
+        /// </summary>
+        public static void Seed(string databasePath)
         {
             using (var context = new BlogContext(databasePath))
             {
@@ -46,8 +60,7 @@ namespace uTool
                 var tags = new List<Tag>
             {
                 new Tag { Name = "News" },
-                new Tag { Name = "C++" },
-                new Tag { Name = "JS" }
+                new Tag { Name = "C++" }
             };
                 tags.ForEach(tag => tag.Slug = UrlHelper.GetSlug(tag.Name));
                 context.Tags.AddRange(tags);
@@ -64,7 +77,7 @@ namespace uTool
                 new Post
                 {
                     Title = "Formating text in posts",
-                    Content = article1,
+                    Content = article2,
                     DateCreated = DateTime.Now,
                     Draft = false
                 }
@@ -75,8 +88,7 @@ namespace uTool
 
                 var postTags = new List<PostTag> {
                 new PostTag { Post = posts[0], Tag = tags[0] },
-                new PostTag { Post = posts[1], Tag = tags[1] },
-                new PostTag { Post = posts[1], Tag = tags[2] }
+                new PostTag { Post = posts[1], Tag = tags[1] }
             };
                 context.PostTags.AddRange(postTags);
                 context.SaveChanges();
@@ -84,8 +96,44 @@ namespace uTool
             };
         }
 
-        const string article1 = @"Text 1";
+        const string article1 =
+@"Hi! I am excited to present this simple blog engine **uBlog**.
 
-        const string article2 = @"Text 2";
+![Logo](/images/logo.png)
+
+uBlog differs from WordPress greatly. First of all uBlog is personal blog, so only
+one author can write posts and have access to admin panel. uBlog uses markdown syntax
+instead of rich text editors. Nevertheless don't worry
+about it. Markdow is extreamly simple so after three-four written posts you will
+compose your stories fluently. Take a look at [Markdown Reference](http://commonmark.org/help).
+
+> Markdown is a simple way to format text that looks great on any device.
+It doesn’t do anything fancy like change the font size, color, or type —
+just the essentials, using keyboard symbols you already know.
+
+Credentials for admin panel:
+- E-mail: **admin@admin.com**
+- Password: **admin**
+
+uBlog uses [Disqus](https://disqus.com) for commenting so you have to create an account
+there and register your website.
+
+More information about database managment, backuping, SEO will be available soon on 
+[Wiki](https://github.com/musicvano/uBlog/wiki).
+If you have some suggestions and recommendations feel free to [contact me](http://mvano.com/about).
+";
+
+        const string article2 =
+@"
+You can insert programming code into posts and it will be highlighted appropriately.
+
+```c
+int main()
+{
+    printf(""Hello World"");
+    return 0;
+}
+```
+";
     }
 }

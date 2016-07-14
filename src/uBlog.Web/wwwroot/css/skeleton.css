@@ -656,11 +656,7 @@ li {
 code {
   padding: .2rem .5rem;
   margin: 0 .2rem;
-  font-size: 90%;
-  white-space: nowrap;
-  background: #f1f1f1;
-  border: 1px solid #e1e1e1;
-  border-radius: 4px; }
+  white-space: nowrap; }
 
 pre > code {
   display: block;

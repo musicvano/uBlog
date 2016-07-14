@@ -9,7 +9,7 @@ Solution consists of separate parts:
 
 - uBlog.Data - data access layer works with [SQLite](https://www.sqlite.org/) database
 - uBlog.Core - all services provide core functionality for the blog
-- uBlog.Web - ASP.NET Core app use Razor view engine for GET requests and provides WebAPI for admin panel
+- uBlog.Web - ASP.NET Core app uses Razor view engine for GET requests and provides WebAPI for admin panel
 - uTool - command-line interface (CLI) for initial database configuration, migration, etc.
 
 Project uses such libraries and frameworks:
@@ -19,6 +19,7 @@ Project uses such libraries and frameworks:
 - [AngularJS](https://angularjs.org)
 - [Skeleton CSS](http://getskeleton.com)
 - [Font Awesome](http://fontawesome.io)
+- [Prism](http://prismjs.com)
 
 uBlog supports [Disqus](https://disqus.com/) service for commenting.
 

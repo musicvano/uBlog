@@ -32,7 +32,7 @@ namespace uBlog.Web.Security
                         new ClaimsPrincipal(new ClaimsIdentity(new[] { _claim }, CookieAuthenticationDefaults.AuthenticationScheme)));
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 /*                errorService.Add(new Error() { Message = ex.Message, StackTrace = ex.StackTrace, DateCreated = DateTime.Now });
                 errorService.Save();*/

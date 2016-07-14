@@ -12,10 +12,12 @@
     <environment names="Development">
         <link href="~/css/skeleton.css" rel="stylesheet" />
         <link href="~/libs/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        <link href="~/libs/prism/prism.css" rel="stylesheet" />
     </environment>
     <environment names="Staging,Production">
         <link href="~/css/skeleton.min.css" rel="stylesheet" />
         <link href="~/libs/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="~/libs/prism/prism.css" rel="stylesheet" />
     </environment>
 </head>
 <body>
@@ -37,6 +39,7 @@
             <small>Powered by <a href="https://github.com/musicvano/ublog" title="Version @AppSettings.Version">uBlog</a></small>
         </footer>
     </div>
+    <script src="~/libs/prism/prism.js"></script>
     <script id="dsq-count-scr" src="//@(ViewBag.DisqusName).disqus.com/count.js" async></script>    
 </body>
 </html>
