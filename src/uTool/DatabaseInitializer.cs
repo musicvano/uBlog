@@ -52,6 +52,7 @@ namespace uTool
 
                 var config = new Config
                 {
+                    DomainUrl = "http://yourdomain.com",
                     PageSize = 10,
                     DisqusName = "admin"
                 };
@@ -60,7 +61,7 @@ namespace uTool
                 var tags = new List<Tag>
             {
                 new Tag { Name = "News" },
-                new Tag { Name = "C++" }
+                new Tag { Name = "Markdown" }
             };
                 tags.ForEach(tag => tag.Slug = UrlHelper.GetSlug(tag.Name));
                 context.Tags.AddRange(tags);

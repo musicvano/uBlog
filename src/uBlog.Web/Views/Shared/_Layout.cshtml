@@ -28,7 +28,11 @@
                 <a asp-controller="Posts" asp-action="Index">Home</a>
                 <a asp-controller="Tags" asp-action="Index">Tags</a>
                 <a asp-controller="About" asp-action="Index">About</a>
-                <a asp-area="Admin" asp-controller="Home" asp-action="Index" id="login"><i class="fa fa-lock" aria-hidden="true"></i></a>
+                <div class="u-pull-right">
+                    <a asp-controller="Search" asp-action="Index"><i class="fa fa-search" aria-hidden="true"></i></a>
+                    <a asp-controller="Rss" asp-action="Index"><i class="fa fa-rss" aria-hidden="true"></i></a>
+                    <a asp-area="Admin" asp-controller="Home" asp-action="Index" id="login"><i class="fa fa-lock" aria-hidden="true"></i></a>
+                </div>
             </div>
         </div>
     </nav>
@@ -40,6 +44,6 @@
         </footer>
     </div>
     <script src="~/libs/prism/prism.js"></script>
-    <script id="dsq-count-scr" src="//@(ViewBag.DisqusName).disqus.com/count.js" async></script>    
+    <script id="dsq-count-scr" src="//@(ViewBag.DisqusName).disqus.com/count.js" async></script>
 </body>
 </html>

@@ -32,12 +32,11 @@ namespace uBlog.Web
             var dbPath = Path.Combine(rootPath, AppSettings.DatabasePath);
             services.AddScoped<IBlogContext>(p => new BlogContext(dbPath));
             services.AddScoped<IEncryptionService, EncryptionService>();
-            services.AddScoped<IInstallService, InstallService>();
             services.AddScoped<IConfigService, ConfigService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IPostService, PostService>();
             services.AddScoped<ITagService, TagService>();
-            
+
             // Configure authentication
             services.AddAuthentication();
             services.AddAuthorization(options =>
@@ -55,14 +54,20 @@ namespace uBlog.Web
         // Configure routes
         private void ConfigureRoutes(IRouteBuilder routeBuilder)
         {
+            //routeBuilder.MapRoute(
+            //    name: "Sitemap",
+            //    template: "sitemap",
+            //    defaults: new { controller = "Sitemap", action = "Index" });
+
+            //routeBuilder.MapRoute(
+            //    name: "Rss",
+            //    template: "rss",
+            //    defaults: new { controller = "Rss", action = "Index" });
+
             routeBuilder.MapRoute(
                 name: "Errors",
                 template: "errors/{code}",
                 defaults: new { controller = "Errors", action = "Index" });
-
-            routeBuilder.MapRoute(
-                name: "Admin",
-                template: "{area:exists}/{controller=Home}/{action=Index}");
 
             routeBuilder.MapRoute(
                 name: "Default",
@@ -78,6 +83,10 @@ namespace uBlog.Web
                 name: "Page",
                 template: "posts/page/{page}",
                 defaults: new { controller = "Posts", action = "Index" });
+
+            routeBuilder.MapRoute(
+                name: "Admin",
+                template: "{area:exists}/{controller=Home}/{action=Index}");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -101,7 +110,7 @@ namespace uBlog.Web
             });
             //app.UseMiddleware<AuthMiddleware>();
             app.UseMvc(ConfigureRoutes);
-            
+
         }
     }
 }

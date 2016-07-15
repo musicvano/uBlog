@@ -13,7 +13,7 @@
     {
         <h2>
             <a asp-controller="Tags" asp-action="Details" asp-route-slug="@tag.Slug">@Html.Raw(tag.Name)</a>&nbsp;
-            <sup><code>@tag.Posts.Count</code></sup>
+            <sup>[@tag.Posts.Count]</sup>
         </h2>
         <ul>
             @foreach (var post in tag.Posts)

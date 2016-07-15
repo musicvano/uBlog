@@ -10,6 +10,7 @@ namespace uBlog.Core.Services
         Post GetBySlug(string slug);
         List<Post> GetByPage(int page, int pageSize);
         List<Post> GetByTag(int tagId, int page, int pageSize);
+        List<Post> GetByText(string text);
         void EncodeContent(Post post);
         void EncodeContent(ICollection<Post> posts);
     }

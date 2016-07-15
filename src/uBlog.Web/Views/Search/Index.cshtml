@@ -1,0 +1,26 @@
+﻿@model List<PostModel>
+@{ 
+    ViewBag.Title = $"Search – {ViewBag.Author}";
+    ViewBag.Description = "Blog searching page";
+}
+
+<h1>Search</h1>
+<form class="center" asp-controller="Search" asp-action="Index" method="get">
+    <input type="text" name="text" value="@ViewBag.Text" autofocus/>
+    <button class="button-primary" type="submit">Go</button>
+</form>
+
+@if (Model != null)
+{
+    if (Model.Count > 0)
+    {
+        foreach (var post in Model)
+        {
+            @Html.Partial("PostHeader", post)
+        }
+    }
+    else
+    {
+        <p>There are no posts matching your search</p>
+    }
+}

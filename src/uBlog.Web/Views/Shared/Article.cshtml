@@ -1,21 +1,7 @@
 ﻿@model PostModel
 
 <article class="row">
-    <header>
-        <h1><a asp-controller="Posts" asp-action="Details" asp-route-slug="@Model.Slug">@Html.Raw(Model.Title)</a></h1>
-        <div class="row">
-            <div class="one-third column">
-                <i class="fa fa-calendar" aria-hidden="true"></i> @Model.DateCreated.ToString("MMM d, yyyy")
-            </div>
-            <div class="two-thirds column">
-                <i class="fa fa-tags" aria-hidden="true"></i>
-                @foreach (var tag in Model.Tags)
-                {
-                    <a asp-controller="Tags" asp-action="Details" asp-route-slug="@tag.Slug" class="tag">@tag.Name</a>
-                }
-            </div>
-        </div>
-    </header>
+    @Html.Partial("PostHeader", Model)
     <section>
         @Html.Raw(Model.Content)
     </section>
