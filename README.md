@@ -21,7 +21,7 @@ Project uses such libraries and frameworks:
 - [Font Awesome](http://fontawesome.io)
 - [Prism](http://prismjs.com)
 
-uBlog supports [Disqus](https://disqus.com/) service for commenting.
+uBlog supports [Disqus](https://disqus.com/) service for commenting and [AddThis](https://www.addthis.com) for sharing across social networks.
 
 ## License
 This project is licensed under the MIT License.

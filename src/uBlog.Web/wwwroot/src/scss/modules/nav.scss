@@ -1,10 +1,10 @@
-﻿// Header
+﻿// Nav
 /// <reference path="../base/variables" />
 
 nav {
     border-bottom: 1px solid $light-grey;
     padding: 20px 0;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     line-height: 40px;
 
     .logo {
@@ -37,13 +37,6 @@ nav {
             color: $link-color;
         }
     }
-}
-
-footer {
-    border-top: 1px solid $light-grey;
-    margin-top: 40px;
-    padding: 20px 0;
-    text-align: center;
 }
 
 @media (#{$bp-larger-than-tablet}) {

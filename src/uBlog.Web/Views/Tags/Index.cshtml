@@ -12,7 +12,7 @@
     @foreach (var tag in Model)
     {
         <h2>
-            <a asp-controller="Tags" asp-action="Details" asp-route-slug="@tag.Slug">@Html.Raw(tag.Name)</a>&nbsp;
+            <a class="link-text" asp-controller="Tags" asp-action="Details" asp-route-slug="@tag.Slug">@Html.Raw(tag.Name)</a>&nbsp;
             <sup>[@tag.Posts.Count]</sup>
         </h2>
         <ul>

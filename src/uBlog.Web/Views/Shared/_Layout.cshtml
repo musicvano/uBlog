@@ -21,28 +21,31 @@
     </environment>
 </head>
 <body>
+    <header></header>
     <nav>
         <div class="container">
-            <div class="row">
-                <a asp-controller="Posts" asp-action="Index"><img src="~/images/@ViewBag.Photo" class="logo" /> <b class="name">@Html.Raw(ViewBag.Author)</b></a>
-                <a asp-controller="Posts" asp-action="Index">Home</a>
-                <a asp-controller="Tags" asp-action="Index">Tags</a>
-                <a asp-controller="About" asp-action="Index">About</a>
-                <div class="u-pull-right">
-                    <a asp-controller="Search" asp-action="Index"><i class="fa fa-search" aria-hidden="true"></i></a>
-                    <a asp-controller="Rss" asp-action="Index"><i class="fa fa-rss" aria-hidden="true"></i></a>
-                    <a asp-area="Admin" asp-controller="Home" asp-action="Index" id="login"><i class="fa fa-lock" aria-hidden="true"></i></a>
-                </div>
+            <a asp-controller="Posts" asp-action="Index"><img src="~/images/@ViewBag.Photo" class="logo" /> <b class="name">@Html.Raw(ViewBag.Author)</b></a>
+            <a asp-controller="Posts" asp-action="Index">Home</a>
+            <a asp-controller="Tags" asp-action="Index">Tags</a>
+            <a asp-controller="About" asp-action="Index">About</a>
+            <div class="u-pull-right">
+                <a asp-controller="Search" asp-action="Index"><i class="fa fa-search" aria-hidden="true"></i></a>
+                <a asp-controller="Rss" asp-action="Index"><i class="fa fa-rss" aria-hidden="true"></i></a>
+                <a asp-area="Admin" asp-controller="Home" asp-action="Index" id="login"><i class="fa fa-lock" aria-hidden="true"></i></a>
             </div>
         </div>
     </nav>
-    <div class="container">
-        @RenderBody()
-        <footer class="row">
+    <section>
+        <div class="container">
+            @RenderBody()
+        </div>
+    </section>
+    <footer>
+        <div class="container">
             &copy; @DateTime.Now.Year @Html.Raw(ViewBag.Author) <br />
             <small>Powered by <a href="https://github.com/musicvano/ublog" title="Version @AppSettings.Version">uBlog</a></small>
-        </footer>
-    </div>
+        </div>
+    </footer>
     <script src="~/libs/prism/prism.js"></script>
     <script id="dsq-count-scr" src="//@(ViewBag.DisqusName).disqus.com/count.js" async></script>
 </body>

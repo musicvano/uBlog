@@ -24,7 +24,12 @@ namespace uBlog.Core.Services
 
         public Post Get(int Id)
         {
-            return context.Posts.SingleOrDefault(p => p.Id == Id);
+            var post = context.Posts.SingleOrDefault(p => p.Id == Id);
+            if (post != null)
+            {
+                post.PostTags = context.PostTags.Include(p => p.Tag).Where(p => p.PostId == post.Id).ToList();
+            }
+            return post;
         }
 
         public List<Post> GetAll()

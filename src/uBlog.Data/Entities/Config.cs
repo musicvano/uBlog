@@ -6,5 +6,6 @@
         public int PageSize { get; set; }
         public string DomainUrl { get; set; }
         public string DisqusName { get; set; }
+        public string AddThisId { get; set; }
     }
 }

@@ -54,7 +54,8 @@ namespace uTool
                 {
                     DomainUrl = "http://yourdomain.com",
                     PageSize = 10,
-                    DisqusName = "admin"
+                    DisqusName = "admin",
+                    AddThisId = "ra-0000000000000000"
                 };
                 context.Configs.Add(config);
 
@@ -116,7 +117,8 @@ Credentials for admin panel:
 - E-mail: **admin@admin.com**
 - Password: **admin**
 
-uBlog uses [Disqus](https://disqus.com) for commenting so you have to create an account
+uBlog uses [Disqus](https://disqus.com) for commenting and [AddThis](https://www.addthis.com)
+for sharing posts across social networks. So you have to create accounts
 there and register your website.
 
 More information about database managment, backuping, SEO will be available soon on 

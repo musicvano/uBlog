@@ -17,6 +17,7 @@ namespace uBlog.Core.Services
             var config = Get();
             PageSize = config.PageSize;
             DisqusName = config.DisqusName;
+            AddThisId = config.AddThisId;
         }
 
         public Config Get()
@@ -32,5 +33,6 @@ namespace uBlog.Core.Services
 
         public int PageSize { get; private set; }
         public string DisqusName { get; private set; }
+        public string AddThisId { get; private set; }
     }
 }

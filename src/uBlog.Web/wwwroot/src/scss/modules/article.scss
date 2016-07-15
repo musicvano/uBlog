@@ -1,0 +1,25 @@
+﻿// Article
+/// <reference path="../base/variables" />
+
+article {
+    .article-header {
+        margin-bottom: 30px;
+
+        .tag {
+            margin-right: 20px;
+        }
+    }
+
+    .article-footer {
+        text-align: right;
+
+        .footer-item {
+            margin: 0 20px;
+        }
+    }
+
+    .share {
+        text-align: right;
+        margin: 20px 0;
+    }
+}

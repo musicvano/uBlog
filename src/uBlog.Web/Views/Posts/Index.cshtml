@@ -8,13 +8,11 @@
 {
     @foreach (var post in Model)
     {
-        @Html.Partial("Article", post)
-        <div class="row comment">
-            <div class="two columns offset-by-ten">
-                <i class="fa fa-comment-o" aria-hidden="true"></i>
-                <a asp-controller="Posts" asp-action="Details" asp-fragment="disqus_thread" asp-route-slug="@post.Slug" data-disqus-identifier="@post.Id">Comments</a>
-            </div>
-        </div>
+        <article>
+            @Html.Partial("PostHeader", post)
+            @Html.Raw(post.Content)
+            @Html.Partial("PostFooter", post)
+        </article>
     }
 }
 else

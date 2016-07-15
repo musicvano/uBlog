@@ -31,6 +31,7 @@ namespace uBlog.Core.Infrastructure
             text = stringBuilder.ToString().Normalize(NormalizationForm.FormC);
 
             //Replace spaces, dots, ++, #
+            text = Regex.Replace(text, @"[\.]", "", RegexOptions.Compiled);
             text = Regex.Replace(text, @"[\s\.]", "-", RegexOptions.Compiled);
             text = Regex.Replace(text, @"[+][+]", "pp", RegexOptions.Compiled);
             text = Regex.Replace(text, @"#", "sharp", RegexOptions.Compiled);

@@ -5,7 +5,7 @@ namespace uBlog.Web
 {
     public static class AppSettings
     {
-        public const string Version = "0.1";
+        public const string Version = "0.0.1";
         public const string DatabasePath = "AppData/uBlog.db";
         public const string LoggerPath = "AppData/Logs/log-{Date}.txt";
 

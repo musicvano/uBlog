@@ -1,7 +1,7 @@
 ﻿@model PostModel
 
-<header>
-    <h1><a asp-controller="Posts" asp-action="Details" asp-route-slug="@Model.Slug">@Html.Raw(Model.Title)</a></h1>
+<div class="article-header">
+    <h1><a class="link-text" asp-controller="Posts" asp-action="Details" asp-route-slug="@Model.Slug">@Html.Raw(Model.Title)</a></h1>
     <div class="row">
         <div class="one-third column">
             <i class="fa fa-calendar" aria-hidden="true"></i> @Model.DateCreated.ToString("MMM d, yyyy")
@@ -10,8 +10,8 @@
             <i class="fa fa-tags" aria-hidden="true"></i>
             @foreach (var tag in Model.Tags)
             {
-                <a asp-controller="Tags" asp-action="Details" asp-route-slug="@tag.Slug" class="tag">@tag.Name</a>
+                <a class="link-text tag" asp-controller="Tags" asp-action="Details" asp-route-slug="@tag.Slug">@tag.Name</a>
             }
         </div>
     </div>
-</header>
+</div>

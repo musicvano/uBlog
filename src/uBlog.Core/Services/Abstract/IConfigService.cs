@@ -8,6 +8,7 @@ namespace uBlog.Core.Services
         void Update(Config config);
 
         int PageSize { get; }
-        string DisqusName { get;}
+        string DisqusName { get; }
+        string AddThisId { get; }
     }
 }

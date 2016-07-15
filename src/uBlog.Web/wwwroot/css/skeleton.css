@@ -196,6 +196,13 @@ a {
     color: #4c6eda;
     text-decoration: underline; }
 
+.link-text {
+  color: #444;
+  text-decoration: none; }
+  .link-text:hover {
+    color: #617fde;
+    text-decoration: none; }
+
 hr {
   box-sizing: content-box;
   height: 0;
@@ -203,17 +210,6 @@ hr {
   margin-bottom: 3.5rem;
   border-width: 0;
   border-top: 1px solid #e1e1e1; }
-
-header {
-  padding: 20px 0; }
-  header a {
-    color: #444; }
-    header a:hover {
-      text-decoration: none; }
-  header .tag {
-    margin-right: 20px; }
-    header .tag:hover {
-      text-decoration: underline; }
 
 .photo {
   display: block;
@@ -245,6 +241,9 @@ header {
     left: 12px;
     top: 12px; }
 
+blockquote {
+  font-style: italic; }
+
 .u-full-width {
   width: 100%;
   box-sizing: border-box; }
@@ -269,10 +268,6 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
   margin-bottom: 2rem;
   font-weight: 300; }
-  h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-    color: #444; }
-    h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
-      text-decoration: none; }
 
 h1 {
   font-size: 2.8rem;
@@ -325,6 +320,58 @@ h6 {
 }*/
 p {
   margin-top: 0; }
+
+nav {
+  border-bottom: 1px solid #e1e1e1;
+  padding: 20px 0;
+  margin-bottom: 40px;
+  line-height: 40px; }
+  nav .logo {
+    height: 40px;
+    width: 40px;
+    vertical-align: middle;
+    border-radius: 50%; }
+  nav a {
+    color: #444;
+    margin: 0 10px;
+    text-decoration: none; }
+    nav a:hover {
+      color: #617fde;
+      text-decoration: none; }
+  nav .name {
+    display: none; }
+  nav #login {
+    float: right;
+    color: #e1e1e1; }
+    nav #login:hover {
+      color: #617fde; }
+
+@media (min-width: 750px) {
+  nav a {
+    margin: 0 15px; }
+  nav .name {
+    margin-left: 10px;
+    display: inline; } }
+
+article .article-header {
+  margin-bottom: 30px; }
+  article .article-header .tag {
+    margin-right: 20px; }
+
+article .article-footer {
+  text-align: right; }
+  article .article-footer .footer-item {
+    margin: 0 20px; }
+
+article .share {
+  text-align: right;
+  margin: 20px 0; }
+
+footer {
+  border-top: 1px solid #e1e1e1;
+  margin-top: 50px;
+  padding: 20px 0;
+  text-align: center; }
 
 /*
 * Skeleton V2.0.4
@@ -444,44 +491,6 @@ p {
   content: "";
   display: table;
   clear: both; }
-
-nav {
-  border-bottom: 1px solid #e1e1e1;
-  padding: 20px 0;
-  margin-bottom: 20px;
-  line-height: 40px; }
-  nav .logo {
-    height: 40px;
-    width: 40px;
-    vertical-align: middle;
-    border-radius: 50%; }
-  nav a {
-    color: #444;
-    margin: 0 10px;
-    text-decoration: none; }
-    nav a:hover {
-      color: #617fde;
-      text-decoration: none; }
-  nav .name {
-    display: none; }
-  nav #login {
-    float: right;
-    color: #e1e1e1; }
-    nav #login:hover {
-      color: #617fde; }
-
-footer {
-  border-top: 1px solid #e1e1e1;
-  margin-top: 40px;
-  padding: 20px 0;
-  text-align: center; }
-
-@media (min-width: 750px) {
-  nav a {
-    margin: 0 15px; }
-  nav .name {
-    margin-left: 10px;
-    display: inline; } }
 
 .button,
 button {

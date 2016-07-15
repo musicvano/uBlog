@@ -54,20 +54,9 @@ namespace uBlog.Web
         // Configure routes
         private void ConfigureRoutes(IRouteBuilder routeBuilder)
         {
-            //routeBuilder.MapRoute(
-            //    name: "Sitemap",
-            //    template: "sitemap",
-            //    defaults: new { controller = "Sitemap", action = "Index" });
-
-            //routeBuilder.MapRoute(
-            //    name: "Rss",
-            //    template: "rss",
-            //    defaults: new { controller = "Rss", action = "Index" });
-
             routeBuilder.MapRoute(
-                name: "Errors",
-                template: "errors/{code}",
-                defaults: new { controller = "Errors", action = "Index" });
+                name: "Admin",
+                template: "{area:exists}/{controller=Home}/{action=Index}");
 
             routeBuilder.MapRoute(
                 name: "Default",
@@ -75,9 +64,14 @@ namespace uBlog.Web
                 defaults: new { controller = "Posts", action = "Index" });
 
             routeBuilder.MapRoute(
-                name: "Details",
-                template: "{controller}/{slug}",
+                name: "Post",
+                template: "posts/{slug}",
                 defaults: new { controller = "Posts", action = "Details" });
+
+            routeBuilder.MapRoute(
+                name: "Tag",
+                template: "tags/{slug}",
+                defaults: new { controller = "Tags", action = "Details" });
 
             routeBuilder.MapRoute(
                 name: "Page",
@@ -85,8 +79,9 @@ namespace uBlog.Web
                 defaults: new { controller = "Posts", action = "Index" });
 
             routeBuilder.MapRoute(
-                name: "Admin",
-                template: "{area:exists}/{controller=Home}/{action=Index}");
+                name: "Error",
+                template: "errors/{code}",
+                defaults: new { controller = "Errors", action = "Index" });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

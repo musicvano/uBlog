@@ -17,8 +17,11 @@
 @import "base/typography";
 
 // Modules
-@import "modules/grid";
+@import "modules/header";
 @import "modules/nav";
+@import "modules/article";
+@import "modules/footer";
+@import "modules/grid";
 @import "modules/buttons";
 @import "modules/forms";
 @import "modules/lists";
