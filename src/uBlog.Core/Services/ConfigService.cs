@@ -1,7 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.IO;
-using System.Linq;
+﻿using System.Linq;
 using uBlog.Data;
 using uBlog.Data.Entities;
 
@@ -18,6 +15,7 @@ namespace uBlog.Core.Services
             PageSize = config.PageSize;
             DisqusName = config.DisqusName;
             AddThisId = config.AddThisId;
+            GoogleId = config.GoogleId;
         }
 
         public Config Get()
@@ -34,5 +32,6 @@ namespace uBlog.Core.Services
         public int PageSize { get; private set; }
         public string DisqusName { get; private set; }
         public string AddThisId { get; private set; }
+        public string GoogleId { get; private set; }
     }
 }

@@ -55,7 +55,8 @@ namespace uTool
                     DomainUrl = "http://yourdomain.com",
                     PageSize = 10,
                     DisqusName = "admin",
-                    AddThisId = "ra-0000000000000000"
+                    AddThisId = "ra-0000000000000000",
+                    GoogleId = "XX-00000000"
                 };
                 context.Configs.Add(config);
 

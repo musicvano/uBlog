@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="author" content="@Html.Raw(ViewBag.Author)">
@@ -24,7 +24,7 @@
     <header></header>
     <nav>
         <div class="container">
-            <a asp-controller="Posts" asp-action="Index"><img src="~/images/@ViewBag.Photo" class="logo" /> <b class="name">@Html.Raw(ViewBag.Author)</b></a>
+            <a asp-controller="Posts" asp-action="Index"><img src="~/images/@ViewBag.Photo" class="logo" alt="Logo" /> <b class="name">@Html.Raw(ViewBag.Author)</b></a>
             <a asp-controller="Posts" asp-action="Index">Home</a>
             <a asp-controller="Tags" asp-action="Index">Tags</a>
             <a asp-controller="About" asp-action="Index">About</a>
@@ -48,5 +48,6 @@
     </footer>
     <script src="~/libs/prism/prism.js"></script>
     <script id="dsq-count-scr" src="//@(ViewBag.DisqusName).disqus.com/count.js" async></script>
+    @Html.Partial("GoogleAnalytics")
 </body>
 </html>

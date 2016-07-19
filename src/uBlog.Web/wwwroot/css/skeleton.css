@@ -359,7 +359,8 @@ article .article-header {
     margin-right: 20px; }
 
 article .article-footer {
-  text-align: right; }
+  text-align: right;
+  margin-bottom: 50px; }
   article .article-footer .footer-item {
     margin: 0 20px; }
 
@@ -369,7 +370,7 @@ article .share {
 
 footer {
   border-top: 1px solid #e1e1e1;
-  margin-top: 50px;
+  margin-top: 30px;
   padding: 20px 0;
   text-align: center; }
 
@@ -665,7 +666,11 @@ li {
 code {
   padding: .2rem .5rem;
   margin: 0 .2rem;
-  white-space: nowrap; }
+  white-space: nowrap;
+  background: #f1f1f1;
+  border: 1px solid #e1e1e1;
+  border-radius: 4px;
+  line-height: 1.5; }
 
 pre > code {
   display: block;

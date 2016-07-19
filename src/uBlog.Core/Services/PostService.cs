@@ -34,7 +34,7 @@ namespace uBlog.Core.Services
 
         public List<Post> GetAll()
         {
-            var posts = context.Posts.OrderBy(p => p.DateCreated).ToList();
+            var posts = context.Posts.OrderByDescending(p => p.DateCreated).ToList();
             for (int i = 0; i < posts.Count; i++)
             {
                 posts[i].PostTags = context.PostTags.Include(p => p.Tag).Where(p => p.PostId == posts[i].Id).ToList();
@@ -44,7 +44,7 @@ namespace uBlog.Core.Services
 
         public List<Post> GetByPage(int page, int pageSize)
         {
-            var posts = context.Posts.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            var posts = context.Posts.OrderByDescending(p => p.DateCreated).Skip((page - 1) * pageSize).Take(pageSize).ToList();
             for (int i = 0; i < posts.Count; i++)
             {
                 posts[i].PostTags = context.PostTags.Include(p => p.Tag).Where(p => p.PostId == posts[i].Id).ToList();
@@ -66,7 +66,7 @@ namespace uBlog.Core.Services
         public List<Post> GetByTag(int tagId, int page, int pageSize)
         {
             var posts = context.PostTags.Where(pt => pt.TagId == tagId)
-                .Select(pt => pt.Post).OrderBy(p => p.DateCreated)
+                .Select(pt => pt.Post).OrderByDescending(p => p.DateCreated)
                 .Skip((page - 1) * pageSize).Take(pageSize).ToList();
             for (int i = 0; i < posts.Count; i++)
             {
