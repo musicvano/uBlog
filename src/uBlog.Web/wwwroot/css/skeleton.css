@@ -185,6 +185,9 @@ body {
   font-family: "Open Sans", Arial, sans-serif;
   color: #444; }
 
+div {
+  box-sizing: border-box; }
+
 a {
   background-color: transparent;
   color: #617fde;
@@ -243,6 +246,28 @@ hr {
 
 blockquote {
   font-style: italic; }
+
+.menu {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 140px;
+  border-right: 1px solid #e1e1e1; }
+  .menu ul {
+    list-style-type: none;
+    padding-top: 30px;
+    padding-left: 20px; }
+  .menu a {
+    display: block;
+    color: #444;
+    cursor: pointer; }
+    .menu a:hover {
+      text-decoration: none;
+      border-right: 3px solid #617fde; }
+
+.content {
+  margin-left: 140px;
+  padding: 0 20px; }
 
 .u-full-width {
   width: 100%;
@@ -326,11 +351,6 @@ nav {
   padding: 20px 0;
   margin-bottom: 40px;
   line-height: 40px; }
-  nav .logo {
-    height: 40px;
-    width: 40px;
-    vertical-align: middle;
-    border-radius: 50%; }
   nav a {
     color: #444;
     margin: 0 10px;
@@ -345,6 +365,12 @@ nav {
     color: #e1e1e1; }
     nav #login:hover {
       color: #617fde; }
+
+.logo {
+  height: 40px;
+  width: 40px;
+  vertical-align: middle;
+  border-radius: 50%; }
 
 @media (min-width: 750px) {
   nav a {

@@ -20,6 +20,9 @@ body {
     color: $font-color;
 }
 
+div {
+    box-sizing: border-box;
+}
 
 // Links
 
@@ -106,4 +109,34 @@ hr {
 
 blockquote {
     font-style: italic;
+}
+
+.menu {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 140px;
+    border-right: 1px solid $light-grey;
+
+    ul {
+        list-style-type: none;
+        padding-top: 30px;
+        padding-left: 20px;
+    }
+
+    a {
+        display: block;
+        color: $font-color;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: none;
+            border-right: 3px solid $link-color;
+        }
+    }
+}
+
+.content {
+    margin-left: 140px;
+    padding: 0 20px;
 }

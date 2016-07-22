@@ -10,6 +10,7 @@ Solution consists of separate parts:
 - uBlog.Data - data access layer works with [SQLite](https://www.sqlite.org/) database
 - uBlog.Core - all services provide core functionality for the blog
 - uBlog.Web - ASP.NET Core app uses Razor view engine for GET requests and provides WebAPI for admin panel
+- uBlog.Test - unit and integration tests for the blog
 - uTool - command-line interface (CLI) for initial database configuration, migration, etc.
 
 Project uses such libraries and frameworks:

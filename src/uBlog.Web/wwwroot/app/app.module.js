@@ -3,6 +3,8 @@
     "ngCookies",
     "ngResource",
     "core",
-    "postList",
-    "postDetail"
+    "mainMenu",
+    "post",
+    "search",
+    "settings"
 ]);

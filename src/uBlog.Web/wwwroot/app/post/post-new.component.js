@@ -1,6 +1,7 @@
-﻿angular.module("postList").
-  component("postList", {
-      templateUrl: "app/post-list/post-list.html",
+﻿angular.module("post").
+  component("postNew", {
+      templateUrl: "app/post/post-new.html",
+
       controller: ["PostService", function PostListController(postService) {
           this.posts = postService.query();
       }]

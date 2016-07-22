@@ -1,4 +1,8 @@
-﻿angular.module("uBlog").component("login", {
+﻿// TODO: move to MVC
+
+angular.module("uBlog").component("login", {
+    templateUrl: "app/login/login.html",
+
     controller: ['$scope', '$rootScope', '$location', 'AuthService',
     function ($scope, $rootScope, $location, AuthService) {
         // reset login status
@@ -20,6 +24,5 @@
                 }
             });
         };
-    }],
-    templateUrl: "app/login/login.html"
+    }]
 });
