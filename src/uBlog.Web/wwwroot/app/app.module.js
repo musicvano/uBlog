@@ -6,5 +6,10 @@
     "mainMenu",
     "post",
     "search",
-    "settings"
-]);
+    "settings",
+    "angular-loading-bar",
+    "ngDialog",
+    "ngFoobar"
+]).config(["cfpLoadingBarProvider", function (cfpLoadingBarProvider) {
+    cfpLoadingBarProvider.includeSpinner = false;
+}]);

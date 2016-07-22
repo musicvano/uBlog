@@ -1,1 +1,6 @@
-﻿angular.module("post", ["core", "ngRoute"]);
+﻿angular.module("post", [
+    "core",
+    "ngRoute",
+    "monospaced.elastic",
+    "hc.marked"
+]);

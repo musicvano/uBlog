@@ -85,6 +85,12 @@ namespace uBlog.Core.Services
             return resPosts;
         }
 
+        public void Update(Post post)
+        {
+            context.Posts.Update(post);
+            context.SaveChanges();
+        }
+
         public void EncodeContent(Post post)
         {
             post.Content = CommonMarkConverter.Convert(post.Content);

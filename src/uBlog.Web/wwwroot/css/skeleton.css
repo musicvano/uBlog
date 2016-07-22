@@ -248,26 +248,27 @@ blockquote {
   font-style: italic; }
 
 .menu {
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   width: 140px;
-  border-right: 1px solid #e1e1e1; }
+  border-right: 1px solid #e1e1e1;
+  overflow-y: auto; }
   .menu ul {
     list-style-type: none;
     padding-top: 30px;
     padding-left: 20px; }
   .menu a {
     display: block;
-    color: #444;
-    cursor: pointer; }
+    color: #444; }
     .menu a:hover {
+      color: #617fde;
       text-decoration: none;
       border-right: 3px solid #617fde; }
 
 .content {
   margin-left: 140px;
-  padding: 0 20px; }
+  padding: 20px; }
 
 .u-full-width {
   width: 100%;
@@ -637,6 +638,7 @@ textarea {
   -moz-appearance: none;
   appearance: none;
   min-height: 65px;
+  height: auto;
   padding-top: 6px;
   padding-bottom: 6px; }
 
@@ -672,7 +674,7 @@ ul {
 
 ol {
   list-style: decimal inside;
-  padding-left: 0;
+  padding-left: 2.5rem;
   margin-top: 0; }
 
 ul {

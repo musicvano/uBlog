@@ -11,6 +11,7 @@ namespace uBlog.Core.Services
         List<Post> GetByPage(int page, int pageSize);
         List<Post> GetByTag(int tagId, int page, int pageSize);
         List<Post> GetByText(string text);
+        void Update(Post post);
         void EncodeContent(Post post);
         void EncodeContent(ICollection<Post> posts);
     }

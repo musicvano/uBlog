@@ -16,7 +16,31 @@ namespace uBlog.Web.Models
                 Content = post.Content,
                 DateCreated = post.DateCreated,
                 Draft = post.Draft,
-                Tags = post.PostTags.Select(pt => pt.Tag).ToList()
+                Tags = post.PostTags.Select(pt => new TagModel
+                {
+                    Id = pt.Tag.Id,
+                    Name = pt.Tag.Name,
+                    Slug = pt.Tag.Slug,
+                    Posts = null
+                }).ToList()
+            };
+        }
+
+        public static Post Create(PostModel post)
+        {
+            return new Post
+            {
+                Id = post.Id,
+                Title = post.Title,
+                Slug = post.Slug,
+                Content = post.Content,
+                DateCreated = post.DateCreated,
+                Draft = post.Draft,
+                PostTags = post.Tags.Select(t => new PostTag
+                {
+                    PostId = post.Id,
+                    TagId = t.Id
+                }).ToList()
             };
         }
 
@@ -27,7 +51,16 @@ namespace uBlog.Web.Models
                 Id = tag.Id,
                 Name = tag.Name,
                 Slug = tag.Slug,
-                Posts = tag.PostTags.Select(pt => pt.Post).ToList()
+                Posts = tag.PostTags.Select(pt => new PostModel
+                {
+                    Id = pt.Post.Id,
+                    Title = pt.Post.Title,
+                    Slug = pt.Post.Slug,
+                    Content = pt.Post.Content,
+                    DateCreated = pt.Post.DateCreated,
+                    Draft = pt.Post.Draft,
+                    Tags = null
+                }).ToList()
             };
         }
 

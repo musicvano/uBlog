@@ -10,8 +10,8 @@
             when("/posts/new", {
                 template: "<post-new />"
             }).
-            when("/posts/:id", {
-                template: "<post-detail />"
+            when("/posts/:id/edit", {
+                template: "<post-edit />"
             }).
             when("/search", {
                 template: "<search />"
@@ -35,4 +35,4 @@
                 $location.path('/login');
             }
         });
-    }]) ;
+    }]);

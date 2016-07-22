@@ -112,11 +112,12 @@ blockquote {
 }
 
 .menu {
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     width: 140px;
     border-right: 1px solid $light-grey;
+    overflow-y: auto;
 
     ul {
         list-style-type: none;
@@ -127,9 +128,9 @@ blockquote {
     a {
         display: block;
         color: $font-color;
-        cursor: pointer;
 
         &:hover {
+            color: $link-color;
             text-decoration: none;
             border-right: 3px solid $link-color;
         }
@@ -138,5 +139,5 @@ blockquote {
 
 .content {
     margin-left: 140px;
-    padding: 0 20px;
+    padding: 20px;
 }
