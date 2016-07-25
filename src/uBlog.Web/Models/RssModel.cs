@@ -22,7 +22,6 @@ namespace uBlog.Web.Models
             var admin = userService.GetAdmin();
             var config = configService.Get();
             var posts = postService.GetAll();
-            //postService.EncodeContent(posts);
             Title = $"Blog - {admin.Username}";
             Link = config.DomainUrl;
             Description = Title;

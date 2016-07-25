@@ -1,11 +1,14 @@
 ﻿namespace uBlog.Core.Services
 {
+    /// <summary>
+    /// Provides methods for password hashing
+    /// </summary>
     public interface IEncryptionService
     {
         /// <summary>
         /// Creates a random salt
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Random salt string</returns>
         string CreateSalt();
 
         /// <summary>

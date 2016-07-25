@@ -4,6 +4,9 @@ using uBlog.Data.Entities;
 
 namespace uBlog.Web.Models
 {
+    /// <summary>
+    /// Mapper between entities and view models
+    /// </summary>
     public class ModelFactory
     {
         public static PostModel Create(Post post)

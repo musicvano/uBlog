@@ -1,5 +1,8 @@
 ﻿namespace uBlog.Data.Entities
 {
+    /// <summary>
+    /// Represents configuration entity of the blog engine
+    /// </summary>
     public class Config
     {
         public int Id { get; set; }

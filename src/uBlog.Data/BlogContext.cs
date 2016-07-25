@@ -3,6 +3,9 @@ using uBlog.Data.Entities;
 
 namespace uBlog.Data
 {
+    /// <summary>
+    /// Main data context of the blog engine. It uses SQLite database. BlogContext represents a combination of the Unit Of Work and Repository patterns
+    /// </summary>
     public class BlogContext : DbContext, IBlogContext
     {
         private readonly string connectionString;

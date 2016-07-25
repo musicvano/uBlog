@@ -38,10 +38,6 @@ namespace uBlog.Web.Areas.Admin.Controllers
             {
                 return BadRequest();
             }
-            //if (postService.Get(id) == null)
-            //{
-            //    return NotFound();
-            //}
             var post = ModelFactory.Create(model);
             postService.Update(post);
             return NoContent();

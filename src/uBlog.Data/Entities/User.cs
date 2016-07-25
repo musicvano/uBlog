@@ -2,6 +2,9 @@
 
 namespace uBlog.Data.Entities
 {
+    /// <summary>
+    /// User entity
+    /// </summary>
     public class User
     {
         public int Id { get; set; }

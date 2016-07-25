@@ -2,6 +2,9 @@
 
 namespace uBlog.Core.Services
 {
+    /// <summary>
+    /// Service for working with blog configurations
+    /// </summary>
     public interface IConfigService
     {
         /// <summary>

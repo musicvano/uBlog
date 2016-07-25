@@ -7,6 +7,9 @@ using uBlog.Data.Entities;
 
 namespace uTool
 {
+    /// <summary>
+    /// Database initializer creates SQLite database and seeds default data
+    /// </summary>
     public class DatabaseInitializer
     {
         private const string DefaultEmail = "admin@admin.com";
@@ -30,6 +33,7 @@ namespace uTool
         {
             using (var context = new BlogContext(databasePath))
             {
+                // Admin creating
                 var encriptionService = new EncryptionService();
                 var salt = encriptionService.CreateSalt();
                 var user = new User
@@ -50,6 +54,7 @@ namespace uTool
                 };
                 context.Users.Add(user);
 
+                // Config creating
                 var config = new Config
                 {
                     DomainUrl = "http://yourdomain.com",
@@ -60,6 +65,7 @@ namespace uTool
                 };
                 context.Configs.Add(config);
 
+                // Tags creating
                 var tags = new List<Tag>
                 {
                     new Tag { Name = "News" },
@@ -69,6 +75,7 @@ namespace uTool
                 tags.ForEach(tag => tag.Slug = UrlHelper.GetSlug(tag.Name));
                 context.Tags.AddRange(tags);
 
+                // Posts creating
                 var posts = new List<Post>
                 {
                     new Post
@@ -89,6 +96,7 @@ namespace uTool
                 posts.ForEach(post => post.Slug = UrlHelper.GetSlug(post.Title));
                 context.Posts.AddRange(posts);
 
+                // Links posts with appropriate tags
                 var postTags = new List<PostTag> {
                 new PostTag { Post = posts[0], Tag = tags[0] },
                 new PostTag { Post = posts[0], Tag = tags[1] },

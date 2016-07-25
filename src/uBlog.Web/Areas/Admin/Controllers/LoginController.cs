@@ -9,6 +9,7 @@ namespace uBlog.Web.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Post([FromBody]LoginModel viewModel)
         {
+            // For testing only :)
             if (viewModel.Username == "admin" && viewModel.Password == "admin")
             {
                 return Ok(new { success = true });

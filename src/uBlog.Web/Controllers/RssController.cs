@@ -22,7 +22,6 @@ namespace uBlog.Web.Controllers
         /// <summary>
         /// Returns RSS feed
         /// </summary>
-        /// <returns></returns>
         public IActionResult Index()
         {
             var model = new RssModel(configService, userService, postService);
