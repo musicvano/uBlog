@@ -1,27 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1A471ACE-FAE9-400C-A014-A091B986761C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uBlog.Web", "uBlog.Web\uBlog.Web.csproj", "{03C7A48B-C477-417F-A9B8-AB80E011F75E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{81F1DFFB-584E-4D7F-88A1-3A6164965224}"
-	ProjectSection(SolutionItems) = preProject
-		.gitignore = .gitignore
-		global.json = global.json
-		LICENSE = LICENSE
-		README.md = README.md
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uBlog.Data", "uBlog.Data\uBlog.Data.csproj", "{7AD8FCCE-554B-4135-907B-F7091DDAED57}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "uBlog.Web", "src\uBlog.Web\uBlog.Web.xproj", "{0B426E76-F4CC-4BF9-9AB9-B3DF0E1CBC81}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uBlog.Core", "uBlog.Core\uBlog.Core.csproj", "{159E398E-DE52-469D-8516-2A828A51CD29}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "uBlog.Data", "src\uBlog.Data\uBlog.Data.xproj", "{9CD875DE-A185-4DF1-97CA-CAE32D2A23ED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uTool", "uTool\uTool.csproj", "{5AC0EA0D-93E9-45B2-8833-2F4066D39A48}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "uBlog.Core", "src\uBlog.Core\uBlog.Core.xproj", "{5E6CCC9F-778F-43FD-AA93-768C8DDB7FB0}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "uTool", "src\uTool\uTool.xproj", "{46F9C8B1-7D5F-4B4B-9B6C-921AB5EFBCBC}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "uBlog.Test", "src\uBlog.Test\uBlog.Test.xproj", "{C479E599-E4AA-4AC3-A5C4-3FA5932CB5BF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uBlog.Test", "uBlog.Test\uBlog.Test.csproj", "{A6E15632-71FB-463A-A04B-310B788790F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,35 +19,28 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0B426E76-F4CC-4BF9-9AB9-B3DF0E1CBC81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0B426E76-F4CC-4BF9-9AB9-B3DF0E1CBC81}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0B426E76-F4CC-4BF9-9AB9-B3DF0E1CBC81}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0B426E76-F4CC-4BF9-9AB9-B3DF0E1CBC81}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9CD875DE-A185-4DF1-97CA-CAE32D2A23ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9CD875DE-A185-4DF1-97CA-CAE32D2A23ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9CD875DE-A185-4DF1-97CA-CAE32D2A23ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9CD875DE-A185-4DF1-97CA-CAE32D2A23ED}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5E6CCC9F-778F-43FD-AA93-768C8DDB7FB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5E6CCC9F-778F-43FD-AA93-768C8DDB7FB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5E6CCC9F-778F-43FD-AA93-768C8DDB7FB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5E6CCC9F-778F-43FD-AA93-768C8DDB7FB0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{46F9C8B1-7D5F-4B4B-9B6C-921AB5EFBCBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{46F9C8B1-7D5F-4B4B-9B6C-921AB5EFBCBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{46F9C8B1-7D5F-4B4B-9B6C-921AB5EFBCBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{46F9C8B1-7D5F-4B4B-9B6C-921AB5EFBCBC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C479E599-E4AA-4AC3-A5C4-3FA5932CB5BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C479E599-E4AA-4AC3-A5C4-3FA5932CB5BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C479E599-E4AA-4AC3-A5C4-3FA5932CB5BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C479E599-E4AA-4AC3-A5C4-3FA5932CB5BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03C7A48B-C477-417F-A9B8-AB80E011F75E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03C7A48B-C477-417F-A9B8-AB80E011F75E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03C7A48B-C477-417F-A9B8-AB80E011F75E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03C7A48B-C477-417F-A9B8-AB80E011F75E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AD8FCCE-554B-4135-907B-F7091DDAED57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AD8FCCE-554B-4135-907B-F7091DDAED57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AD8FCCE-554B-4135-907B-F7091DDAED57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AD8FCCE-554B-4135-907B-F7091DDAED57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{159E398E-DE52-469D-8516-2A828A51CD29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{159E398E-DE52-469D-8516-2A828A51CD29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{159E398E-DE52-469D-8516-2A828A51CD29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{159E398E-DE52-469D-8516-2A828A51CD29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AC0EA0D-93E9-45B2-8833-2F4066D39A48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AC0EA0D-93E9-45B2-8833-2F4066D39A48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AC0EA0D-93E9-45B2-8833-2F4066D39A48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AC0EA0D-93E9-45B2-8833-2F4066D39A48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6E15632-71FB-463A-A04B-310B788790F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6E15632-71FB-463A-A04B-310B788790F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6E15632-71FB-463A-A04B-310B788790F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6E15632-71FB-463A-A04B-310B788790F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{0B426E76-F4CC-4BF9-9AB9-B3DF0E1CBC81} = {1A471ACE-FAE9-400C-A014-A091B986761C}
-		{9CD875DE-A185-4DF1-97CA-CAE32D2A23ED} = {1A471ACE-FAE9-400C-A014-A091B986761C}
-		{5E6CCC9F-778F-43FD-AA93-768C8DDB7FB0} = {1A471ACE-FAE9-400C-A014-A091B986761C}
-		{46F9C8B1-7D5F-4B4B-9B6C-921AB5EFBCBC} = {1A471ACE-FAE9-400C-A014-A091B986761C}
-		{C479E599-E4AA-4AC3-A5C4-3FA5932CB5BF} = {1A471ACE-FAE9-400C-A014-A091B986761C}
 	EndGlobalSection
 EndGlobal

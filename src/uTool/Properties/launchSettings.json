@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "uTool": {
-      "commandName": "Project",
-      "commandLineArgs": "new $(SolutionDir)src\\uBlog.Web\\AppData\\uBlog.db"
-    }
-  }
-}

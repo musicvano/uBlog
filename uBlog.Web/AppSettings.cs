@@ -1,5 +1,4 @@
-﻿using Serilog;
-using System.IO;
+﻿using System.IO;
 
 namespace uBlog.Web
 {

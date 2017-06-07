@@ -3,9 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Serilog;
 using System.IO;
-using System.Security.Claims;
 using uBlog.Core.Services;
 using uBlog.Data;
 
@@ -20,10 +18,10 @@ namespace uBlog.Web
             rootPath = env.ContentRootPath;
 
             // Configure logger
-            Log.Logger = new LoggerConfiguration()
+            /*Log.Logger = new LoggerConfiguration()
             .MinimumLevel.Warning()
             .WriteTo.RollingFile(Path.Combine(rootPath, AppSettings.LoggerPath))
-            .CreateLogger();
+            .CreateLogger();*/
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -38,7 +36,7 @@ namespace uBlog.Web
             services.AddScoped<ITagService, TagService>();
 
             // Configure authentication
-            services.AddAuthentication();
+            /*services.AddAuthentication();
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("AdminOnly", policy =>
@@ -46,7 +44,7 @@ namespace uBlog.Web
                     policy.RequireClaim(ClaimTypes.Role, "Admin");
                 });
 
-            });
+            });*/
             services.AddRouting(routeOptions => routeOptions.LowercaseUrls = true);
             services.AddMvc();
         }
@@ -87,25 +85,13 @@ namespace uBlog.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddSerilog();
+            loggerFactory.AddConsole();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                app.UseExceptionHandler("/errors/500");
-            }
-            app.UseStatusCodePagesWithReExecute("/errors/{0}");
             app.UseStaticFiles();
-            app.UseCookieAuthentication(new CookieAuthenticationOptions
-            {
-                AutomaticAuthenticate = true,
-                AutomaticChallenge = true
-            });
-            //app.UseMiddleware<AuthMiddleware>();
             app.UseMvc(ConfigureRoutes);
-
         }
     }
 }
