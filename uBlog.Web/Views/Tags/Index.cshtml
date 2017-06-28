@@ -1,6 +1,6 @@
 ﻿@model List<TagModel>
 @{
-    ViewBag.Title = $"Tags – {ViewBag.Author}";
+    ViewBag.Title = $"Tags - {ViewBag.Author}";
     ViewBag.Description = "Blog tags, categories and posts by tag";
     ViewBag.Keywords = String.Join(", ", Model.Select(t => t.Name).ToList());
 }

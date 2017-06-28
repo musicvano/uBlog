@@ -1,6 +1,6 @@
 ﻿@model PostModel
 @{
-    ViewBag.Title = Model.Title + " – " + ViewBag.Author;
+    ViewBag.Title = Model.Title + " - " + ViewBag.Author;
     ViewBag.Description = Model.Title;
     ViewBag.Keywords = String.Join(", ", Model.Tags.Select(t => t.Name).ToList());
     ViewBag.Url = Microsoft.AspNetCore.Http.Extensions.UriHelper.GetDisplayUrl(Context.Request);
