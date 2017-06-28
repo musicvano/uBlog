@@ -7,7 +7,7 @@ namespace uBlog.Web.Areas.Admin.Controllers
     {
         public IActionResult Index()
         {
-            return PartialView();
+            return View();
         }
     }
 }

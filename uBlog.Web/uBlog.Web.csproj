@@ -33,6 +33,15 @@
     <Content Include="Client\src\scss\modules\spacing.scss" />
     <Content Include="Client\src\scss\modules\tables.scss" />
     <Content Include="Client\src\scss\skeleton.scss" />
+    <Content Include="wwwroot\dist\index.html" />
+    <Content Include="wwwroot\dist\inline.bundle.js" />
+    <Content Include="wwwroot\dist\inline.bundle.js.map" />
+    <Content Include="wwwroot\dist\main.bundle.js" />
+    <Content Include="wwwroot\dist\main.bundle.js.map" />
+    <Content Include="wwwroot\dist\polyfills.bundle.js" />
+    <Content Include="wwwroot\dist\polyfills.bundle.js.map" />
+    <Content Include="wwwroot\dist\vendor.bundle.js" />
+    <Content Include="wwwroot\dist\vendor.bundle.js.map" />
   </ItemGroup>
 
   <ItemGroup>
@@ -49,11 +58,10 @@
     <Folder Include="Views\Shared\" />
     <Folder Include="Views\Search\" />
     <Folder Include="Views\Posts\" />
-    <Folder Include="wwwroot\" />
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.1" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.3" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.2" />
@@ -61,5 +69,9 @@
   
   <ItemGroup>
     <ProjectReference Include="..\uBlog.Core\uBlog.Core.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="1.0.0" />
   </ItemGroup>
 </Project>
