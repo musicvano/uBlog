@@ -6,5 +6,7 @@
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'This is my first Angular app!';
+    title = 'This is my first Angular app!';
+    //constructor(private router: Router) {
+    //}
 }

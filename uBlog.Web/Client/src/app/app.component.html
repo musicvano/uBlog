@@ -1,7 +1,7 @@
 ﻿<nav class="nav has-shadow">
   <div class="container">
     <div class="nav-left">
-      <a class="nav-item">
+      <a href="/" class="nav-item">
         <h1 class="title">uBlog</h1>
       </a>
     </div>
@@ -33,25 +33,25 @@
           </p>
           <ul class="menu-list">
             <li>
-              <a class="is-active">
+              <a [routerLink]="['/new']" class="is-active">
                 <span class="icon is-small"><i class="fa fa-pencil-square-o"></i></span>
                 <span>New Post</span>
               </a>
             </li>
             <li>
-              <a>
+              <a [routerLink]="['/posts']">
                 <span class="icon is-small"><i class="fa fa-file-text-o"></i></span>
                 <span>Content</span>
               </a>
             </li>
             <li>
-              <a>
+              <a [routerLink]="['/tags']">
                 <span class="icon is-small"><i class="fa fa-tags"></i></span>
                 <span>Tags</span>
               </a>
             </li>
             <li>
-              <a>
+              <a [routerLink]="['/settings']">
                 <span class="icon is-small"><i class="fa fa-cogs"></i></span>
                 <span>Settings</span>
               </a>
@@ -60,6 +60,7 @@
         </aside>
       </div>
       <div class="column">
+        <router-outlet></router-outlet>
       </div>
     </div>
   </div>

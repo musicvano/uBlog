@@ -53,8 +53,13 @@ namespace uBlog.Web
         private void ConfigureRoutes(IRouteBuilder routeBuilder)
         {
             routeBuilder.MapRoute(
+                name: "Api",
+                template: "{area:exists}/{controller}");
+
+            routeBuilder.MapRoute(
                 name: "Admin",
-                template: "{area:exists}/{controller=Home}/{action=Index}");
+                template: "admin/{url?}",
+                defaults: new { controller = "Admin", action = "Index" });
 
             routeBuilder.MapRoute(
                 name: "Default",
