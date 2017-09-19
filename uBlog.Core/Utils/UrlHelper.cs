@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace uBlog.Core.Infrastructure
+namespace uBlog.Core.Utils
 {
     public class UrlHelper
     {

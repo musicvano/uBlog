@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Text;
 
-namespace uBlog.Core.Infrastructure
+namespace uBlog.Core.Utils
 {
     /// <summary>
     /// String writer with UTF-8 encoding

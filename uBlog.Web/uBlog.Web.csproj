@@ -1,80 +1,22 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp1.1</TargetFramework>
-    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
-    <PackageTargetFallback>portable-net45+win8</PackageTargetFallback>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <UserSecretsId>2308ea5d-f7b6-48c9-af84-a6d0dc119b72</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Client\node_modules\**" />
-    <Content Remove="Client\node_modules\**" />
-    <EmbeddedResource Remove="Client\node_modules\**" />
-    <None Remove="Client\node_modules\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Client\src\scss\base\base-styles.scss" />
-    <Content Include="Client\src\scss\base\functions.scss" />
-    <Content Include="Client\src\scss\base\normalize.scss" />
-    <Content Include="Client\src\scss\base\typography.scss" />
-    <Content Include="Client\src\scss\base\utils.scss" />
-    <Content Include="Client\src\scss\base\variables.scss" />
-    <Content Include="Client\src\scss\modules\article.scss" />
-    <Content Include="Client\src\scss\modules\buttons.scss" />
-    <Content Include="Client\src\scss\modules\code.scss" />
-    <Content Include="Client\src\scss\modules\footer.scss" />
-    <Content Include="Client\src\scss\modules\forms.scss" />
-    <Content Include="Client\src\scss\modules\grid.scss" />
-    <Content Include="Client\src\scss\modules\header.scss" />
-    <Content Include="Client\src\scss\modules\lists.scss" />
-    <Content Include="Client\src\scss\modules\media-queries.scss" />
-    <Content Include="Client\src\scss\modules\modal.scss" />
-    <Content Include="Client\src\scss\modules\nav.scss" />
-    <Content Include="Client\src\scss\modules\spacing.scss" />
-    <Content Include="Client\src\scss\modules\tables.scss" />
-    <Content Include="Client\src\scss\skeleton.scss" />
-    <Content Include="wwwroot\dist\index.html" />
-    <Content Include="wwwroot\dist\inline.bundle.js" />
-    <Content Include="wwwroot\dist\inline.bundle.js.map" />
-    <Content Include="wwwroot\dist\main.bundle.js" />
-    <Content Include="wwwroot\dist\main.bundle.js.map" />
-    <Content Include="wwwroot\dist\polyfills.bundle.js" />
-    <Content Include="wwwroot\dist\polyfills.bundle.js.map" />
-    <Content Include="wwwroot\dist\vendor.bundle.js" />
-    <Content Include="wwwroot\dist\vendor.bundle.js.map" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="AppData\" />
-    <Folder Include="Models\" />
-    <Folder Include="Security\" />
-    <Folder Include="Views\About\" />
-    <Folder Include="Views\Errors\" />
-    <Folder Include="Views\Tags\" />
-    <Folder Include="Views\Shared\" />
-    <Folder Include="Views\Search\" />
-    <Folder Include="Views\Posts\" />
+    <Folder Include="wwwroot\" />
   </ItemGroup>
-  
+
   <ItemGroup>
-    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.3" />
-    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.2" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="1.1.2" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="1.1.2" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.2" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.2" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.2" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <ProjectReference Include="..\uBlog.Core\uBlog.Core.csproj" />
+    <ProjectReference Include="..\uBlog.Data\uBlog.Data.csproj" />
   </ItemGroup>
-  
-  <ItemGroup>
-    <DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="1.0.0" />
-  </ItemGroup>
+
 </Project>

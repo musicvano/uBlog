@@ -5,7 +5,7 @@ using System.Net;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Xml;
-using uBlog.Core.Infrastructure;
+using uBlog.Core.Utils;
 using uBlog.Core.Services;
 
 namespace uBlog.Web.Models

@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Text;
 using System.Xml;
-using uBlog.Core.Infrastructure;
+using uBlog.Core.Utils;
 using uBlog.Core.Services;
 
 namespace uBlog.Web.Models

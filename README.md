@@ -1,5 +1,5 @@
 # uBlog
-Simple blog engine based on ASP.NET Core 1.0.
+Simple blog engine based on ASP.NET Core 2.0.
 
 uBlog is currently under **development**. Some news can be found on my website [mvano.com](http://mvano.com).
 
@@ -17,8 +17,9 @@ Project uses such libraries and frameworks:
 
 - [Entity Framework Core](https://ef.readthedocs.io)
 - [CommonMark.NET](https://github.com/Knagis/CommonMark.NET)
-- [AngularJS](https://angularjs.org)
+- [Angular](https://angular.io)
 - [Skeleton CSS](http://getskeleton.com)
+- [Bulma CSS](http://bulma.io)
 - [Font Awesome](http://fontawesome.io)
 - [Prism](http://prismjs.com)
 

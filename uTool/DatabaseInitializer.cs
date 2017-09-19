@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using uBlog.Core.Infrastructure;
+using uBlog.Core.Utils;
 using uBlog.Core.Services;
 using uBlog.Data;
 using uBlog.Data.Entities;
