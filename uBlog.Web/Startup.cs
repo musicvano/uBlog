@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System.IO;
@@ -16,12 +17,6 @@ namespace uBlog.Web
         public Startup(IHostingEnvironment env)
         {
             rootPath = env.ContentRootPath;
-
-            // Configure logger
-            /*Log.Logger = new LoggerConfiguration()
-            .MinimumLevel.Warning()
-            .WriteTo.RollingFile(Path.Combine(rootPath, AppSettings.LoggerPath))
-            .CreateLogger();*/
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -34,17 +29,6 @@ namespace uBlog.Web
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IPostService, PostService>();
             services.AddScoped<ITagService, TagService>();
-
-            // Configure authentication
-            /*services.AddAuthentication();
-            services.AddAuthorization(options =>
-            {
-                options.AddPolicy("AdminOnly", policy =>
-                {
-                    policy.RequireClaim(ClaimTypes.Role, "Admin");
-                });
-
-            });*/
             services.AddRouting(routeOptions => routeOptions.LowercaseUrls = true);
             services.AddMvc();
         }
@@ -94,6 +78,14 @@ namespace uBlog.Web
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
+                {
+                    HotModuleReplacement = true
+                });
+            }
+            else
+            {
+                app.UseExceptionHandler("/errors/500");
             }
             app.UseStaticFiles();
             app.UseMvc(ConfigureRoutes);

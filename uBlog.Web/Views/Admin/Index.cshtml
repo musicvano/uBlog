@@ -1,4 +1,5 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, Microsoft.AspNetCore.SpaServices
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,14 +19,8 @@
     </environment>
 </head>
 <body>
-    <app-root>
-        <div class="has-text-centered">
-            Loading...
-        </div>
-    </app-root>
-    <script type="text/javascript" src="~/dist/inline.bundle.js"></script>
-    <script type="text/javascript" src="~/dist/polyfills.bundle.js"></script>
-    <script type="text/javascript" src="~/dist/vendor.bundle.js"></script>
-    <script type="text/javascript" src="~/dist/main.bundle.js"></script>
+    <app asp-prerender-module="ClientApp/dist/main-server">Loading...</app>
+    <script src="~/dist/vendor.js" asp-append-version="true"></script>
+    <script src="~/dist/main-client.js" asp-append-version="true"></script>
 </body>
 </html>
