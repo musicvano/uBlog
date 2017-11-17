@@ -10,7 +10,7 @@ namespace uBlog.Core.Utils
     {
         public override Encoding Encoding
         {
-            get { return Encoding.UTF8; }
+            get => Encoding.UTF8;
         }
     }
 }
