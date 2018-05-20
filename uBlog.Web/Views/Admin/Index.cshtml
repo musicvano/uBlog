@@ -9,18 +9,22 @@
     <title>uBlog - Admin panel</title>
     <base href="/admin/">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic&subset=latin,cyrillic" rel="stylesheet" type="text/css" />
     <environment names="Development">
-        <link rel="stylesheet" href="~/libs/bulma/bulma.css" />
-        <link rel="stylesheet" href="~/libs/font-awesome/css/font-awesome.css" />
+        <link href="~/libs/bulma/bulma.min.css" rel="stylesheet" />
+        <link href="~/libs/mdi/css/materialdesignicons.css" rel="stylesheet" />
     </environment>
     <environment names="Staging,Production">
-        <link rel="stylesheet" href="~/libs/bulma/bulma.min.css" />
-        <link rel="stylesheet" href="~/libs/font-awesome/css/font-awesome.min.css" />
+        <link href="~/libs/bulma/bulma.min.css" rel="stylesheet" />
+        <link href="~/libs/mdi/css/materialdesignicons.min.css" rel="stylesheet" />
     </environment>
 </head>
 <body>
-    <app asp-prerender-module="ClientApp/dist/main-server">Loading...</app>
-    <script src="~/dist/vendor.js" asp-append-version="true"></script>
-    <script src="~/dist/main-client.js" asp-append-version="true"></script>
+    <app-root>Loading...</app-root>
+    <script type="text/javascript" src="~/app/runtime.js"></script>
+    <script type="text/javascript" src="~/app/polyfills.js"></script>
+    <script type="text/javascript" src="~/app/styles.js"></script>
+    <script type="text/javascript" src="~/app/vendor.js"></script>
+    <script type="text/javascript" src="~/app/main.js"></script>
 </body>
 </html>

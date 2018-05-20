@@ -1,0 +1,8 @@
+[
+  {
+    "outputFileName": "wwwroot/libs/bulma/nav.min.js",
+    "inputFiles": [
+      "wwwroot/libs/bulma/nav.js"
+    ]
+  }
+]

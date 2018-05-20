@@ -18,9 +18,8 @@ Project uses such libraries and frameworks:
 - [Entity Framework Core](https://ef.readthedocs.io)
 - [CommonMark.NET](https://github.com/Knagis/CommonMark.NET)
 - [Angular](https://angular.io)
-- [Skeleton CSS](http://getskeleton.com)
 - [Bulma CSS](http://bulma.io)
-- [Font Awesome](http://fontawesome.io)
+- [Material Design Icons](https://materialdesignicons.com)
 - [Prism](http://prismjs.com)
 
 uBlog supports [Disqus](https://disqus.com/) service for commenting and [AddThis](https://www.addthis.com) for sharing across social networks.

@@ -1,0 +1,17 @@
+﻿<environment names="Development">
+    <script src="~/libs/bulma/nav.js"></script>
+    <script src="~/libs/prism/prism.js"></script>
+</environment>
+<environment names="Staging,Production">
+    <script src="~/libs/bulma/nav.min.js"></script>
+    <script src="~/libs/prism/prism.min.js"></script>
+</environment>
+<script id="dsq-count-scr" src="//@(ViewBag.DisqusName).disqus.com/count.js" async></script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', '@ViewBag.GoogleId', 'auto');
+    ga('send', 'pageview');
+</script>

@@ -8,46 +8,47 @@
     <meta name="generator" content="uBlog">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@Html.Raw(ViewBag.Title)</title>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic&subset=latin,cyrillic" rel="stylesheet" type="text/css" />
-    <environment names="Development">
-        <link href="~/css/skeleton.css" rel="stylesheet" />
-        <link href="~/libs/font-awesome/css/font-awesome.css" rel="stylesheet" />
-        <link href="~/libs/prism/prism.css" rel="stylesheet" />
-    </environment>
-    <environment names="Staging,Production">
-        <link href="~/css/skeleton.min.css" rel="stylesheet" />
-        <link href="~/libs/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-        <link href="~/libs/prism/prism.css" rel="stylesheet" />
-    </environment>
+    <base href="/" />
+    @Html.Partial("Styles")
 </head>
 <body>
     <header></header>
-    <nav>
-        <div class="container">
-            <a asp-controller="Posts" asp-action="Index"><img src="~/images/@ViewBag.Photo" class="logo" alt="Logo" /> <b class="name">@Html.Raw(ViewBag.Author)</b></a>
-            <a asp-controller="Posts" asp-action="Index">Home</a>
-            <a asp-controller="Tags" asp-action="Index">Tags</a>
-            <a asp-controller="About" asp-action="Index">About</a>
-            <div class="u-pull-right">
-                <a asp-controller="Search" asp-action="Index"><i class="fa fa-search" aria-hidden="true"></i></a>
-                <a asp-controller="Rss" asp-action="Index"><i class="fa fa-rss" aria-hidden="true"></i></a>
-                <a asp-controller="Admin" asp-action="Index" id="login"><i class="fa fa-lock" aria-hidden="true"></i></a>
+    <nav class="navbar container" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a asp-controller="Posts" asp-action="Index" class="navbar-item">
+                <img src="~/images/@ViewBag.Photo" alt="@Html.Raw(ViewBag.Author)" width="32" class="is-rounded" />
+                <b>@Html.Raw(ViewBag.Author)</b>
+            </a>
+            <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="navbar-menu" id="navMenu">
+            <div class="navbar-start">
+            </div>
+            <div class="navbar-end">
+                <a asp-controller="Posts" asp-action="Index" class="navbar-item">Home</a>
+                <a asp-controller="Tags" asp-action="Index" class="navbar-item">Tags</a>
+                <a asp-controller="About" asp-action="Index" class="navbar-item">About</a>
+                <a asp-controller="Search" asp-action="Index" class="navbar-item"><i class="mdi mdi-magnify mdi-18px"></i></a>
+                <a asp-controller="Rss" asp-action="Index" class="navbar-item"><i class="mdi mdi-rss mdi-18px"></i></a>
+                <a asp-controller="Admin" asp-action="Index" class="navbar-item"><i class="mdi mdi-lock mdi-18px"></i></a>
             </div>
         </div>
     </nav>
-    <section>
+    <section class="section">
         <div class="container">
             @RenderBody()
         </div>
     </section>
-    <footer>
-        <div class="container">
+    <footer class="footer">
+        <div class="container has-text-centered">
             &copy; @DateTime.Now.Year @Html.Raw(ViewBag.Author) <br />
             <small>Powered by <a href="https://github.com/musicvano/ublog" title="Version @AppSettings.Version">uBlog</a></small>
         </div>
     </footer>
-    <script src="~/libs/prism/prism.js"></script>
-    <script id="dsq-count-scr" src="//@(ViewBag.DisqusName).disqus.com/count.js" async></script>
-    @Html.Partial("GoogleAnalytics")
+    @Html.Partial("Scripts")
 </body>
 </html>

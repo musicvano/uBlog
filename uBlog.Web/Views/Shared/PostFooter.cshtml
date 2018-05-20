@@ -1,6 +1,5 @@
 ﻿@model PostModel
 
-<div class="article-footer">
     <span class="footer-item">
         <i class="fa fa-comments-o" aria-hidden="true"></i>
         <a class="link-text" asp-controller="Posts" asp-action="Details" asp-fragment="disqus_thread" asp-route-slug="@Model.Slug" data-disqus-identifier="@Model.Id">Comments</a>
@@ -9,4 +8,3 @@
         <i class="fa fa-share" aria-hidden="true"></i>
         <a class="link-text" asp-controller="Posts" asp-action="Details" asp-fragment="share" asp-route-slug="@Model.Slug">Share</a>
     </span>
-</div>
