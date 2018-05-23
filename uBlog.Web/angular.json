@@ -21,9 +21,7 @@
             "assets": [
               "ClientApp/assets"
             ],
-            "styles": [
-              "ClientApp/styles.css"
-            ],
+            "styles": [],
             "scripts": []
           },
           "configurations": {
@@ -70,9 +68,7 @@
             "polyfills": "ClientApp/polyfills.ts",
             "tsConfig": "ClientApp/tsconfig.spec.json",
             "karmaConfig": "ClientApp/karma.conf.js",
-            "styles": [
-              "ClientApp/styles.css"
-            ],
+            "styles": [],
             "scripts": [],
             "assets": [
               "ClientApp/assets"

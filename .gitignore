@@ -235,3 +235,7 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+uBlog.Web/wwwroot/app/3rdpartylicenses.txt
+*.html
+*.js
+*.map

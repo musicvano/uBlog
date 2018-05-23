@@ -3,23 +3,17 @@
 <h1 class="title">
     <a asp-controller="Posts" asp-action="Details" asp-route-slug="@Model.Slug">@Html.Raw(Model.Title)</a>
 </h1>
-<div class="level">
-    <div class="level-left">
-        <div class="level-item">
-            <div class="tags">
-                @foreach (var tag in Model.Tags)
-                {
-                    <a class="tag" asp-controller="Tags" asp-action="Details" asp-route-slug="@tag.Slug">
-                        <span class="icon"><i class="mdi mdi-tag-outline"></i></span>@tag.Name
-                    </a>
-                }
-            </div>
-        </div>
-    </div>
-    <div class="level-right">
-        <div class="level-item">
-            <span class="icon"><i class="mdi mdi-calendar"></i></span>
-            <p>@Model.DateCreated.ToString("MMM d, yyyy")</p>
-        </div>
-    </div>
+
+<div class="tags is-pulled-left">
+    @foreach (var tag in Model.Tags)
+    {
+        <a class="tag" asp-controller="Tags" asp-action="Details" asp-route-slug="@tag.Slug">
+            <span class="icon"><i class="mdi mdi-tag-outline"></i></span>@tag.Name
+        </a>
+    }
 </div>
+<div class="is-pulled-right">
+    <span class="icon"><i class="mdi mdi-calendar"></i></span>
+    @Model.DateCreated.ToString("MMM d, yyyy")
+</div>
+<div class="is-clearfix"></div>

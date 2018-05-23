@@ -16,7 +16,7 @@
     <nav class="navbar container" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a asp-controller="Posts" asp-action="Index" class="navbar-item">
-                <img src="~/images/@ViewBag.Photo" alt="@Html.Raw(ViewBag.Author)" width="32" class="is-rounded" />
+                <img src="~/images/@ViewBag.Photo" alt="@Html.Raw(ViewBag.Author)" width="40" height="40" class="is-rounded" />
                 <b>@Html.Raw(ViewBag.Author)</b>
             </a>
             <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
@@ -38,11 +38,16 @@
             </div>
         </div>
     </nav>
-    <section class="section">
-        <div class="container">
-            @RenderBody()
+    <section class="hero is-warning">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    Blog Title
+                </h1>
+            </div>
         </div>
     </section>
+    @RenderBody()
     <footer class="footer">
         <div class="container has-text-centered">
             &copy; @DateTime.Now.Year @Html.Raw(ViewBag.Author) <br />

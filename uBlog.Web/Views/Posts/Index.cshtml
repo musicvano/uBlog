@@ -8,16 +8,23 @@
 {
     @foreach (var post in Model)
     {
-        <article class="content">
-            @Html.Partial("PostHeader", post)
-            @Html.Raw(post.Content)
-            @Html.Partial("PostFooter", post)
-        </article>
+        <section class="section">
+            <div class="container">
+                <article class="content">
+                    @Html.Partial("PostHeader", post)
+                    @Html.Raw(post.Content)
+                    <hr />
+                    @Html.Partial("PostFooter", post)
+                </article>
+            </div>
+        </section>
     }
 }
 else
 {
-    <header>
-        <h1>Sorry. There are no posts</h1>
-    </header>
+    <section class="section">
+        <div class="container">
+            <h2 class="subtitle">Sorry. There are no posts</h2>
+        </div>
+    </section>
 }

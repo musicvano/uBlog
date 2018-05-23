@@ -1,10 +1,15 @@
 ﻿@model PostModel
 
-    <span class="footer-item">
-        <i class="fa fa-comments-o" aria-hidden="true"></i>
-        <a class="link-text" asp-controller="Posts" asp-action="Details" asp-fragment="disqus_thread" asp-route-slug="@Model.Slug" data-disqus-identifier="@Model.Id">Comments</a>
-    </span>
-    <span class="footer-item">
-        <i class="fa fa-share" aria-hidden="true"></i>
-        <a class="link-text" asp-controller="Posts" asp-action="Details" asp-fragment="share" asp-route-slug="@Model.Slug">Share</a>
-    </span>
+<div class="is-pulled-left">
+    <span class="icon"><i class="mdi mdi-comment-multiple-outline"></i></span>
+    <a asp-controller="Posts" asp-action="Details" asp-fragment="disqus_thread" asp-route-slug="@Model.Slug" data-disqus-identifier="@Model.Id">
+        Comments
+    </a>
+</div>
+<div class="is-pulled-right">
+    <span class="icon"><i class="mdi mdi-share-variant"></i></span>
+    <a asp-controller="Posts" asp-action="Details" asp-fragment="share" asp-route-slug="@Model.Slug">
+        Share
+    </a>
+</div>
+<div class="is-clearfix"></div>
