@@ -25,7 +25,7 @@ namespace uBlog.Web
         /// <summary>
         /// Returns true when database exists
         /// </summary>
-        public static bool IsInstalled()
+        public static bool DbExists()
         {
             var dbFile = Path.Combine(Directory.GetCurrentDirectory(), DatabasePath);
             return File.Exists(dbFile) && (new FileInfo(dbFile).Length > 0);

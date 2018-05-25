@@ -5,13 +5,11 @@ VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "uBlog.Web", "uBlog.Web\uBlog.Web.csproj", "{ACD01EAD-DD82-46E7-9FBF-D8A9122E6702}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uBlog.Data", "uBlog.Data\uBlog.Data.csproj", "{23291FDA-6D69-4032-9D21-9DDB1482AA63}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "uBlog.Data", "uBlog.Data\uBlog.Data.csproj", "{23291FDA-6D69-4032-9D21-9DDB1482AA63}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uBlog.Core", "uBlog.Core\uBlog.Core.csproj", "{B4FAFFF6-04C9-4BC4-A082-257BD5E28A1A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "uBlog.Core", "uBlog.Core\uBlog.Core.csproj", "{B4FAFFF6-04C9-4BC4-A082-257BD5E28A1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uBlog.Test", "uBlog.Test\uBlog.Test.csproj", "{70AC5965-4E7A-4306-8848-6C163820D943}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uTool", "uTool\uTool.csproj", "{1B30E8D6-9001-463F-9C7D-206DFBCBCF44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "uBlog.Test", "uBlog.Test\uBlog.Test.csproj", "{70AC5965-4E7A-4306-8848-6C163820D943}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +33,6 @@ Global
 		{70AC5965-4E7A-4306-8848-6C163820D943}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70AC5965-4E7A-4306-8848-6C163820D943}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70AC5965-4E7A-4306-8848-6C163820D943}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1B30E8D6-9001-463F-9C7D-206DFBCBCF44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1B30E8D6-9001-463F-9C7D-206DFBCBCF44}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1B30E8D6-9001-463F-9C7D-206DFBCBCF44}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1B30E8D6-9001-463F-9C7D-206DFBCBCF44}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

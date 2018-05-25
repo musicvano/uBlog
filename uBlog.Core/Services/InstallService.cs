@@ -1,45 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using uBlog.Core.Utils;
-using uBlog.Core.Services;
 using uBlog.Data;
 using uBlog.Data.Entities;
 
-namespace uTool
+namespace uBlog.Core.Services
 {
-    /// <summary>
-    /// Database initializer creates SQLite database and seeds default data
-    /// </summary>
-    public class DatabaseInitializer
+    public class InstallService : IInstallService
     {
-        private const string DefaultEmail = "admin@admin.com";
-        private const string DefaultPassword = "admin";
+        private readonly IBlogContext context;
+        private readonly IEncryptionService encryptionService;
 
-        /// <summary>
-        /// Creates new database
-        /// </summary>
-        public static void Create(string databasePath)
+        public InstallService(IBlogContext context, IEncryptionService encryptionService)
         {
-            using (var context = new BlogContext(databasePath))
-            {
-                context.Database.EnsureCreated();
-            }
+            this.context = context;
+            this.encryptionService = encryptionService;
         }
 
-        /// <summary>
-        /// Saves demo data to the database
-        /// </summary>
-        public static void Seed(string databasePath)
+        public void Seed(string blogTitle, string username, string password, string email)
         {
-            using (var context = new BlogContext(databasePath))
-            {
+                context.EnsureCreated();
                 // Admin creating
-                var encriptionService = new EncryptionService();
-                var salt = encriptionService.CreateSalt();
+                var salt = encryptionService.CreateSalt();
                 var user = new User
                 {
-                    Username = "User Name",
-                    Email = DefaultEmail,
+                    Username = username,
+                    Email = email,
                     About = "Tell a little about yourself",
                     Photo = "default.png",
                     Url = "http://user.com",
@@ -48,7 +34,7 @@ namespace uTool
                     Twitter = "https://twitter.com/user",
                     Skype = "user",
                     Location = "Country",
-                    HashedPassword = encriptionService.EncryptPassword(DefaultPassword, salt),
+                    HashedPassword = encryptionService.EncryptPassword(password, salt),
                     Salt = salt,
                     DateCreated = DateTime.Now
                 };
@@ -57,6 +43,7 @@ namespace uTool
                 // Config creating
                 var config = new Config
                 {
+                    Title = blogTitle,
                     DomainUrl = "http://yourdomain.com",
                     PageSize = 10,
                     DisqusName = "admin",
@@ -102,10 +89,9 @@ namespace uTool
                 new PostTag { Post = posts[0], Tag = tags[1] },
                 new PostTag { Post = posts[1], Tag = tags[2] }
                 };
-                    context.PostTags.AddRange(postTags);
-                    context.SaveChanges();
-                };
-            }
+                context.PostTags.AddRange(postTags);
+                context.SaveChanges();
+        }
 
         const string article1 =
 @"Hi! I am excited to present this simple blog engine **uBlog**.

@@ -1,4 +1,22 @@
-﻿<!DOCTYPE html>
+﻿@using uBlog.Core.Services
+@using uBlog.Core.Utils
+@using uBlog.Web
+@using uBlog.Web.Models
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IConfigService configService
+@inject IUserService userService
+@{
+    var admin = userService.GetAdmin();
+    ViewBag.Author = admin.Username;
+    ViewBag.Photo = admin.Photo;
+    ViewBag.Description = $"Personal blog of {admin.Username}";
+    ViewBag.Keywords = "";
+    ViewBag.Title = $"Blog - {admin.Username}";
+    ViewBag.DisqusName = configService.DisqusName;
+    ViewBag.AddThisId = configService.AddThisId;
+    ViewBag.GoogleId = configService.GoogleId;
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />

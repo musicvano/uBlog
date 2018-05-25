@@ -32,5 +32,10 @@ namespace uBlog.Data
                 .HasKey(t => new { t.PostId, t.TagId });
             base.OnModelCreating(modelBuilder);
         }
+
+        public bool EnsureCreated()
+        {
+            return Database.EnsureCreated();
+        }
     }
 }

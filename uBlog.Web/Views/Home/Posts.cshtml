@@ -1,5 +1,7 @@
-﻿@model List<PostModel>
+﻿@using uBlog.Web.Models
+@model List<PostModel>
 @{
+    Layout = "~/Views/Shared/_Layout.cshtml";
     var tags = Model.Select(p => p.Tags).SelectMany(t => t).Select(t => t.Name).ToList();
     ViewBag.Keywords = String.Join(", ", tags);
 }

@@ -1,0 +1,116 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model uBlog.Web.Models.InstallModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="uBlog">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>uBlog > Installation</title>
+    @Html.Partial("Styles")
+</head>
+<body>
+    <section class="hero is-warning">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title">
+                    uBlog
+                </h1>
+                <h2 class="subtitle">
+                    Installation
+                </h2>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column"></div>
+                <div class="column is-three-quarters">
+                    <form asp-controller="Install" asp-action="Create" method="post">
+                        @Html.AntiForgeryToken()
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Blog Title</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="control">
+                                        <input class="input" asp-for="BlogTitle" placeholder="Brief description of your blog" required />
+                                    </div>
+                                    <span class="help is-danger" asp-validation-for="BlogTitle"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Username</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="control">
+                                        <input class="input" asp-for="Username" placeholder="Username" required />
+                                    </div>
+                                    <span class="help is-danger" asp-validation-for="Username"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Password</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="control">
+                                        <input class="input" asp-for="Password" type="password" placeholder="Password" required />
+                                    </div>
+                                    <span class="help is-danger" asp-validation-for="Password"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="control">
+                                        <input class="input" asp-for="ConfirmPassword" type="password" placeholder="Confirm password" required />
+                                    </div>
+                                    <span class="help is-danger" asp-validation-for="ConfirmPassword"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Email</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="control">
+                                        <input class="input" asp-for="Email" type="email" placeholder="Email" required />
+                                    </div>
+                                    <span class="help is-danger" asp-validation-for="Email"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field is-horizontal">
+                            <div class="field-label"></div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="control">
+                                        <button class="button is-info" type="submit">
+                                            Install
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="column"></div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

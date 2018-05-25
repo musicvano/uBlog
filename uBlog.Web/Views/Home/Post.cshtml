@@ -1,0 +1,31 @@
+﻿@model uBlog.Web.Models.PostModel
+@{
+    ViewBag.Title = Model.Title + " - " + ViewBag.Author;
+    ViewBag.Description = Model.Title;
+    ViewBag.Keywords = String.Join(", ", Model.Tags.Select(t => t.Name).ToList());
+    ViewBag.Url = Microsoft.AspNetCore.Http.Extensions.UriHelper.GetDisplayUrl(Context.Request);
+}
+
+<article>
+    @Html.Partial("PostHeader", Model)
+    @Html.Raw(Model.Content)
+    <div class="share" id="share">
+        <div class="addthis_sharing_toolbox"></div>
+    </div>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=@(ViewBag.AddThisId)"></script>
+
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_config = function () {
+        this.page.url = '@Html.Raw(ViewBag.Url)';
+        this.page.identifier = '@Model.Id';
+    };
+    (function () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://@(ViewBag.DisqusName).disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</article>

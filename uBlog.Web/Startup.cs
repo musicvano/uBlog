@@ -25,6 +25,7 @@ namespace uBlog.Web
             var dbPath = Path.Combine(rootPath, AppSettings.DatabasePath);
             services.AddScoped<IBlogContext>(p => new BlogContext(dbPath));
             services.AddScoped<IEncryptionService, EncryptionService>();
+            services.AddScoped<IInstallService, InstallService>();
             services.AddScoped<IConfigService, ConfigService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IPostService, PostService>();
@@ -36,7 +37,7 @@ namespace uBlog.Web
         // Configure routes
         private void ConfigureRoutes(IRouteBuilder routeBuilder)
         {
-            routeBuilder.MapRoute(
+            /*routeBuilder.MapRoute(
                 name: "Api",
                 template: "{area:exists}/{controller}");
 
@@ -68,7 +69,7 @@ namespace uBlog.Web
             routeBuilder.MapRoute(
                 name: "Error",
                 template: "errors/{code}",
-                defaults: new { controller = "Errors", action = "Index" });
+                defaults: new { controller = "Errors", action = "Index" });*/
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -76,8 +77,9 @@ namespace uBlog.Web
         {
             //loggerFactory.AddConsole();
             if (env.IsDevelopment())
-            {
+            {                
                 app.UseDeveloperExceptionPage();
+                app.UseBrowserLink();
                 /*app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
                 {
                     HotModuleReplacement = true

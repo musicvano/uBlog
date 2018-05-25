@@ -1,38 +1,35 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using uBlog.Core.Services;
-using uBlog.Web;
 using uBlog.Web.Models;
 
-namespace uBlog.Controllers
+namespace uBlog.Web.Controllers
 {
-    public class PostsController : Controller
+    public class HomeController : Controller
     {
-        private readonly IPostService postService;
         private readonly IConfigService configService;
+        private readonly IPostService postService;
 
-        public PostsController(IPostService postService, IConfigService configService)
+        public HomeController(IConfigService configService, IPostService postService)
         {
-            this.postService = postService;
             this.configService = configService;
+            this.postService = postService;
         }
 
-        public IActionResult Index(int page = 1)
+        [Route("")]
+        [Route("posts")]
+        public ActionResult Posts(int page = 1)
         {
-            if (!AppSettings.IsInstalled())
-            {
-                return RedirectToAction("Index", "Install");
-            }
             var posts = postService.GetByPage(page, configService.PageSize);
             if (posts.Count == 0)
-            {
                 return NotFound();
-            }
             postService.EncodeContent(posts);
             var model = ModelFactory.Create(posts);
             return View(model);
         }
 
-        public IActionResult Details(string slug)
+        [Route("posts/{slug}")]
+        public IActionResult Post(string slug)
         {
             var post = postService.GetBySlug(slug);
             if (post == null)

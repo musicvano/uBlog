@@ -8,6 +8,11 @@
         public int Id { get; set; }
 
         /// <summary>
+        /// The blog title
+        /// </summary>
+        public string Title { get; set; }
+
+        /// <summary>
         /// Count of posts per page
         /// </summary>
         public int PageSize { get; set; }

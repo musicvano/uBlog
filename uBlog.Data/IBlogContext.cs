@@ -19,5 +19,11 @@ namespace uBlog.Data
         /// </summary>
         /// <returns>The number of state entries written to the database</returns>
         int SaveChanges();
+
+        /// <summary>
+        /// Creates database file if it doesn't exist
+        /// </summary>
+        /// <returns>True if the database is created, false if it already existed</returns>
+        bool EnsureCreated();
     }
 }
