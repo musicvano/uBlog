@@ -12,6 +12,7 @@ namespace uBlog.Core.Services
         {
             this.context = context;
             var config = Get();
+            Title = config.Title;
             PageSize = config.PageSize;
             DisqusName = config.DisqusName;
             AddThisId = config.AddThisId;
@@ -29,6 +30,7 @@ namespace uBlog.Core.Services
             context.SaveChanges();
         }
 
+        public string Title { get; private set; }
         public int PageSize { get; private set; }
         public string DisqusName { get; private set; }
         public string AddThisId { get; private set; }

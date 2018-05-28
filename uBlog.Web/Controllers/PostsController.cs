@@ -1,24 +1,21 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using uBlog.Core.Services;
 using uBlog.Web.Models;
 
 namespace uBlog.Web.Controllers
 {
-    public class HomeController : Controller
+    public class PostsController : Controller
     {
         private readonly IConfigService configService;
         private readonly IPostService postService;
 
-        public HomeController(IConfigService configService, IPostService postService)
+        public PostsController(IConfigService configService, IPostService postService)
         {
             this.configService = configService;
             this.postService = postService;
         }
 
-        [Route("")]
-        [Route("posts")]
-        public ActionResult Posts(int page = 1)
+        public ActionResult Index(int page = 1)
         {
             var posts = postService.GetByPage(page, configService.PageSize);
             if (posts.Count == 0)
@@ -28,8 +25,7 @@ namespace uBlog.Web.Controllers
             return View(model);
         }
 
-        [Route("posts/{slug}")]
-        public IActionResult Post(string slug)
+        public IActionResult Details(string slug)
         {
             var post = postService.GetBySlug(slug);
             if (post == null)

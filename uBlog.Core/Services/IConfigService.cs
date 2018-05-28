@@ -19,6 +19,11 @@ namespace uBlog.Core.Services
         void Update(Config config);
 
         /// <summary>
+        /// The blog title
+        /// </summary>
+        string Title { get; }
+
+        /// <summary>
         /// Count of posts per page
         /// </summary>
         int PageSize { get; }

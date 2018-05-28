@@ -1,7 +1,7 @@
 ﻿@model uBlog.Web.Models.PostModel
 
 <h1 class="title">
-    <a asp-controller="Posts" asp-action="Details" asp-route-slug="@Model.Slug">@Html.Raw(Model.Title)</a>
+    <a asp-controller="Posts" asp-action="Details" asp-route-slug="@Model.Slug" class="has-text-grey-dark">@Html.Raw(Model.Title)</a>
 </h1>
 
 <div class="tags is-pulled-left">

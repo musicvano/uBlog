@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Linq;
 using uBlog.Data;
 using uBlog.Data.Entities;
@@ -16,33 +16,25 @@ namespace uBlog.Core.Services
             this.encryptionService = encryptionService;
         }
 
-        public User GetAdmin()
+        public User Get(int Id)
         {
-            return context.Users.SingleOrDefault(u => u.Id == 1);
+            return context.Users.SingleOrDefault(p => p.Id == Id);
         }
 
-        public User CreateAdmin(string email, string password)
+        public User GetAdmin()
         {
-            var passwordSalt = encryptionService.CreateSalt();
-            var user = new User
-            {
-                Username = "Username",
-                Email = email,
-                About = "Tell a little about yourself",
-                Photo = "default.png",
-                Url = "http://user.com",
-                Github = "https://github.com/user",
-                Facebook = "https://www.facebook.com/user",
-                Twitter = "https://twitter.com/user",
-                Skype = "user",
-                Location = "Country",
-                HashedPassword = encryptionService.EncryptPassword(password, passwordSalt),
-                Salt = passwordSalt,
-                DateCreated = DateTime.Now
-            };
-            context.Users.Add(user);
+            return Get(1);
+        }
+
+        public List<User> GetAll()
+        {
+            return context.Users.ToList();
+        }
+
+        public void Update(User user)
+        {
+            context.Users.Update(user);
             context.SaveChanges();
-            return user;
         }
     }
 }

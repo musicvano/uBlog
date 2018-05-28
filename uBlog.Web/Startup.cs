@@ -37,7 +37,7 @@ namespace uBlog.Web
         // Configure routes
         private void ConfigureRoutes(IRouteBuilder routeBuilder)
         {
-            /*routeBuilder.MapRoute(
+            routeBuilder.MapRoute(
                 name: "Api",
                 template: "{area:exists}/{controller}");
 
@@ -69,7 +69,7 @@ namespace uBlog.Web
             routeBuilder.MapRoute(
                 name: "Error",
                 template: "errors/{code}",
-                defaults: new { controller = "Errors", action = "Index" });*/
+                defaults: new { controller = "Errors", action = "Index" });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,11 +1,20 @@
-﻿@using uBlog.Web.Models
+﻿@inject IConfigService configService
+@inject ITagService tagService
 @model List<PostModel>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var tags = Model.Select(p => p.Tags).SelectMany(t => t).Select(t => t.Name).ToList();
-    ViewBag.Keywords = String.Join(", ", tags);
+    ViewBag.Title = configService.Title;
+    ViewBag.Keywords = String.Join(", ", tagService.GetAll());
 }
-
+<section class="hero is-warning">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                @Html.Raw(configService.Title)
+            </h1>
+        </div>
+    </div>
+</section>
 @if (Model.Count > 0)
 {
     @foreach (var post in Model)
@@ -26,7 +35,7 @@ else
 {
     <section class="section">
         <div class="container">
-            <h2 class="subtitle">Sorry. There are no posts</h2>
+            <h1 class="title">Sorry. There are no posts</h1>
         </div>
     </section>
 }

@@ -1,53 +1,55 @@
 ﻿@model UserModel
 @{
-    ViewBag.Title = $"About - {Model.Username}";
-    ViewBag.Description = "Information about author";
-    ViewBag.Keywords = Model.Username;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "About me";
 }
 
-<header>
-    <h1>@Model.Username</h1>
-</header>
-<div class="row">
-    <p>@Model.About</p>
-</div>
-<div class="row">
-    <div class="one-half column">
-        <img src="~/images/@Model.Photo" class="photo u-max-full-width" alt="Photo" />
+<section class="section">
+    <div class="container content">
+        <h1 class="title">About me</h1>
+        <div class="columns">
+            <div class="column"><p>@Model.About</p></div>
+            
+        </div>
+        <div class="columns">
+            <div class="column has-text-centered">
+                <img src="~/images/@Model.Photo" class="photo u-max-full-width" alt="Photo" />
+            </div>
+            <div class="column">
+                @if (!string.IsNullOrEmpty(Model.Url))
+                {
+                    <span class="icon"><i class="mdi mdi-open-in-new"></i></span>
+                    <a href="@Model.Url">@UrlHelper.CleanUrl(Model.Url)</a> <br />
+                }
+                @if (!string.IsNullOrEmpty(Model.Email))
+                {
+                    <span class="icon"><i class="mdi mdi-at"></i></span>
+                    <a href="mailto:@Model.Email">@Model.Email</a> <br />
+                }
+                @if (!string.IsNullOrEmpty(Model.Github))
+                {
+                    <span class="icon"><i class="mdi mdi-github-face"></i></span>
+                    <a href="@Model.Github">@UrlHelper.CleanUrl(Model.Github)</a> <br />
+                }
+                @if (!string.IsNullOrEmpty(Model.Facebook))
+                {
+                    <span class="icon"><i class="mdi mdi-facebook"></i></span>
+                    <a href="@Model.Facebook">@UrlHelper.CleanUrl(Model.Facebook)</a> <br />
+                }
+                @if (!string.IsNullOrEmpty(Model.Twitter))
+                {
+                    <span class="icon"><i class="mdi mdi-twitter"></i></span>
+                    <a href="@Model.Twitter">@UrlHelper.CleanUrl(Model.Twitter)</a> <br />
+                }
+                @if (!string.IsNullOrEmpty(Model.Skype))
+                {
+                    <span class="icon"><i class="mdi mdi-skype"></i></span> @Model.Skype <br />
+                }
+                @if (!string.IsNullOrEmpty(Model.Location))
+                {
+                    <span class="icon"><i class="mdi mdi-map-marker"></i></span> @Model.Location <br />
+                }
+            </div>
+        </div>
     </div>
-    <div class="one-half column">
-        @if (!string.IsNullOrEmpty(Model.Url))
-            {
-            <i class="fa fa-external-link" aria-hidden="true"></i>
-            <a href="@Model.Url">@UrlHelper.CleanUrl(Model.Url)</a> <br />
-        }
-        @if (!string.IsNullOrEmpty(Model.Email))
-            {
-            <i class="fa fa-envelope-o" aria-hidden="true"></i>
-            <a href="mailto:@Model.Email">@Model.Email</a> <br />
-        }
-        @if (!string.IsNullOrEmpty(Model.Github))
-            {
-            <i class="fa fa-github" aria-hidden="true"></i>
-            <a href="@Model.Github">@UrlHelper.CleanUrl(Model.Github)</a> <br />
-        }
-        @if (!string.IsNullOrEmpty(Model.Facebook))
-        {
-            <i class="fa fa-facebook" aria-hidden="true"></i>
-            <a href="@Model.Facebook">@UrlHelper.CleanUrl(Model.Facebook)</a> <br />
-        }
-        @if (!string.IsNullOrEmpty(Model.Twitter))
-        {
-            <i class="fa fa-twitter" aria-hidden="true"></i>
-            <a href="@Model.Twitter">@UrlHelper.CleanUrl(Model.Twitter)</a> <br />
-        }
-        @if (!string.IsNullOrEmpty(Model.Skype))
-        {
-            <i class="fa fa-skype" aria-hidden="true"></i> @Model.Skype <br />
-        }
-        @if (!string.IsNullOrEmpty(Model.Location))
-        {
-            <i class="fa fa-map-marker" aria-hidden="true"></i> @Model.Location <br />
-        }
-    </div>
-</div>
+</section>

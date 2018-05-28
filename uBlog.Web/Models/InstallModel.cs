@@ -8,12 +8,12 @@ namespace uBlog.Web.Models
         public string BlogTitle { get; set; }
 
         [Required]
-        [StringLength(64, MinimumLength = 5)]
+        [StringLength(64, MinimumLength = 3)]
         public string Username { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [StringLength(64, MinimumLength = 5)]
+        [StringLength(64, MinimumLength = 6)]
         public string Password { get; set; }
 
         [Required]

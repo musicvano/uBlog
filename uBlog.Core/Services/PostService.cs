@@ -34,7 +34,7 @@ namespace uBlog.Core.Services
 
         public List<Post> GetAll()
         {
-            var posts = context.Posts.OrderByDescending(p => p.DateCreated).ToList();
+            var posts = context.Posts.OrderBy(p => p.DateCreated).ToList();
             for (int i = 0; i < posts.Count; i++)
             {
                 posts[i].PostTags = context.PostTags.Include(p => p.Tag).Where(p => p.PostId == posts[i].Id).ToList();
