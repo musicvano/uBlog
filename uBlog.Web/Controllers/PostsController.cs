@@ -29,9 +29,7 @@ namespace uBlog.Web.Controllers
         {
             var post = postService.GetBySlug(slug);
             if (post == null)
-            {
                 return NotFound();
-            }
             postService.EncodeContent(post);
             var model = ModelFactory.Create(post);
             ViewBag.Title = model.Title;

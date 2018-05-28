@@ -4,11 +4,29 @@
     <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="ClientApp\app\app-routing.module.ts" />
+    <None Remove="ClientApp\app\config\config.component.ts" />
+    <None Remove="ClientApp\app\post-detail\post-detail.component.ts" />
+    <None Remove="ClientApp\app\post.service.ts" />
+    <None Remove="ClientApp\app\post.ts" />
+    <None Remove="ClientApp\app\posts\posts.component.ts" />
+    <None Remove="ClientApp\app\tag.ts" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" />
     <DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="2.0.0" />
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
     <ProjectReference Include="..\uBlog.Core\uBlog.Core.csproj" />
     <ProjectReference Include="..\uBlog.Data\uBlog.Data.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\app-routing.module.ts" />
+    <TypeScriptCompile Include="ClientApp\app\config\config.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\post-detail\post-detail.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\post.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\post.ts" />
+    <TypeScriptCompile Include="ClientApp\app\posts\posts.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\tag.ts" />
   </ItemGroup>
 </Project>

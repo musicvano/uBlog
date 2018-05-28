@@ -19,6 +19,7 @@ namespace uBlog.Controllers
                     ViewBag.Message = "Oops! Something wrong";
                     break;
             }
+            Response.StatusCode = code;
             return PartialView();
         }
     }

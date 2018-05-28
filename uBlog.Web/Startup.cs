@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Routing;
-using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System.IO;
@@ -43,7 +42,7 @@ namespace uBlog.Web
 
             routeBuilder.MapRoute(
                 name: "Admin",
-                template: "admin/{url?}",
+                template: "admin/{*url}",
                 defaults: new { controller = "Admin", action = "Index" });
 
             routeBuilder.MapRoute(
@@ -66,10 +65,15 @@ namespace uBlog.Web
                 template: "posts/page/{page}",
                 defaults: new { controller = "Posts", action = "Index" });
 
-            routeBuilder.MapRoute(
+            /*routeBuilder.MapRoute(
                 name: "Error",
                 template: "errors/{code}",
-                defaults: new { controller = "Errors", action = "Index" });
+                defaults: new { controller = "Errors", action = "Index" });*/
+
+            /*routeBuilder.MapRoute(
+                name: "NotFound",
+                template: "{*url}",
+                defaults: new { controller = "Errors", action = "Index", code = 404 });*/
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -77,17 +81,13 @@ namespace uBlog.Web
         {
             //loggerFactory.AddConsole();
             if (env.IsDevelopment())
-            {                
+            {
                 app.UseDeveloperExceptionPage();
                 app.UseBrowserLink();
-                /*app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
-                {
-                    HotModuleReplacement = true
-                });*/
             }
             else
             {
-                app.UseExceptionHandler("/errors/500");
+                //app.UseExceptionHandler("/errors/500");
             }
             app.UseStaticFiles();
             app.UseMvc(ConfigureRoutes);
