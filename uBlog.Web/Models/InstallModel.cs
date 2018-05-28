@@ -13,7 +13,7 @@ namespace uBlog.Web.Models
 
         [Required]
         [DataType(DataType.Password)]
-        [StringLength(64, MinimumLength = 6)]
+        [StringLength(64, MinimumLength = 5)]
         public string Password { get; set; }
 
         [Required]

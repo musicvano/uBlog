@@ -11,16 +11,15 @@ Solution consists of separate parts:
 - uBlog.Core - all services provide core functionality for the blog
 - uBlog.Web - ASP.NET Core app uses Razor view engine for GET requests and provides WebAPI for admin panel
 - uBlog.Test - unit and integration tests for the blog
-- uTool - command-line interface (CLI) for initial database configuration, migration, etc.
 
 Project uses such libraries and frameworks:
 
 - [Entity Framework Core](https://ef.readthedocs.io)
 - [CommonMark.NET](https://github.com/Knagis/CommonMark.NET)
-- [Angular](https://angular.io)
+- [Angular 6](https://angular.io)
 - [Bulma CSS](http://bulma.io)
 - [Material Design Icons](https://materialdesignicons.com)
-- [Prism](http://prismjs.com)
+- [highlight.js](https://highlightjs.org)
 
 uBlog supports [Disqus](https://disqus.com/) service for commenting and [AddThis](https://www.addthis.com) for sharing across social networks.
 

@@ -4,5 +4,11 @@
     "inputFiles": [
       "wwwroot/libs/bulma/nav.js"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/libs/highlight/styles/github.min.css",
+    "inputFiles": [
+      "wwwroot/libs/highlight/styles/github.css"
+    ]
   }
 ]

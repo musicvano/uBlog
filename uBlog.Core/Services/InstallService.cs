@@ -67,18 +67,18 @@ namespace uBlog.Core.Services
                 {
                     new Post
                     {
-                        Title = "About uBlog",
-                        Content = article1,
+                        Title = "Formating text in posts",
+                        Content = article2,
                         DateCreated = DateTime.Now,
                         Draft = false
                     },
                     new Post
                     {
-                        Title = "Formating text in posts",
-                        Content = article2,
+                        Title = "About uBlog",
+                        Content = article1,
                         DateCreated = DateTime.Now,
                         Draft = false
-                    }
+                    }                   
                 };
                 posts.ForEach(post => post.Slug = UrlHelper.GetSlug(post.Title));
                 context.Posts.AddRange(posts);
@@ -123,14 +123,32 @@ If you have some suggestions and recommendations feel free to [contact me](http:
 
         const string article2 =
 @"
-You can insert programming code into posts and it will be highlighted appropriately.
+uBlog uses [highlight.js](https://highlightjs.org/) for sysntax highlighting.
+It supports many programming languages and scripts:
+C, C++, C#, Java, PHP, Ruby, Python, Perl, HTML, CSS, Less, SQL, Bash, JSON and many others.
 
+C exapmle:
 ```c
 int main()
 {
     printf(""Hello World"");
     return 0;
 }
+```
+
+C# example:
+```cs
+public void Update(Post post)
+{
+    context.Posts.Update(post);
+    context.SaveChanges();
+}
+```
+
+SQL script:
+```sql
+SELECT * FROM Customers
+ORDER BY Country, CustomerName;
 ```
 ";
     }
