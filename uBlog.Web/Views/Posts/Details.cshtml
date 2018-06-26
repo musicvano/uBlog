@@ -15,7 +15,7 @@
             <div class="share" id="share">
                 <div class="addthis_sharing_toolbox"></div>
             </div>
-            <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=@(ViewBag.AddThisId)"></script>
+            <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=@(config.AddThisId)"></script>
             <div id="disqus_thread"></div>
             <script>
                 var disqus_config = function () {
@@ -24,7 +24,7 @@
                 };
                 (function () {
                     var d = document, s = d.createElement('script');
-                    s.src = 'https://@(ViewBag.DisqusName).disqus.com/embed.js';
+                    s.src = 'https://@(config.DisqusName).disqus.com/embed.js';
                     s.setAttribute('data-timestamp', +new Date());
                     (d.head || d.body).appendChild(s);
                 })();

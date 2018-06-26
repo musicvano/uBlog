@@ -8,7 +8,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="author" content="@Html.Raw(ViewBag.Author)">
+    <meta name="author" content="@Html.Raw(admin.Username)">
     <meta name="description" content="@Html.Raw(ViewBag.Title + " — " + admin.Username)">
     <meta name="keywords" content="@Html.Raw(ViewBag.Keywords)">
     <meta name="generator" content="uBlog">
@@ -22,7 +22,7 @@
         <div class="container">
             <div class="navbar-brand">
                 <a asp-controller="Posts" asp-action="Index" class="navbar-item">
-                    <img src="~/images/@admin.Photo" alt="@Html.Raw(admin.Username)" width="40" height="40" class="is-rounded" />
+                    <img src="~/images/@admin.Photo" alt="@Html.Raw(admin.Username)" width="40" height="40" style="border-radius:50%" />
                     <b>@Html.Raw(admin.Username)</b>
                 </a>
                 <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
